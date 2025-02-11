@@ -1,4 +1,4 @@
-# Geoinformatické informační systémy 1
+# Introduction to Geospatial Data Processing in R
 
 Materials for the course [KFG/7ZGER - Introduction to Geospatial Data Processing in R](https://is-stag.osu.cz/StagPortletsJSR168/CleanUrl?urlid=prohlizeni-predmet-sylabus&predmetZkrPrac=KFG&predmetZkrPred=7ZGER&predmetRok=2024&predmetSemestr=LS&plang=en) taught at the [Department of Physical Geography and Geoecology](https://kfg.osu.cz/) of the University of Ostrava. The course is intended for students of envionmental geography.
 
