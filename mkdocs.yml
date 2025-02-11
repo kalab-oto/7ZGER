@@ -1,0 +1,63 @@
+site_name: KFG/7ZGER - Introduction to geospatial data processing in R
+site_author: Oto Kaláb
+site_url: https://kalab-oto.github.io/7ZGER
+repo_url: https://github.com/kalab-oto/7ZGER
+site_description: "7ZGER - Introduction to geospatial data processing in R"
+copyright: "Oto Kaláb 2025"
+theme:
+  name: material
+  
+  palette:
+    - scheme: default
+      primary: teal
+      primary: teal
+      toggle:
+        icon: material/weather-night 
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+  features:
+      - content.code.copy
+      - navigation.sections
+
+extra:
+  social:
+    - icon: fontawesome/solid/envelope
+      link: mailto:oto.kalab@osu.cz
+      name: e-mail
+    - icon: fontawesome/solid/globe
+      link: https://prf.osu.cz/kfg/oto-kalab/25831/
+      name: website
+    - icon: fontawesome/brands/researchgate
+      link: https://www.researchgate.net/profile/Oto-Kalab
+      name: ResearchGate
+    - icon: fontawesome/brands/google-scholar
+      link: https://scholar.google.com/citations?user=ZsfMS6k0ceEC&hl=cs
+      name: Google Scholar
+    - icon: fontawesome/brands/orcid
+      link: https://orcid.org/0000-0003-3485-9377
+      name: ORCID
+    - icon: fontawesome/brands/mastodon
+      link: https://ecoevo.social/@OtoKalab
+      name: Mastodon
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+nav:
+  - Home: index.md
+  - Course:
+    - Introduction to R: intro.md
+    - R Basics: basics.md
+  - Sources:
+    - Sources: sources.md
+    - Data: data.md
