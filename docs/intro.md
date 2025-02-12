@@ -77,7 +77,7 @@ will be covered during the course.
 
 ### Interface
 
-The GUI consists of four main panes, which can be customized and rearranged. But for now we will focus on tow of them:
+The GUI consists of four main panes, which can be customized and rearranged. But for now we will focus on two of them:
 
 - **Console** - here you can write and run code interactively
 - **Source** - here you can write and save your scripts (files with code), and also send the parts of the code to the 
