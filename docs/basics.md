@@ -21,12 +21,12 @@ use `**` or `^` for exponentiation
 
 You can also test if values meets some condition
 
-`==` - equals
-`!=` - not equals
-`>` - greater than
-`<` - less than
-`>=` - greater or equal
-`<=` - less or equal
+- `==` - equals
+- `!=` - not equals
+- `>` - greater than
+- `<` - less than
+- `>=` - greater or equal
+- `<=` - less or equal
 
 ``` r
 5 == 5
@@ -83,12 +83,14 @@ z
 ```
 
 Variables names:
+
 - can't contain spaces and special characters
 - can't start with number
 - are case sensitive
 - can't be some reserved words (`if`, `for`, ...)
 
 The convention is to use descriptive but not excessive long variable names. There are tree main types of naming in R:
+
 - snake_case - used in this course
 - camelCase
 - dot.case
@@ -104,7 +106,9 @@ my_variable
 ``` 
  
 ## Functions
-Calling function consist of function name and arguments in parentheses. Arguments can be named or unnamed. `function_name(argument1 = value1 ,argument2 = value2, argument3 = value3, ...)` Some functions doesn't have any arguments (`getwd()`).
+Calling function consist of function name and arguments in parentheses. Arguments can be named or unnamed. 
+`function_name(argument1 = value1 ,argument2 = value2, argument3 = value3, ...)`. Some functions doesn't have
+ any arguments (`getwd()`).
 
 ``` r
 sin(5)
@@ -118,6 +122,7 @@ You can get function help using RStudio GUI or calling `?` before the function n
 
 ## Data object clases
 basic classes in R:
+
 - *numeric* - decimal and real numbers
 - *integer* - whole numbers
 - *character* - text
@@ -126,7 +131,8 @@ basic classes in R:
 - *date/POSIXct* - date
 
 !!! info
-    Object can have an attributes - properties like `class`, `length`, `names`, `dim`, `attributes`, that can called or set with with some functions like `class()`, `length()`, `names()`, `dim()`, `attributes()`.
+    Object can have an attributes - properties like `class`, `length`, `names`, `dim`, `attributes`, that can called or 
+    set with with some functions like `class()`, `length()`, `names()`, `dim()`, `attributes()`.
 
 Check the class of the object with `typeof()` function.
 
@@ -326,7 +332,6 @@ m
 
 ``` r
 
-``` r
 a <- array(1:12, dim = c(2,3,2))
 a
 ```
