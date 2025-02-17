@@ -58,8 +58,8 @@ nav:
   - Course:
     - Introduction to R: intro.md
     - R Basics: basics.md
-    - R Basics: data_types.md
-    - R Basics: files_workflow.md
+    - Data types: data_types.md
+    - Workgin with files, script workflow: files_workflow.md
   - Sources:
     - Sources: sources.md
     - Data: data.md
