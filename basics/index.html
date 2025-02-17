@@ -427,15 +427,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#data-object-clases" class="md-nav__link">
-    <span class="md-ellipsis">
-      Data object clases
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -651,15 +642,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#data-object-clases" class="md-nav__link">
-    <span class="md-ellipsis">
-      Data object clases
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -764,39 +746,6 @@
 You can get function help using RStudio GUI or calling <code>?</code> before the function name, or <code>help()</code> function.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="o">?</span><span class="n">sqrt</span>
 </code></pre></div>
-<h2 id="data-object-clases">Data object clases</h2>
-<p>basic classes in R:
-- <em>numeric</em> - decimal and real numbers
-- <em>integer</em> - whole numbers
-- <em>character</em> - text
-- <em>logical</em> - TRUE or FALSE
-- <em>complex</em> - complex numbers
-- <em>date/POSIXct</em> - date</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Object can have an attributes - properties like <code>class</code>, <code>length</code>, <code>names</code>, <code>dim</code>, <code>attributes</code>, that can called or set with with some functions like <code>class()</code>, <code>length()</code>, <code>names()</code>, <code>dim()</code>, <code>attributes()</code>.</p>
-</div>
-<p>Check the class of the object with <code>typeof()</code> function.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">some_text</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Hello, world!&quot;</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nf">typeof</span><span class="p">(</span><span class="n">some_text</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>[1] &quot;character&quot;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">5</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nf">typeof</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</code></pre></div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>[1] &quot;logical&quot;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;5&quot;</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nf">typeof</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</code></pre></div></p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>[1] &quot;character&quot;
-</code></pre></div>
-Conversion between classes can be done with <code>as.</code> functions.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="s">&quot;5&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">5</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="s">&quot;5&quot;</span><span class="p">)</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">5</span>
-</code></pre></div></p>
 <h1 id="writing-script">Writing script</h1>
 <!-- todo -->
 
