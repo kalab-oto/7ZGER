@@ -120,50 +120,5 @@ You can get function help using RStudio GUI or calling `?` before the function n
 ?sqrt
 ```
 
-## Data object clases
-basic classes in R:
-- *numeric* - decimal and real numbers
-- *integer* - whole numbers
-- *character* - text
-- *logical* - TRUE or FALSE
-- *complex* - complex numbers
-- *date/POSIXct* - date
-
-!!! info
-    Object can have an attributes - properties like `class`, `length`, `names`, `dim`, `attributes`, that can called or set with with some functions like `class()`, `length()`, `names()`, `dim()`, `attributes()`.
-
-Check the class of the object with `typeof()` function.
-
-``` r
-some_text <- "Hello, world!"
-typeof(some_text)
-```
-
-```
-[1] "character"
-```
-
-``` r
-x <- 5 == 5
-typeof(x)
-```
-
-```
-[1] "logical"
-```
-``` r
-x <- "5"
-typeof(x)
-```
-
-```
-[1] "character"
-```
-Conversion between classes can be done with `as.` functions.
-``` r
-"5" + 5
-x <- as.numeric("5")
-x + 5
-```
 # Writing script
 <!-- todo -->
