@@ -3,6 +3,7 @@
 
 ## Data object clases
 basic classes in R:
+
 - *numeric* - decimal and real numbers
 - *integer* - whole numbers
 - *character* - text
