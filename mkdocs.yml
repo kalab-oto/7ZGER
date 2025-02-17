@@ -59,7 +59,7 @@ nav:
     - Introduction to R: intro.md
     - R Basics: basics.md
     - Data types: data_types.md
-    - Workgin with files, script workflow: files_workflow.md
+    - Working with files, script workflow: files_workflow.md
   - Sources:
     - Sources: sources.md
     - Data: data.md
