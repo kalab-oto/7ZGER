@@ -1,4 +1,3 @@
-
 # Data types
 
 ## Data object clases
@@ -194,8 +193,15 @@ typeof(x)
 
 y <- c(1, 2, "c", "4")
 mean(y)
-
 ```   
+
+!!! note
+    Function `str()` returns the structure of object. This is useful for more complex objects, but you can use it for vectors too.
+    ``` r
+    x <- c(5, 8, 13, 51)
+    str(x)
+    ```
+
 ### Matrix and arrays
 We wont't use them much in this course, so I describe them only briefly. They are similar to vectors, but with two or more dimensions. Matrix is two dimensional, array is multi-dimensional. You can create them with `matrix()` and `array()` functions.
 
@@ -247,8 +253,45 @@ dim(v2) <- c(2,3,2)
 
 <!-- todo -->
 ### Lists
+Collection of objects, can be different classes. Can be created with `list()` function. This is fundamental data structure in R, and you can store various objects in it including another list.
+
+``` r
+my_list <- list(1, "a", TRUE)
+my_list
+```
+
+nesting lists:
+``` r
+my_list <- list(1, "a", TRUE)
+nested_list <- list(my_list, 2, "b", FALSE)
+nested_list
+```
+
+list can be named
+``` r
+named_list <- list(number = 1, text = "a", boolean = TRUE)
+named_list
+```
 ### Data frame
-### Missing values
+Data frames in R is structure similar to common tables. It is two dimensional array of values, where columns can be different classes. It can be created with `data.frame()` function. In next section we will learn how to create a data frame from `.csv` table with `read.csv()` function. Another representation of data frame is `tibble` from `tidyverse`, or `data.table` from `data.table` package, but we will use `data.frame` through the course.
+
+``` r
+df <- data.frame(species = "species A", count = 5, year = 2020)
+df
+```
+
+``` r
+df <- data.frame(species = c("species A","species B","species C"), count = c(5,10,7), year = c(2020,2020,2020))
+df
+
+class(df)
+str(df)
+
+
+typeof(df)
+```
+
+## Missing values
 
 
 ## Subsetting with indexes
