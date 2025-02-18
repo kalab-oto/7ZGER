@@ -128,4 +128,22 @@ You can get function help using RStudio GUI or calling `?` before the function n
 ```
 
 # Writing script
-<!-- todo -->
+
+As mentioned in the [Introduction to R](intro.md) there are various ways to write and run code in R, **interacively** in the console, or writing **scripts** that can be saved and run later (entire or by parts). Most of the time you will write code to scripts (`.R` or `.r` files). Code can be written in any text editor.
+
+In RStudio you can write and save scripts in the **Source** pane. You can run the entire script or just the selected part of the code. 
+
+- **Run selected part of the code** - `Ctrl + Enter` - or button `Run` - this you willl use mostly in this course. You can run the code line by line, or by selected blocks. This function sends the code to the console and run it, and the cursor will move to the next line or executable part of code.
+
+- Run entire script - `Ctrl + Shift + S` - or button `Source` - this use a `source()` function, and run entire script (as file) in console.
+
+In writing scripts you can "comment" lines. Commented lines starts with `#` and are not executed (even if they are sent to the console). Coments are useful for documenting/explanation code or "deactivating" parts of code.
+
+``` r
+# Do some math
+x <- 5
+y <- 8
+# y <- 10
+
+x + y
+```
