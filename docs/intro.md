@@ -12,7 +12,7 @@
   easier: IDEs (Integrated Development Environment)
 - the most popular IDE for R is **RStudio** - 
   [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)
-- other IDEs: Visual Studio Code, Jupyter Notebook, Vim, Emacs, ...
+- other IDEs: Visual Studio Code, Jupyter Notebook, Vim, Emacs, and recently [Positron](https://positron.posit.co/) (IDE based on VS Code)
 - so **R** ≠ **RStudio**
 
 ## Why programming for spatial data handling?
