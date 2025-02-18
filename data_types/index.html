@@ -461,17 +461,17 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#missing-values" class="md-nav__link">
     <span class="md-ellipsis">
       Missing values
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -691,17 +691,17 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#missing-values" class="md-nav__link">
     <span class="md-ellipsis">
       Missing values
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -870,47 +870,80 @@ or simply:
 <a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;4&quot;</span><span class="p">)</span>
 <a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="nf">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Function <code>str()</code> returns the structure of object. This is useful for more complex objects, but you can use it for vectors too.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">13</span><span class="p">,</span><span class="w"> </span><span class="m">51</span><span class="p">)</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nf">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></p>
+</div>
 <h3 id="matrix-and-arrays">Matrix and arrays</h3>
 <p>We wont't use them much in this course, so I describe them only briefly. They are similar to vectors, but with two or more dimensions. Matrix is two dimensional, array is multi-dimensional. You can create them with <code>matrix()</code> and <code>array()</code> functions.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">m</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="n">m</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>     [,1] [,2] [,3]
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>[1,]    1    3    5
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>[2,]    2    4    6
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>     [,1] [,2] [,3]
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>[1,]    1    3    5
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>[2,]    2    4    6
 </code></pre></div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">``</span>`<span class="w"> </span><span class="n">r</span>
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">array</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="n">a</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">``</span>`<span class="w"> </span><span class="n">r</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">array</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="n">a</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>, , 1
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>     [,1] [,2] [,3]
-<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>[1,]    1    3    5
-<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>[2,]    2    4    6
-<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>
-<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>, , 2
-<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>
-<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>     [,1] [,2] [,3]
-<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>[1,]    7    9   11
-<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>[2,]    8   10   12
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>, , 1
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>     [,1] [,2] [,3]
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>[1,]    1    3    5
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>[2,]    2    4    6
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>, , 2
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>     [,1] [,2] [,3]
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>[1,]    7    9   11
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>[2,]    8   10   12
 </code></pre></div></p>
 <p>Vectors, matrices and arrays can be converted. 
 Try:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">array</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
-<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="nf">c</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="n">v</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span>
-<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="nf">dim</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
-<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="n">v</span>
-<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="n">v2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">)</span>
-<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="nf">dim</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">array</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="nf">c</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="n">v</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span>
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="nf">dim</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="n">v</span>
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="n">v2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">)</span>
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="nf">dim</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
 </code></pre></div>
 <!-- todo -->
 <h3 id="lists">Lists</h3>
+<p>Collection of objects, can be different classes. Can be created with <code>list()</code> function. This is fundamental data structure in R, and you can store various objects in it including another list.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">my_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="n">my_list</span>
+</code></pre></div>
+<p>nesting lists:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">my_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="n">nested_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="n">nested_list</span>
+</code></pre></div></p>
+<p>list can be named
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">named_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="n">named_list</span>
+</code></pre></div></p>
 <h3 id="data-frame">Data frame</h3>
-<h3 id="missing-values">Missing values</h3>
+<p>Data frames in R is structure similar to common tables. It is two dimensional array of values, where columns can be different classes. It can be created with <code>data.frame()</code> function. In next section we will learn how to create a data frame from <code>.csv</code> table with <code>read.csv()</code> function. Another representation of data frame is <code>tibble</code> from <code>tidyverse</code>, or <code>data.table</code> from <code>data.table</code> package, but we will use <code>data.frame</code> through the course.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">species</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;species A&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2020</span><span class="p">)</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="n">df</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">species</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;species A&quot;</span><span class="p">,</span><span class="s">&quot;species B&quot;</span><span class="p">,</span><span class="s">&quot;species C&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">7</span><span class="p">),</span><span class="w"> </span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="m">2020</span><span class="p">,</span><span class="m">2020</span><span class="p">))</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="n">df</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="nf">class</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>
+<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a><span class="nf">typeof</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="missing-values">Missing values</h2>
 <h2 id="subsetting-with-indexes">Subsetting with indexes</h2>
 
 
