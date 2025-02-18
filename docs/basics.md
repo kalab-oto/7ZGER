@@ -89,6 +89,16 @@ Variables names:
 - are case sensitive
 - can't be some reserved words (`if`, `for`, ...)
 
+
+``` r
+variable1 <- 5
+variable1
+``` 
+
+``` r
+1variable <- 5
+1variable
+``` 
 The convention is to use descriptive but not excessive long variable names. There are tree main types of naming in R:
 
 - snake_case - used in this course
@@ -99,10 +109,7 @@ Use what you like, but be consistent.
 
 ``` r
 my_variable <- 5
-1st_variable <- 5
-
 my_variable
-1st_variable
 ``` 
  
 ## Functions
