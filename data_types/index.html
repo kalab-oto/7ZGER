@@ -1173,45 +1173,77 @@ remember, you can always use variable names instead of indexes:</p>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a>[1] &quot;species A&quot; &quot;species B&quot; &quot;species C&quot;
 </code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can also add columns to <strong>data.frame</strong> or elements to named <strong>list</strong> with <code>[ ]</code> or <code>$</code>, simply declaring its name as its exists:</p>
+<p>data.frame:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="n">df</span><span class="o">$</span><span class="n">source</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;field_obs&quot;</span>
+<a id="__codelineno-81-2" name="__codelineno-81-2" href="#__codelineno-81-2"></a><span class="c1"># or</span>
+<a id="__codelineno-81-3" name="__codelineno-81-3" href="#__codelineno-81-3"></a><span class="n">df</span><span class="p">[</span><span class="s">&quot;source&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;field_obs&quot;</span>
+<a id="__codelineno-81-4" name="__codelineno-81-4" href="#__codelineno-81-4"></a><span class="n">df</span>
+</code></pre></div></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a>    species count year    source
+<a id="__codelineno-82-2" name="__codelineno-82-2" href="#__codelineno-82-2"></a>1 species A     5 2020 field_obs
+<a id="__codelineno-82-3" name="__codelineno-82-3" href="#__codelineno-82-3"></a>2 species B    10 2020 field_obs
+<a id="__codelineno-82-4" name="__codelineno-82-4" href="#__codelineno-82-4"></a>3 species C     7 2020 field_obs
+</code></pre></div>
+named list:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="n">named_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<a id="__codelineno-83-2" name="__codelineno-83-2" href="#__codelineno-83-2"></a><span class="n">named_list</span><span class="o">$</span><span class="n">vect</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">123</span><span class="p">,</span><span class="m">456</span><span class="p">,</span><span class="m">789</span><span class="p">)</span>
+<a id="__codelineno-83-3" name="__codelineno-83-3" href="#__codelineno-83-3"></a><span class="n">named_list</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>$number
+<a id="__codelineno-84-2" name="__codelineno-84-2" href="#__codelineno-84-2"></a>[1] 1
+<a id="__codelineno-84-3" name="__codelineno-84-3" href="#__codelineno-84-3"></a>
+<a id="__codelineno-84-4" name="__codelineno-84-4" href="#__codelineno-84-4"></a>$text
+<a id="__codelineno-84-5" name="__codelineno-84-5" href="#__codelineno-84-5"></a>[1] &quot;a&quot;
+<a id="__codelineno-84-6" name="__codelineno-84-6" href="#__codelineno-84-6"></a>
+<a id="__codelineno-84-7" name="__codelineno-84-7" href="#__codelineno-84-7"></a>$boolean
+<a id="__codelineno-84-8" name="__codelineno-84-8" href="#__codelineno-84-8"></a>[1] TRUE
+<a id="__codelineno-84-9" name="__codelineno-84-9" href="#__codelineno-84-9"></a>
+<a id="__codelineno-84-10" name="__codelineno-84-10" href="#__codelineno-84-10"></a>$vect
+<a id="__codelineno-84-11" name="__codelineno-84-11" href="#__codelineno-84-11"></a>[1] 123 456 789
+</code></pre></div></p>
+</div>
 <h2 id="missing-values-na">Missing values <code>NA</code></h2>
 <p><code>NA</code> is simply missing value, <code>NaN</code> is 'not a number' (and its also <code>NA</code>). <code>NA</code> can be any type, but <code>NaN</code> is double. You can check if value is <code>NA</code> with <code>is.na()</code> function.</p>
 <p>Numeric vector
-<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">123</span><span class="p">,</span><span class="w"> </span><span class="m">456</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">789</span><span class="p">,</span><span class="w"> </span><span class="kc">NaN</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">123</span><span class="p">,</span><span class="w"> </span><span class="m">456</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">789</span><span class="p">,</span><span class="w"> </span><span class="kc">NaN</span><span class="p">)</span>
 </code></pre></div></p>
 <p>Check which values are <code>NA</code>:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a><span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a><span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a>[1] FALSE FALSE  TRUE FALSE  TRUE
+<div class="highlight"><pre><span></span><code><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a>[1] FALSE FALSE  TRUE FALSE  TRUE
 </code></pre></div>
 <p>Check which values are <code>NaN</code>:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a><span class="nf">is.nan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a><span class="nf">is.nan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a>[1] FALSE FALSE FALSE FALSE  TRUE
+<div class="highlight"><pre><span></span><code><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a>[1] FALSE FALSE FALSE FALSE  TRUE
 </code></pre></div>
 <p><code>NA</code> values can cause problems in calculations</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a>[1] NA
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a>[1] NA
 </code></pre></div>
 We can usually remove <code>NA</code> values with <code>na.rm</code> or similar argument, see help for function with <code>?</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a>[1] 456
+<div class="highlight"><pre><span></span><code><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a>[1] 456
 </code></pre></div>
 <p><code>NA</code> values can be also removed directly with <code>na.omit()</code> function:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a><span class="nf">na.omit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a><span class="nf">na.omit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a>[1] 123 456 789
-<a id="__codelineno-91-2" name="__codelineno-91-2" href="#__codelineno-91-2"></a>attr(,&quot;na.action&quot;)
-<a id="__codelineno-91-3" name="__codelineno-91-3" href="#__codelineno-91-3"></a>[1] 3 5
-<a id="__codelineno-91-4" name="__codelineno-91-4" href="#__codelineno-91-4"></a>attr(,&quot;class&quot;)
-<a id="__codelineno-91-5" name="__codelineno-91-5" href="#__codelineno-91-5"></a>[1] &quot;omit&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a>[1] 123 456 789
+<a id="__codelineno-95-2" name="__codelineno-95-2" href="#__codelineno-95-2"></a>attr(,&quot;na.action&quot;)
+<a id="__codelineno-95-3" name="__codelineno-95-3" href="#__codelineno-95-3"></a>[1] 3 5
+<a id="__codelineno-95-4" name="__codelineno-95-4" href="#__codelineno-95-4"></a>attr(,&quot;class&quot;)
+<a id="__codelineno-95-5" name="__codelineno-95-5" href="#__codelineno-95-5"></a>[1] &quot;omit&quot;
 </code></pre></div>
 <p>String vector (note that <code>NA</code> is not quoted in result):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">NaN</span><span class="p">)</span>
-<a id="__codelineno-92-2" name="__codelineno-92-2" href="#__codelineno-92-2"></a><span class="n">x</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">NaN</span><span class="p">)</span>
+<a id="__codelineno-96-2" name="__codelineno-96-2" href="#__codelineno-96-2"></a><span class="n">x</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a>[1] &quot;a&quot;   &quot;b&quot;   NA    &quot;c&quot;   &quot;NaN&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a>[1] &quot;a&quot;   &quot;b&quot;   NA    &quot;c&quot;   &quot;NaN&quot;
 </code></pre></div>
 
 
