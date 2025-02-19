@@ -487,6 +487,43 @@ df$species # same as df[["species"]] or df[[1]]
 [1] "species A" "species B" "species C"
 ```
 
+!!! tip
+    You can also add columns to **data.frame** or elements to named **list** with `[ ]` or `$`, simply declaring its name as its exists:
+    
+    data.frame:
+    ``` r
+    df$source <- "field_obs"
+    # or
+    df["source"] <- "field_obs"
+    df
+    ```
+
+    ```
+        species count year    source
+    1 species A     5 2020 field_obs
+    2 species B    10 2020 field_obs
+    3 species C     7 2020 field_obs
+    ```
+    named list:
+    ``` r
+    named_list <- list(number = 1, text = "a", boolean = TRUE)
+    named_list$vect <- c(123,456,789)
+    named_list
+    ```
+    ```
+    $number
+    [1] 1
+
+    $text
+    [1] "a"
+
+    $boolean
+    [1] TRUE
+
+    $vect
+    [1] 123 456 789
+    ```
+
 ## Missing values `NA`
 `NA` is simply missing value, `NaN` is 'not a number' (and its also `NA`). `NA` can be any type, but `NaN` is double. You can check if value is `NA` with `is.na()` function.
 
