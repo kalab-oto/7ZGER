@@ -2,7 +2,7 @@
 
 Materials for the course [KFG/7ZGER - Introduction to Geospatial Data Processing in R](https://is-stag.osu.cz/StagPortletsJSR168/CleanUrl?urlid=prohlizeni-predmet-sylabus&predmetZkrPrac=KFG&predmetZkrPred=7ZGER&predmetRok=2024&predmetSemestr=LS&plang=en) taught at the [Department of Physical Geography and Geoecology](https://kfg.osu.cz/) of the University of Ostrava. The course is intended for students of envionmental geography.
 
-!!! info    
+!!! warning    
     The materials are inconsistent and incomplete. They primarily serve to summarize individual exercises to facilitate orientation in the course during self-study. For detailed information, it is necessary to attend the exercises or seek information in the recommended [sources](sources.md).
 
 ## Moodle
