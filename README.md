@@ -1,0 +1,1 @@
+The site is deployed at https://kalab-oto.github.io/7ZGER/
