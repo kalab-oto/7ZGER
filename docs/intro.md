@@ -11,8 +11,9 @@
 - the scripts can be written in **any text editor**, but there are specialized software to make writing and running code
   easier: IDEs (Integrated Development Environment)
 - the most popular IDE for R is **RStudio** - 
-  [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)
-- other IDEs: Visual Studio Code, Jupyter Notebook, Vim, Emacs, and recently [Positron](https://positron.posit.co/) (IDE based on VS Code)
+  [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/) but see 
+  [Positron](https://positron.posit.co/) (IDE based on VS Code)
+- other IDEs used for R: VS Code, Vim, Emacs, *Jupyter Notebook* ...
 - so **R** ≠ **RStudio**
 
 ## Why programming for spatial data handling?
@@ -83,26 +84,10 @@ The GUI consists of four main panes, which can be customized and rearranged. But
 - **Source** - here you can write and save your scripts (files with code), and also send the parts of the code to the 
   console
 
-### Project workflow
+!!! note
 
-Following settings are not necessary at the beginning, but is good to know them and avoid building a bad habits.
-
-- **.RData workspace** - R can save the entire workspace (all objects, variables, functions, ...) to the `.RData` file, which can be 
-  restored. Don't use the workspace. Better practice is write your scripts in a way that they recreate the worksapce.
-    - option to set: *Tools -> Global options* -> *General/basic* tab: *Workspace* - Restore .RData - **uncheck**; .RData on exit **Never**
-- **text encoding** - use UTF-8 when saving files.
-    - option to set: *Tools -> Global options* -> *Code/Saving* tab -> Default text encoding: **UTF-8**
-- **Working directory** - the directory where the R console is launched. This is important when you want to work with files. 
-  The working directory can be confortably changed with the function `setwd()`, but its not so good practice, and its 
-  better to make habit to work with relative paths in *project directory* based workflow. This ensures that the code will
-  work without changes if you move the project direcory to another place, renaming part of path, use other IDE, use Git etc. 
-  In RStudio you can use for this purpose the *Project* feature, which creates a project file `.Rproj` in the project 
-  directory. Loading `.Rproj` automatically set the working directory to the project directory.
-    - no option to set, jsut keep in mind that you are working in project directory, use relative paths while 
-      working with files and save `.Rproj` (if you use RStudio)
-      file in the project directory
-    - creating project - *File -> New Project...*
-    - opening existing project - *File -> Open Project...* or *File -> Recent Projects*
-    - RStudio opens last project by default, but you can change this in *Tools -> Global options* -> *General/basic* 
-      tab: *Default working directory* - disable *Restore most recently opened project at startup*
-  
+    The R is always running in specific directory, which is called *working directory*. You can show the directory with 
+    `getwd()`, or change the working directory with the function `setwd()`. *Working directory* is important when you 
+    want to work with paths or files. You can use absuloute paths, but better practice is to use relative paths to the 
+    *working directory*.
+ 
