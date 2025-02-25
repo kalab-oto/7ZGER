@@ -52,6 +52,8 @@
       
     
     
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -427,6 +429,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#writing-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing scripts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#runing-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Runing code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -447,7 +482,7 @@
         
   
   <span class="md-ellipsis">
-    Data types
+    Data types and structures
   </span>
   
 
@@ -642,6 +677,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#writing-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing scripts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#runing-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Runing code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -749,8 +817,9 @@ The convention is to use descriptive but not excessive long variable names. Ther
 You can get function help using RStudio GUI or calling <code>?</code> before the function name, or <code>help()</code> function.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="o">?</span><span class="n">sqrt</span>
 </code></pre></div>
-<h1 id="writing-script">Writing script</h1>
+<h2 id="writing-scripts">Writing scripts</h2>
 <p>As mentioned in the <a href="../intro/">Introduction to R</a> there are various ways to write and run code in R, <strong>interacively</strong> in the console, or writing <strong>scripts</strong> that can be saved and run later (entire or by parts). Most of the time you will write code to scripts (<code>.R</code> or <code>.r</code> files). Code can be written in any text editor.</p>
+<h3 id="runing-code">Runing code</h3>
 <p>In RStudio you can write and save scripts in the <strong>Source</strong> pane. You can run the entire script or just the selected part of the code. </p>
 <ul>
 <li>
@@ -760,6 +829,7 @@ You can get function help using RStudio GUI or calling <code>?</code> before the
 <p>Run entire script - <code>Ctrl + Shift + S</code> - or button <code>Source</code> - this use a <code>source()</code> function, and run entire script (as file) in console.</p>
 </li>
 </ul>
+<h3 id="comments">Comments</h3>
 <p>In writing scripts you can "comment" lines. Commented lines starts with <code>#</code> and are not executed (even if they are sent to the console). Coments are useful for documenting/explanation code or "deactivating" parts of code.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Do some math</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5</span>
@@ -785,6 +855,8 @@ You can get function help using RStudio GUI or calling <code>?</code> before the
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -872,7 +944,7 @@ You can get function help using RStudio GUI or calling <code>?</code> before the
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.sections"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.sections", "content.tabs.link"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>

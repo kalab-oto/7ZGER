@@ -52,6 +52,8 @@
       
     
     
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -365,7 +367,7 @@
         
   
   <span class="md-ellipsis">
-    Data types
+    Data types and structures
   </span>
   
 
@@ -438,18 +440,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#rstudio-setting" class="md-nav__link">
+  <a href="#setting-project-directory" class="md-nav__link">
     <span class="md-ellipsis">
-      RStudio setting
+      Setting project directory
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#setting-project-directory" class="md-nav__link">
+  <a href="#rstudio-setting" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting project directory
+      RStudio setting
     </span>
   </a>
   
@@ -480,27 +482,56 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#reading-data" class="md-nav__link">
+  <a href="#reading-data-and-general-exploration" class="md-nav__link">
     <span class="md-ellipsis">
-      Reading data
+      Reading data and general exploration
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#exploring-data" class="md-nav__link">
+  <a href="#exploring-and-cleaning-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Exploring data
+      Exploring and cleaning data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exploring and cleaning data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#is-there-any-protected-area-twice-in-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is there any protected area twice in the data?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#resulting-script" class="md-nav__link">
+  <a href="#dealing-with-na-what-is-the-mean-area-of-the-protected-areas" class="md-nav__link">
     <span class="md-ellipsis">
-      Resulting script
+      Dealing with NA - What is the mean area of the protected areas?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explore-the-na-value-of-the-rozlohaha-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explore the NA value of the Rozloha..ha column
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Explore the NA value of the Rozloha..ha column">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#removing-the-row" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing the row
     </span>
   </a>
   
@@ -508,6 +539,112 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dealing-with-dates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dealing with Dates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other exploration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other exploration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-the-protected-areas-with-area-larger-than-500-ha-and-category-npr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get the protected areas with area larger than 500 ha and category NPR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-protected-areas-with-area-larger-than-500-ha-and-category-npr_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get the protected areas with area larger than 500 ha and category NPR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-total-area-of-the-protected-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the total area of the protected areas?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-protected-area-is-the-largest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Which protected area is the largest?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-category-has-the-largest-protected-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      Which category has the largest protected area?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-many-protected-areas-are-in-each-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      How many protected areas are in each category?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-the-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing the output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practice exploration
+    </span>
+  </a>
   
 </li>
       
@@ -653,18 +790,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#rstudio-setting" class="md-nav__link">
+  <a href="#setting-project-directory" class="md-nav__link">
     <span class="md-ellipsis">
-      RStudio setting
+      Setting project directory
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#setting-project-directory" class="md-nav__link">
+  <a href="#rstudio-setting" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting project directory
+      RStudio setting
     </span>
   </a>
   
@@ -695,27 +832,56 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#reading-data" class="md-nav__link">
+  <a href="#reading-data-and-general-exploration" class="md-nav__link">
     <span class="md-ellipsis">
-      Reading data
+      Reading data and general exploration
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#exploring-data" class="md-nav__link">
+  <a href="#exploring-and-cleaning-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Exploring data
+      Exploring and cleaning data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exploring and cleaning data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#is-there-any-protected-area-twice-in-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is there any protected area twice in the data?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#resulting-script" class="md-nav__link">
+  <a href="#dealing-with-na-what-is-the-mean-area-of-the-protected-areas" class="md-nav__link">
     <span class="md-ellipsis">
-      Resulting script
+      Dealing with NA - What is the mean area of the protected areas?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explore-the-na-value-of-the-rozlohaha-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explore the NA value of the Rozloha..ha column
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Explore the NA value of the Rozloha..ha column">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#removing-the-row" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing the row
     </span>
   </a>
   
@@ -723,6 +889,112 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dealing-with-dates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dealing with Dates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other exploration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other exploration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-the-protected-areas-with-area-larger-than-500-ha-and-category-npr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get the protected areas with area larger than 500 ha and category NPR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-protected-areas-with-area-larger-than-500-ha-and-category-npr_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get the protected areas with area larger than 500 ha and category NPR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-total-area-of-the-protected-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the total area of the protected areas?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-protected-area-is-the-largest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Which protected area is the largest?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-category-has-the-largest-protected-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      Which category has the largest protected area?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-many-protected-areas-are-in-each-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      How many protected areas are in each category?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-the-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing the output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practice exploration
+    </span>
+  </a>
   
 </li>
       
@@ -751,16 +1023,38 @@
 The working directory can be confortably changed with the function <code>setwd()</code>, but its not so good practice, and its 
 better to make habit to work with relative paths in <em>project directory</em> based workflow. This ensures that the code will
 work without changes if you move the project direcory to another place, renaming part of path, use other IDE, use Git etc. </p>
-<p>While wokring with the data in R, it is good practice to:
-1. <strong>one directory</strong> - keep all files (data, scripts, outputs) in one directory (<em>project</em> or <em>workspace</em> directory) and run R from this 
-   directory (<em>working directory</em>)
-2. <strong>automate as much as possible</strong> - write scripts that  reproduce the workflow, without the need to store some workspace files (<code>.RData</code>). This includes
-   reading data, processing, writing outputs etc. </p>
+<p>While wokring with the data in R, it is good practice to:</p>
+<ol>
+<li>
+<p><strong>one directory</strong> - keep all files (data, scripts, outputs) in one directory (<em>project</em> or <em>workspace</em> directory) and run R from this 
+directory (<em>working directory</em>)</p>
+</li>
+<li>
+<p><strong>automate as much as possible</strong> - write scripts that  reproduce the workflow, without the need to store some workspace files (<code>.RData</code>). This includes
+reading data, processing, writing outputs etc. </p>
+</li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is not necessary for working with R, but it is good practice to avoid building bad habits. In some cases, you
 will need to use absolute paths, i.e. when starting R project and you have dedicated directory for some
 general data which are often used. But try to avoid it as much as possible, since this disables the possibility of sharing the project.</p>
+</div>
+<h3 id="setting-project-directory">Setting <em>project</em> directory</h3>
+<p>When starting, just create a directory for your project, move data files to the <em>data</em> directory, and create scripts in the <em>scripts</em> directory. Example of simple project directory structure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>project_name/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── data/
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── scripts/
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── outputs/
+</code></pre></div>
+<ul>
+<li><em>data/</em> - directory for all input data (<code>.csv</code>, <code>.shp</code>, <code>.gpkg</code>,<code>.tif</code>, ...)</li>
+<li><em>scripts/</em> - directory for R scripts</li>
+<li><em>outputs/</em> - directory for output files - plots, tables, ...</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can create this structure in RStudio by creating a new project and than creating the directories incliding files (scripts, etc.) in the <em>Files</em> pane.</p>
 </div>
 <h3 id="rstudio-setting">RStudio setting</h3>
 <ul>
@@ -785,43 +1079,29 @@ general data which are often used. But try to avoid it as much as possible, sinc
 </ul>
 </li>
 </ul>
-<h3 id="setting-project-directory">Setting <em>project</em> directory</h3>
-<p>When starting, just create a directory for your project, move data files to the <em>data</em> directory, and create scripts in the <em>scripts</em> directory. Example of simple project directory structure:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>project_name/
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── data/
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── scripts/
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── outputs/
-</code></pre></div>
-<ul>
-<li><em>data/</em> - directory for all input data (<code>.csv</code>, <code>.shp</code>, <code>.gpkg</code>,<code>.tif</code>, ...)</li>
-<li><em>scripts/</em> - directory for R scripts</li>
-<li><em>outputs/</em> - directory for output files - plots, tables, ...</li>
-</ul>
 <h2 id="first-project">First project</h2>
 <p>In this example project we write one script that reads the data, makes some simple processing and writes the output 
 to new file. We will work with export from DRUSOP which is digital register of central list of nature conservation 
 in the Czech Republic.</p>
 <ol>
 <li>Create a new project and directory (<em>first_project</em> or name it as you want) - this can be done in RStudio</li>
-<li><em>File -&gt; New Project...</em>. Choose <em>New Directory</em>, <em>New Project</em>, and name the project. This will create a new 
-     directory with the <code>.Rproj</code> file in it.</li>
-<li>Create subdirectories in <em>data</em>, <em>scripts</em> and <em>outputs</em> - just creating directories, this can be done in file 
-   mnanager as usual or directly in RStudio </li>
-<li>Create a new script file <em>first_script.R</em> in the <em>scripts</em> directory - just creating file, this can be done in file 
-   mnanager as usual or directly in RStudio. If you create it in RStudio, it will be automatically opened in the editor.
-   Otherwise, open it in RStudio by <em>File -&gt; Open File...</em></li>
-<li>Download the data file</li>
+<li>Create subdirectories in <em>data</em>, <em>scripts</em> and <em>outputs</em> - just creating directories</li>
+<li>Create a new script file <em>first_script.R</em> in the <em>scripts</em> directory - just creating file</li>
+<li>Download the data file<ul>
 <li>go to the <a href="https://drusop.nature.cz/">https://drusop.nature.cz/</a> and select <em>Maloplošná zvláště chráněná území</em> in
-     the <strong>Objekty ústředního seznamu</strong> section.</li>
+ the <strong>Objekty ústředního seznamu</strong> section.</li>
 <li>click the <em>Export</em> button, - check all with <em>Označ/Zruš VŠE na stránce</em>, select <em>Excel (CSV)</em> format in <em>Formát</em>,
-     <em>UTF-8</em> encoding in <em>Kódovaání</em>, and click export <em>Exportovat</em>. This will download the file <em>export.csv</em>. Move this
-     file to the <em>data</em> directory.</li>
+ <em>UTF-8</em> encoding in <em>Kódovaání</em>, and click export <em>Exportovat</em>. This will download the file <em>export.csv</em>. Move this
+ file to the <em>data</em> directory.</li>
+</ul>
+</li>
 </ol>
 <p><strong>Aim of the project</strong>:</p>
+<p>Perform some basic exploration of the data, and create a csv table only with protected areas with area larger than 500 ha, declared from the 2020.</p>
 <h3 id="dataset">Dataset</h3>
 <p>The dataset contain information about smaller specially protected areas in 4 categories: national nature reserves (NPR), nature reserves (PR), national natural monuments (NPP), and natural monuments (PP)</p>
-<h3 id="reading-data">Reading data</h3>
-<p>Our file is <code>.csv</code> file, which is simple data structure for storing tables in simple text file, see <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> on Wikipedia. You can open <code>.csv</code> in common spreadsheet editor such as MS Excel or Libre Oficce Calc. In R we can read it with the function <code>read.csv()</code> from <code>read.</code> family of functions.</p>
+<h3 id="reading-data-and-general-exploration">Reading data and general exploration</h3>
+<p>Our file is <code>.csv</code> file, which is simple data structure for storing tables in simple text file, see <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> on Wikipedia. You can open <code>.csv</code> in common spreadsheet editor such as MS Excel or Libre Oficce Calc. In R we can read it with the function <code>read.csv()</code> from <code>read.</code> family of functions. As an argument, we pass the path to the file. The path can be absolute or relative, and it can be also url pointing to the file on some server. </p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">)</span>
 </code></pre></div>
 Now we have the data stored in the <code>df</code> object, which is <code>data.frame</code> object. Now you need to check if the data are read  correctly (which is not always the case). You can show the data with calling <code>df</code> as any other object:</p>
@@ -839,7 +1119,7 @@ structure of the data frame, including rows and columns count, columns data type
 <p class="admonition-title">Tip</p>
 <p>The <code>str()</code> and <code>head()</code> function are the most used functions for exploring the data. You can also use <code>summary()</code> function. These function are usualy executed directly in the console, but you can also use them in the script.</p>
 </div>
-<p>Now we can see that the data are not read correctly. We have 2681 rows (<em>observations</em>) and only 1 column (<em>variable</em>).
+<p>Now we can see that the data are not read correctly. We have <code>2681</code> rows (<em>observations</em>) and only 1 column (<em>variable</em>).
 Evidently this is caused by reading data with wrong separator, because the <code>read.csv()</code> function uses comma (<code>,</code>) as 
 default separator, but the data are separated by semicolon (<code>;</code>).</p>
 <p>This and many ohter parameters can be set in the <code>read.csv()</code> function as arguments, see <code>?read.csv</code> for help.</p>
@@ -851,10 +1131,13 @@ default separator, but the data are separated by semicolon (<code>;</code>).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="exploring-data">Exploring data</h3>
-<p>Now when we correctly read the data, we can explore them. We did some xploration with the <code>str()</code> function, but now we can do some more advanced exploration. </p>
-<p><strong>Is there any protected area twice in the data?</strong>
-We can check this by many ways. We know that every monument has its unique code <code>Kód</code>, so we can check if there are any duplicates in the <code>Kód</code> column. We can do this by many ways, but we will show two ways</p>
+<h3 id="exploring-and-cleaning-data">Exploring and cleaning data</h3>
+<p>Now when we correctly read the data, we can explore them. We did some exploration with the <code>str()</code> function, 
+but in following exercises we will do some further exploration.</p>
+<p>This is not some exploration routine, we just show in this section common cases you will encounter while processing data, so you learn how to solve these basic problems.</p>
+<h4 id="is-there-any-protected-area-twice-in-the-data">Is there any protected area twice in the data?</h4>
+<p>At first its good to know some nature of the data, for example if the data strictly represent single protected area in each row, e.g. if there are no duplicates.</p>
+<p>We can check this by many ways. We know that every monument has its unique code <code>Kód</code>, so we can check if there are any duplicates in the <code>Kód</code> column. We can do this by many ways, but we will show two simple ways:</p>
 <ul>
 <li>using the <code>duplicated()</code> and <code>sum()</code> - <code>duplicated()</code> returns logical vector of duplicated rows (vector of <code>TRUE</code> or <code>FLASE</code> values), and <code>sum()</code> counts the number of <code>TRUE</code> values:</li>
 </ul>
@@ -870,15 +1153,194 @@ We can check this by many ways. We know that every monument has its unique code 
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="p">))</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nf">length</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="p">)</span><span class="w"> </span><span class="c1"># length of original data</span>
 </code></pre></div>
-<p><strong>What is the mean area of the protected areas?</strong></p>
+<p>So now we know that each protected area is represented by single row.</p>
+<h4 id="dealing-with-na-what-is-the-mean-area-of-the-protected-areas">Dealing with <code>NA</code> - What is the mean area of the protected areas?</h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">code</label><label for="__tabbed_1_2">solution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">)</span>
 </code></pre></div>
-<p><strong>Which protected area is the largest?</strong></p>
-<p><strong>Which category has the largest protected area?</strong></p>
-<p><strong>How many protected areas are in each category?</strong></p>
-<h3 id="resulting-script">Resulting script</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<p>returns <code>NA</code>, which indicates that there are some <code>NA</code> values in the data. </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>This can be further explored by the <code>is.na()</code> function, which returns logical vector of <code>TRUE</code> and <code>FALSE</code> values. This can be simply checked be <code>unique()</code> function (show unique values of vector), or summarized with <code>table()</code> function (counts the unique values of vector).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">table</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">))</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nf">unique</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">))</span>
 </code></pre></div>
+</div>
+</div>
+<div class="tabbed-block">
+<p>We can use the <code>na.rm</code> argument to remove the <code>NA</code> values from the calculation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h4 id="explore-the-na-value-of-the-rozlohaha-column">Explore the <code>NA</code> value of the <code>Rozloha..ha</code> column</h4>
+<p>We know that we can perform some calculation ommiting the na with the <code>na.rm</code> argument, but its good to know what is the <code>NA</code> value in the data.</p>
+<p>We know that we can return logical vector of <code>TRUE</code> and <code>FALSE</code> values with the <code>is.na()</code> function, and further use this vector to subset the data frame, returning only the row with <code>NA</code> value in the <code>Rozloha..ha</code> column: </p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">df</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),]</span>
+</code></pre></div>
+Which returns line <code>2681</code>, and as we know the <code>df</code> have <code>2681</code> rows (<em>observations</em>), so its the last row of the data.</p>
+<p>Its clear that the last row is not a valid observation, and in this case its kind of metadata from data provider, so it should be cleaned up from the data.</p>
+<h5 id="removing-the-row">Removing the row</h5>
+<p>In this case there are many ways to remove the row. Here are some simple examples:</p>
+<ul>
+<li>simpy with the <code>[-2681]</code> notation, where <code>-</code> mens to exclude the row with index <code>2681</code>:</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">df</span><span class="p">[</span><span class="m">-2681</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</code></pre></div>
+- with the subset of using <code>is.na()</code> function, but using <code>!</code> operator to negate (<em>reverse</em>) the logical vector, so it performs the opposite operation - get all rows where <code>Rozloha..ha</code> is not <code>NA</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>with the subset of string of some column</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;COUNT:&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</code></pre></div>
+<p>Choose the one you like the most, and assign it to the <code>df</code> object:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+</code></pre></div>
+<h4 id="dealing-with-dates">Dealing with Dates</h4>
+<p>There are few columns with dates in the data, for example <code>Datum.prvního.vyhlášení</code>. This column is the <code>character</code> data type, but if we want to work with dates, we have to convert it for further analyssis like counting the number of protected areas with certain year of declaration, etc.</p>
+<p>We can convert the column to the <code>Date</code> class with the <code>as.Date()</code> function. Or just retrieve the desired information (year) with the <code>substr()</code> function.</p>
+<p>We need to know how the dates looks like, so we list first, or first few dates:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">]</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">])</span>
+</code></pre></div>
+<p>So this date is formatted as <code>dd.mm.yyyy</code> - <code>day.month.year</code>, so we can use the <code>as.Date()</code> function with the <code>format</code> argument with <code>"%d.%m.%Y"</code> to convert the column to the <code>Date</code> class (in <code>YYYY-MM-DD</code> format):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nf">class</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>If we have task to find the newest protected area, we can use the <code>max()</code> function on the converted column:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nf">max</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">)</span><span class="w"> </span><span class="c1"># nonsense, its character - text</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nf">max</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>Converting column to the <code>Date</code> class is just replacing the values with the new values in <code>Date</code> class:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nf">max</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">)</span>
+</code></pre></div>
+Now we can filter the data with the date, for example to get the protected areas declared after 2020:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-01-01&quot;</span><span class="p">)</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,]</span>
+</code></pre></div>
+<h4 id="other-exploration">Other exploration</h4>
+<h5 id="get-the-protected-areas-with-area-larger-than-500-ha-and-category-npr">Get the protected areas with area larger than 500 ha and category NPR</h5>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="p">,]</span>
+</code></pre></div>
+<h5 id="get-the-protected-areas-with-area-larger-than-500-ha-and-category-npr_1">Get the protected areas with area larger than 500 ha and category NPR</h5>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Kategorie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NPR&quot;</span><span class="p">,]</span>
+</code></pre></div>
+<h5 id="what-is-the-total-area-of-the-protected-areas">What is the total area of the protected areas?</h5>
+<h5 id="which-protected-area-is-the-largest">Which protected area is the largest?</h5>
+<h5 id="which-category-has-the-largest-protected-area">Which category has the largest protected area?</h5>
+<h5 id="how-many-protected-areas-are-in-each-category">How many protected areas are in each category?</h5>
+<h3 id="writing-the-output">Writing the output</h3>
+<p>As we cane read the <code>.csv</code> file, we can also creating/write it. We can use the <code>write.csv()</code> function from the <code>write.</code> family of functions. The <code>write.csv()</code> function writes the <code>data.frame</code> to the <code>.csv</code> file. </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nf">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/processed_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="c1"># we use the row.names = FALSE to not write the row names to the file</span>
+</code></pre></div>
+<p>If the task was: Create export of the protected areas with area larger than 500 ha and category NPR, the entire script can look like this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-01-01&quot;</span><span class="p">)</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,]</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="p">,]</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Kategorie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NPR&quot;</span><span class="p">,]</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="nf">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/processed_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+</code></pre></div>
+<p>or using the "and" operator <code>&amp;</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-01-01&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Kategorie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NPR&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="nf">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/processed_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="practice-exploration">Practice exploration</h2>
+<p>Practice some exploration on the Zoraptera Occurrence Dataset (https://zenodo.org/records/14652555). The dataset contains information about the occurrence of the order Zoraptera. The link directly to dataset is "https://raw.githubusercontent.com/kalab-oto/zoraptera-occurrence-dataset/refs/tags/1.1.0/zoraptera_occs.csv"</p>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">task 1</label><label for="__tabbed_2_2">solution 1</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Read the data, and assign them to the <code>zoraptera</code> object</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">zoraptera</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;https://raw.githubusercontent.com/kalab-oto/zoraptera-occurrence-dataset/refs/tags/1.1.0/zoraptera_occs.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">task 2</label><label for="__tabbed_3_2">solution 2</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How many observations and variables are in the data?</p>
+</div>
+<div class="tabbed-block">
+<p>There are <code>656</code> rows (<em>observations</em>) and <code>41</code> columns (<em>variables</em>)</p>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">task 3</label><label for="__tabbed_4_2">solutfion 3</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Is there <code>species</code> column in the data?</p>
+</div>
+<div class="tabbed-block">
+<p>There is no <code>species</code> column</p>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">task 4</label><label for="__tabbed_5_2">solutfion 4</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How many records are not identified to the species level?</p>
+</div>
+<div class="tabbed-block">
+<p><code>581</code></p>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">task 5</label><label for="__tabbed_6_2">solutfion 5</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What is the most common species in the data?</p>
+</div>
+<div class="tabbed-block">
+<p><code>Usazoros hubbardi</code></p>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">task 6</label><label for="__tabbed_7_2">solution 6</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What is the most common <code>country</code> in the data?</p>
+</div>
+<div class="tabbed-block">
+<p><code>United States of America</code></p>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">task 7</label><label for="__tabbed_8_2">solution 8</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How many records are from the <code>Fiji</code>?</p>
+</div>
+<div class="tabbed-block">
+<p><code>9</code></p>
+</div>
+</div>
+</div>
 
 
 
@@ -896,6 +1358,8 @@ We can check this by many ways. We know that every monument has its unique code 
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -983,7 +1447,7 @@ We can check this by many ways. We know that every monument has its unique code 
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.sections"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.sections", "content.tabs.link"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
