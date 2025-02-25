@@ -23,6 +23,7 @@ theme:
   features:
       - content.code.copy
       - navigation.sections
+      - content.tabs.link
 
 extra:
   social:
@@ -58,7 +59,7 @@ nav:
   - Course:
     - Introduction to R: intro.md
     - R Basics: basics.md
-    - Data types: data_types.md
+    - Data types and structures: data_types.md
     - Working with files, script workflow: files_workflow.md
   - Sources:
     - Sources: sources.md
