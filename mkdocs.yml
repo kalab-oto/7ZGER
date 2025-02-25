@@ -46,6 +46,9 @@ extra:
       link: https://ecoevo.social/@OtoKalab
       name: Mastodon
 
+extra_css:
+  - stylesheets/extra.css
+
 markdown_extensions:
   - admonition
   - pymdownx.details
