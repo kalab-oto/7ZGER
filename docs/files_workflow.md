@@ -68,7 +68,7 @@ in the Czech Republic.
     - go to the [https://drusop.nature.cz/](https://drusop.nature.cz/) and select *Maloplošná zvláště chráněná území* in
      the **Objekty ústředního seznamu** section.
     - click the *Export* button, - check all with *Označ/Zruš VŠE na stránce*, select *Excel (CSV)* format in *Formát*,
-     *UTF-8* encoding in *Kódovaání*, and click export *Exportovat*. This will download the file *export.csv*. Move this
+     *UTF-8* encoding in *Kódování*, and click export *Exportovat*. This will download the file *export.csv*. Move this
      file to the *data* directory.
 
 **Aim of the project**:
@@ -296,6 +296,7 @@ If the task was: Create export of the protected areas with area larger than 500 
 df <- read.csv("data/export.csv", sep = ";", dec = ",")
 
 df <- df[!is.na(df$Rozloha..ha), ]
+df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y")
 
 d <- as.Date("2020-01-01")
 df <- df[df$Datum.prvního.vyhlášení > d,]
@@ -311,6 +312,7 @@ or using the "and" operator `&`:
 ``` r
 df <- read.csv("data/export.csv", sep = ";", dec = ",")
 
+df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y")
 d <- as.Date("2020-01-01")
 df <- df[!is.na(df$Rozloha..ha) & df$Rozloha..ha > 500 & df$Kategorie == "NPR" & df$Datum.prvního.vyhlášení > d, ]
 
