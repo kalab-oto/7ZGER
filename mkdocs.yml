@@ -50,6 +50,8 @@ extra_css:
   - stylesheets/extra.css
 
 markdown_extensions:
+  # - toc:
+  #     permalink: true
   - admonition
   - pymdownx.details
   - pymdownx.highlight:
@@ -64,6 +66,8 @@ nav:
     - R Basics: basics.md
     - Data types and structures: data_types.md
     - Working with files, script workflow: files_workflow.md
+    - Packages: packages.md
+    - Vector data - introduction: vector_intro.md
   - Sources:
     - Sources: sources.md
     - Data: data.md
