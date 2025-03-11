@@ -306,7 +306,7 @@ str(vzchu)
 filter out desired columns
 ``` r
 df <- df[,c("Kód", "Datum.prvního.vyhlášení", "Nadmořská.výška.min.")]
-
+```
 
 ``` r
 vzchu <- merge(vzchu, df, by.x = "KOD", by.y = "Kód")
