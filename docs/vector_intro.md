@@ -280,7 +280,7 @@ vzchu$shape <- st_perimeter(vzchu)/st_area(vzchu)
 
 ```
 
-### Joining data
+### Joining attribute data (`data.frame`)
 
 Now we will join the additional informations from the table to the `sf` object. We will use `merge` function, which is used for merging data frames. In this example we will join the information about the date of the first declaration of the National Park or Protected Landscape Area, and minimum elevation.
 
