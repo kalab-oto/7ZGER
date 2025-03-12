@@ -1,14 +1,17 @@
 # Vector geometry operations and analysis
+
+data for this lesson
+
 ``` r
 library(sf)
 clc <- st_read("data/CLC18_CZ.shp")
 vzchu <- st_read("data/vzchu.shp")
+mantis <- read.csv("data/observations-537954.csv")
 ```
 
 
 ## Creating `sf` objects from coordinate data (`data.frame`)
 ``` r
-mantis <- read.csv("data/observations-537954.csv")
 mantis_sf <- st_as_sf(mantis, coords = c("longitude", "latitude"), crs = 4326)
 mantis_sf <- st_transform(mantis_sf, 5514)
 plot(mantis_sf$geometry)

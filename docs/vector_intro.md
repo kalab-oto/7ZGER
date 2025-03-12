@@ -336,3 +336,7 @@ plot only National Parks
 
 
 
+
+### Writing data
+<!-- 
+Finally we will write the data to the file. We will use `st_write` function, which is used for writing `sf` objects to the file.  -->
