@@ -18,7 +18,7 @@
         <link rel="prev" href="../packages/">
       
       
-        <link rel="next" href="../sources/">
+        <link rel="next" href="../vector_operations/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -575,9 +575,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#joining-data" class="md-nav__link">
+  <a href="#joining-attribute-data-dataframe" class="md-nav__link">
     <span class="md-ellipsis">
-      Joining data
+      Joining attribute data (data.frame)
     </span>
   </a>
   
@@ -592,6 +592,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vector_operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vector data
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -823,9 +844,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#joining-data" class="md-nav__link">
+  <a href="#joining-attribute-data-dataframe" class="md-nav__link">
     <span class="md-ellipsis">
-      Joining data
+      Joining attribute data (data.frame)
     </span>
   </a>
   
@@ -1026,7 +1047,7 @@ notice the transformed geometry column</p>
 <a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">perimeter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_perimeter</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 <a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">shape</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_perimeter</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span><span class="o">/</span><span class="nf">st_area</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="joining-data">Joining data</h3>
+<h3 id="joining-attribute-data-dataframe">Joining attribute data (<code>data.frame</code>)</h3>
 <p>Now we will join the additional informations from the table to the <code>sf</code> object. We will use <code>merge</code> function, which is used for merging data frames. In this example we will join the information about the date of the first declaration of the National Park or Protected Landscape Area, and minimum elevation.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -1042,17 +1063,15 @@ notice the transformed geometry column</p>
 </code></pre></div></p>
 <p>filter out desired columns
 <div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Kód&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Datum.prvního.vyhlášení&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Nadmořská.výška.min.&quot;</span><span class="p">)]</span>
-<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>
-<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>
-<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="n">``</span>`<span class="w"> </span><span class="n">r</span>
-<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="n">vzchu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">by.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;KOD&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">by.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Kód&quot;</span><span class="p">)</span>
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="n">vzchu</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="n">vzchu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">by.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;KOD&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">by.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Kód&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="n">vzchu</span>
 </code></pre></div>
 <p>plot the results</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;Datum.prvního.vyhlášení&quot;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;Datum.prvního.vyhlášení&quot;</span><span class="p">])</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;Nadmořská.výška.min.&quot;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;Nadmořská.výška.min.&quot;</span><span class="p">])</span>
 </code></pre></div>
 <!-- ## `data.frame` with coordinates to point `sf` -->
 
