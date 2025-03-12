@@ -68,6 +68,7 @@ nav:
     - Working with files, script workflow: files_workflow.md
     - Packages: packages.md
     - Vector data - introduction: vector_intro.md
+    - Vector data: vector_operations.md
   - Sources:
     - Sources: sources.md
     - Data: data.md
