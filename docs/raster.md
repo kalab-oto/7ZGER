@@ -14,7 +14,7 @@ library(terra)
 
 ### Reading raster data - `SpatRaster`
 ``` r
-dem <- rast("/home/ok/git/orthoptera-atlas/processed_data/eudem.tif")
+dem <- rast("data/eudem.tif")
 dem
 
 crs(dem)
