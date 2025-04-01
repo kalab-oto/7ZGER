@@ -69,7 +69,8 @@ nav:
     - Packages: packages.md
     - Vector data - introduction: vector_intro.md
     - Vector data: vector_operations.md
-    - Raster data: raster.md
+    - Raster data: raster_intro.md
+    - Raster data: raster_operations.md  
   - Sources:
     - Sources: sources.md
     - Data: data.md
