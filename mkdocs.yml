@@ -33,15 +33,15 @@ extra:
     - icon: fontawesome/solid/globe
       link: https://prf.osu.cz/kfg/oto-kalab/25831/
       name: website
-    - icon: fontawesome/brands/researchgate
-      link: https://www.researchgate.net/profile/Oto-Kalab
-      name: ResearchGate
-    - icon: fontawesome/brands/google-scholar
-      link: https://scholar.google.com/citations?user=ZsfMS6k0ceEC&hl=cs
-      name: Google Scholar
-    - icon: fontawesome/brands/orcid
-      link: https://orcid.org/0000-0003-3485-9377
-      name: ORCID
+    # - icon: fontawesome/brands/researchgate
+    #   link: https://www.researchgate.net/profile/Oto-Kalab
+    #   name: ResearchGate
+    # - icon: fontawesome/brands/google-scholar
+    #   link: https://scholar.google.com/citations?user=ZsfMS6k0ceEC&hl=cs
+    #   name: Google Scholar
+    # - icon: fontawesome/brands/orcid
+    #   link: https://orcid.org/0000-0003-3485-9377
+    #   name: ORCID
     - icon: fontawesome/brands/mastodon
       link: https://ecoevo.social/@OtoKalab
       name: Mastodon
