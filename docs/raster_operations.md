@@ -135,6 +135,9 @@ dist_1000 <- mask(dist_1000, r_dem_cz)
 masked_z <- c(masked_z, dist_1000)
 plot(masked_z)
 ```
+<!-- Todo: writeRaster(b, file.path("D:/...filepath/", names(b)),
+             format="GTiff", bylayer=T, overwrite=T) -->
+
 
 ## Other exercises
 - compare between 1981-2010 and 2071-2100, where the mean temperature is greater than 9  in the Czech Republic
@@ -142,6 +145,8 @@ plot(masked_z)
 ```r
 r9 <- c(r_bio_cz[[1]] > 9, r_bio_cz[[2]] > 9)
 ```
+!!! Example "Advanced"
+    write a function that will plot the difference of these rasters with given temperature threshold.
 
 - check how the mean temperature changes between 1981-2010 and 2071-2100 in the Czech Republic
 
