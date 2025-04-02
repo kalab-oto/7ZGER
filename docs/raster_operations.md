@@ -66,6 +66,18 @@ raster_files <- list.files("data", pattern = ".tif$", full.names = TRUE)
 r <- rast(raster_files)
 ```
 
+!!! info
+    function `rast()` can read also files directly from url string,
+    
+    ```r
+    urls <- c(
+        "https://os.zhdk.cloud.switch.ch/chelsav2/GLOBAL/climatologies/1981-2010/bio/CHELSA_bio1_1981-2010_V.2.1.tif",
+        "https://os.zhdk.cloud.switch.ch/chelsav2/GLOBAL/climatologies/2071-2100/GFDL-ESM4/ssp126/bio/CHELSA_bio1_2071-2100_gfdl-esm4_ssp126_V.2.1.tif"
+        )
+    r <- rast(urls)
+    r
+    ```
+
 If we want to read all raster in stack, all rasters have to have the same extent, resolution and projection. We have to preprocess the data before.
 
 try to read only bio1 files and dem separately
