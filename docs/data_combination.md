@@ -253,6 +253,3 @@ for (i in seq(elev_pts)) {
     Sys.sleep(0.2)
 }
 ```
-
-```r
-
