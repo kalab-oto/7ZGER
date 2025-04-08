@@ -63,13 +63,6 @@ my_date
     ```
 
 ### Basic automatisation
-downlaod data from a list of urls
-
-#### `do.call` 
-`do.call` is used to call a function with a list of arguments. It is useful when you have a list of arguments and you want to pass them to a function.
-
-```r
-
 
 #### `apply` family of functions
 
