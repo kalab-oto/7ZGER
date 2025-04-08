@@ -1,6 +1,5 @@
 # Raster data
 
-
 ## General R functions
 
 ### Download data
@@ -10,7 +9,6 @@ You can download data directliy in R using `download.file()` function. In this e
 download.file("https://os.zhdk.cloud.switch.ch/chelsav2/GLOBAL/climatologies/1981-2010/bio/CHELSA_bio1_1981-2010_V.2.1.tif", "data/CHELSA_bio1_1981-2010_V.2.1.tif")
 
 download.file("https://os.zhdk.cloud.switch.ch/chelsav2/GLOBAL/climatologies/2071-2100/GFDL-ESM4/ssp126/bio/CHELSA_bio1_2071-2100_gfdl-esm4_ssp126_V.2.1.tif", "data/CHELSA_bio1_2071-2100_gfdl-esm4_ssp126_V.2.1.tif")
-
 ```
 
 ### Listing files
@@ -67,7 +65,7 @@ r <- rast(raster_files)
 ```
 
 !!! info
-    function `rast()` can read also files directly from url string,
+    Function `rast()` can read also files directly from url string.
     
     ```r
     urls <- c(
