@@ -64,6 +64,11 @@ my_date
 
 ### Basic automatisation
 
+#### `do.call`
+
+!!! todo
+
+
 #### `apply` family of functions
 
 The `apply` family of functions is used to **apply** a function to each element of an object (like a list or a matrix). The most common functions are `apply` for arrays, matrices and data franes, and `lapply` for lists (or simplified `lapply` - `sapply`, which returns vector).
