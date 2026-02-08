@@ -2,24 +2,36 @@
 
 ## R as a calculator
 
+First steps we can do is to use R as a calculator. Type the code directly in the Console pane where `>` is shown, and press `Enter` to run (execute) it. The `>` sign, is promt, that R is ready to accept commands. 
+
 ``` r
 1 + 1
 ```
+
+The result will be printed below the command:
 
 ```
 [1] 2
 ```
 
-use `**` or `^` for exponentiation
+The `[1]` is just console line label, which is useful when printing objects containing more values, which will be explained later.
+
+So you should see this in your console:
+
+``` r
+> 1 + 1
+[1] 2
+```
+
+
+Use `**` or `^` for exponentiation
 
 ``` r
 5 * 5 / (3 + 10)
 5**2 / (3 + 10)
 ```
-
-### Comparsion
-
-You can also test if values meets some condition
+## Relational operators
+You can also compare values to test whether they meet a condition. This returns a logical value, `TRUE` or `FALSE`.
 
 - `==` - equals
 - `!=` - not equals
@@ -45,7 +57,7 @@ try:
 ```
 
 ## Variables
-Values and objects can be stored in variables with assigment operator `<-` (or `=`), but `<-` is more common, and will be used in this course. Calling the variable name will return the value stored in it.
+Values and other objects can be assigned to variables with operator `<-`. Executing the variable name is call *printing* and will print the value assigned in it. Imagine variables as links to the stored values.
 
 ``` r
 x <- 42
@@ -74,7 +86,8 @@ x <- 2
 y * x
 ```
 
-try:
+The result of any operation can be assigned to a variable:
+
 ``` r 
 x <- 5
 y <- 10
@@ -101,9 +114,9 @@ variable1
 ``` 
 The convention is to use descriptive but not excessive long variable names. There are tree main types of naming in R:
 
-- snake_case - used in this course
+- **snake_case** - used in this course
 - camelCase
-- dot.case
+- dot.case - not recommended
 
 Use what you like, but be consistent.
 
@@ -112,19 +125,65 @@ my_variable <- 5
 my_variable
 ``` 
  
-## Functions
-Calling function consist of function name and arguments in parentheses. Arguments can be named or unnamed. 
-`function_name(argument1 = value1 ,argument2 = value2, argument3 = value3, ...)`. Some functions doesn't have
- any arguments (`getwd()`).
+## Text values
+
+We will also work with text values, which are written in quotes, either single `'text'` or double `"text"`.
 
 ``` r
-sin(5)
-sqrt(25)
+my_text <- "Hello World"
+my_text
 ```
-You can get function help using RStudio GUI or calling `?` before the function name, or `help()` function.
+
+```
+[1] "Hello World"
+```
+Text values can be also compared with relational operators and they will be compared alphabetically:
+
+``` r
+a <- "A"
+b <- "B"
+a == b
+a < b
+a == "a"
+```
+
+## Functions
+Calling function consist of function name and usually arguments in parentheses. Arguments can be named or unnamed. 
+`function_name(argument1 = value1 ,argument2 = value2, argument3 = value3, ...)`.  There are also functions that doesn't have any arguments (`getwd()`).
+
+Try functions `round()` and `abs()`:
+``` r
+round(3.14159)
+```
+
+You can get function help using RStudio GUI or calling `?` before the function name, or `help()` function. Help gives you information about the function, its arguments and their default values, and usage examples.
 
 ``` r 
-?sqrt
+?round
+```
+
+In help we found the argument `digits`, try it:
+``` r
+round(3.14159, digits = 2)
+```
+
+or just
+``` r
+round(3.14159, 2)
+```
+
+!!! note
+    Actually the function runs
+    ``` r
+    round(x = 3.14159, digits = 2)
+    ```
+    where `x` is the first unnamed argument.
+
+
+Another simple function is `abs()` - absolute value:
+
+``` r
+abs(-16)
 ```
 
 ## Writing scripts
@@ -137,7 +196,6 @@ In RStudio you can write and save scripts in the **Source** pane. You can run th
 
 - **Run selected part of the code** - `Ctrl + Enter` - or button `Run` - this you willl use mostly in this course. You can run the code line by line, or by selected blocks. This function sends the code to the console and run it, and the cursor will move to the next line or executable part of code.
 
-- Run entire script - `Ctrl + Shift + S` - or button `Source` - this use a `source()` function, and run entire script (as file) in console.
 
 ### Comments
 
@@ -148,6 +206,6 @@ In writing scripts you can "comment" lines. Commented lines starts with `#` and 
 x <- 5
 y <- 8
 # y <- 10
-
+y
 x + y
 ```

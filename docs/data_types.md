@@ -1,18 +1,50 @@
 # Data structures
 
-## Data object types
-primary (*atomic*) types in R:
+## Data types 
+As we saw in previous section, in R, as in every other software for working with data, we operate with various types of data (e.g., numbers, text, logical values). These types of data are in R called *data types* and they are important to understand, so we can work with the data properly and know what functions we can use. 
 
-- *double* - decimal and real numbers
-- *integer* - whole numbers
-- *character* - text
-- *logical* - TRUE or FALSE
-- (*complex* - complex numbers)
+Basic data types in R, that we will use in this course are:
 
-!!! note
-    Object can have an attributes - properties like `class`, `length`, `names`, `dim`, `attributes`, that can called or set with with some functions like `class()`, `length()`, `names()`, `dim()`, `attributes()`.
+- *double* - real numbers - `1.23`
+- *integer* - whole numbers - `1L`
+- *character* - text - `"Hello, world!"` 
+- *logical* - TRUE or FALSE - `TRUE`
+- *list* - a collection of any objects, including other lists and objects we will learn later in course - `list(1, "a", TRUE)`
 
-Check the type of the object with `typeof()` function. This returns the low level datatype of the object sotred in memory.
+
+Check the data type of the object with `typeof()` function. This returns the low level datatype of the object sotred in memory. 
+
+
+``` r
+num <- 5.1
+typeof(num)
+```
+
+```
+[1] "double"
+```
+
+
+``` r
+num <- 5
+typeof(num)
+```
+
+```
+[1] "double"
+```
+This seems to be unexpected, but even if we write whole number, R stores it as double by default. If you want to store it as integer, you have to add `L` at the end of the number, or use conversion functions that explained later.
+
+
+``` r
+num_int <- 5L
+typeof(num_int)
+```
+
+```
+[1] "integer"
+```
+
 
 ``` r
 some_text <- "Hello, world!"
@@ -24,14 +56,6 @@ typeof(some_text)
 ```
 
 ``` r
-x <- 5 == 5
-typeof(x)
-```
-
-```
-[1] "logical"
-```
-``` r
 x <- "5"
 typeof(x)
 ```
@@ -39,27 +63,64 @@ typeof(x)
 ```
 [1] "character"
 ```
-Conversion between classes can be done with `as.` functions.
+
 ``` r
-"5" + 5
-x <- as.numeric("5")
-x + 5
+x <- TRUE
+typeof(x)
 ```
 
-## Data structures
+```
+[1] "logical"
+```
+!!! note "Technical note"
+    `TRUE` and `FALSE` are reserved words in R, but you can also use `T` and `F` as shortcuts for them. Hovewer `TRUE` and `FALSE` are more explicit, readable, and less error prone, because `T` and `F` are just predefined variables and can be redefined by user.
+    
+    ``` r
+    TRUE <- 456 
+    ```
+    
+    ``` r
+    TRUE == T
+    T <- 456
+    TRUE == T
+    T <- TRUE
+    TRUE == T
+    ```
 
-- ***vector*** - one dimensional sequence of values of the same class
-- *matrix* - two dimensional 
-- *array* - multi-dimensional
-- ***data.frame*** - two dimensional array of values, values can be different classes
-- ***list*** - collection of objects, can be different classes
-- *factor* - vector of categorical values
+``` r
+x <- 5 == 5
+typeof(x)
+```
 
-In this course we will mainly work with vectors, data frames and lists in less or more complex structures.
+```
+[1] "logical"
+```
+Basic awareness of data types is also important to understand more complex data structures later. Also it is needed for basic data manipulation, for instance when correcting data that have been read incorrectly from tables. For example when numbers are read as characters and vice versa. 
 
-### Atomic vectors
-Most basic data structure in R. Sequence of data of same type. Can be created by concatenating values using `c()` function (mostly used), or creating empty vector with `vector()` function. Lot of functions also returns vectors (like `seq()`).
-Atomic vectors are usually refered as vectors.
+### Data type conversion
+Conversion between types can be done with functions `as.*` family.
+
+text (character) to numeric:
+
+``` r
+"5" + 5
+x <- as.double("5")
+x + 5
+```
+or
+
+``` r
+as.numeric("5")
+```
+
+numeric to text (character):
+
+``` r
+as.character(123)
+```
+
+### Vectors (Atomic vectors)
+Atomic vectors are fundamental data structure in R. It is sequence of elements of same data type (homogenous). Even a single value, like `5`, `"a"`, or `TRUE`, is technically an atomic vector of length 1. Atomic vectors of multiple values can be created with `c()` function (combine), and are usually called simply *vectors*.
 
 ``` r
 c(1, 15, 4, 6)
@@ -67,16 +128,17 @@ c(1, 15, 4, 6)
 
 ```
 [1]  1 15  4  6
-```
-make a sequence of numbers with `seq()` function and arguments `from`, `to`, `by`:
+``` 
 ``` r
-seq(1, 10, by = 2)
+typeof(c(1, 15, 4, 6))
 ```
 
 ```
-[1] 1 3 5 7 9
+[1] "double"
 ```
-or with `:` operator:
+
+Numeric sequence can be created various ways, basic approach is use `:` operator
+
 ``` r
 1:10
 ```
@@ -84,7 +146,22 @@ or with `:` operator:
 ```
 [1]  1  2  3  4  5  6  7  8  9 10
 ```
-sequence of characters:
+
+!!! note "Technical note"
+    `:` operator creates sequence of integers if both numbers are integers
+
+!!! tip
+    You can make a specific sequence of numbers with `seq()` function and arguments `from`, `to`, `by`:
+    ``` r
+    seq(1, 10, by = 2)
+    ```
+
+    ```
+    [1] 1 3 5 7 9
+    ```
+
+
+vector of characters:
 
 ``` r
 c("a", "b", "c")
@@ -94,7 +171,17 @@ c("a", "b", "c")
 [1] "a" "b" "c"
 ```
 
-Vectors can't contain values of different types, various classes well be converted, see `?c`.
+vector of logical values:
+
+``` r
+c(TRUE, FALSE, TRUE)
+```
+
+```
+[1]  TRUE FALSE  TRUE
+```
+
+As (atomic) vectors can't contain values of different types, various types will be converted, see `?c`.
 
 ``` r
 c("123", 456, TRUE)
@@ -104,23 +191,40 @@ c("123", 456, TRUE)
 [1] "123"  "456"  "TRUE"
 ``` 
 
-!!! info
-    The number at the beginning of the line `[1]` is the index (oreder number) of the first element on the terminal line. It can be useful later when we will work with more complex data and use subsetting.
-
-    try:
-    ``` r
-    seq(1, 1000, by= 5)
+!!! note "Technical note"
+    When we combine different types of data, R will convert them to the most general type. 
+    
+    The `==` help `?"=="` says:
+    ```
+    If the two arguments are atomic vectors of different types, one is
+    coerced to the type of the other, the (decreasing) order of
+    precedence being character, complex, numeric, integer, logical and
+    raw.
+    ```
+    The `c()` help `?c` says:
+    ```
+    The output type is determined from the highest type of the
+    components in the hierarchy NULL < raw < logical < integer <
+    double < complex < character < list < expression.
     ```
 
-You can do calculaion with vectors.
-``` r
-x <- c(1, 2, 3, 4)
-x * 5
-```
+    And the arithemetic operations help `?Arithmetic` or `?"+"` says:
+    ```
+    Logical vectors will be coerced to integer or numeric vectors,
+    ‘FALSE’ having value zero and ‘TRUE’ having value one.
+    ```
 
-```
-[1]  5 10 15 20
-```
+    For our purposes the **logical < integer < double** priority and that TRUE and FALSE are considered as 1 and 0 respectively is the most important.
+
+    Thats why `c("123", 456, TRUE)` returns character vector, because character is the most general type
+
+    Try another examples:
+    ```
+    "123" == 123
+    TRUE + 5
+    TRUE == "TRUE"
+    TRUE == "T"
+    ```
 
 You can do operations with vectors of the same length.
 
@@ -135,7 +239,48 @@ x + y
 [1]  6  8 10 12
 ```
 
-Adding element to vector:
+But also its multiple. The simplest example is adding a single number to vector:
+
+``` r
+x <- c(1, 2, 3, 4)
+x + 10
+```
+
+```
+[1] 11 12 13 14
+```
+This is called *recycling* and it works with vectors of different lengths, but the shorter vector has to be multiple of the longer one. 
+
+When you execute:
+``` r
+x <- c(1, 2, 3, 4)
+x + 10
+```
+R is actually using `c(10, 10, 10, 10)` as the second vector, because it recycles the value `10` to match the length of `x`.
+
+
+Another example:
+``` r
+x <- c(1, 2, 3, 4)
+y <- c(10, 20)
+x+y
+```
+Here, R is using `c(10, 20, 10, 20)` as `y`, and so on.
+
+
+This works also with comparison operators:
+
+``` r
+x <- ("a", "b", "c","c")
+x == "c"
+```
+
+```
+[1] FALSE FALSE  TRUE  TRUE
+```
+In this case `"c"` is recycled to `c("c", "c", "c", "c")` and compared to each element of `x`.
+
+Adding element to existing vector:
 
 ``` r
 x <- c("a", "b", "c")
@@ -155,443 +300,175 @@ length(x)
 ```
 [1] 4
 ```
-!!! note
-    You can also use attribute `name` and assign names to vector elements.
-    ``` r
-    x <- c(1, 2, 3, 4)
-    x
-    
-    names(x) <- c("first", "second", "third", "fourth")
-    x
-    attributes(x)
-    ```
-    or simply:
-    ``` r
-    x <- c(first = 1, second = 2, third = 3, fourth = 4)
-    x
-    attributes(x)
-    ```
 
-Function `sum()` returns the sum of the vector.
+
+You can use basic descriptive statistics functions as `sum()`, `mean()`, `min()`, `max()` etc.
 ``` r
-x <- c(1, 2, 3, 4)
+x <- c(1, 2, 3, 4, 5, 8, 13, 51)
 sum(x)
 ```
 
 ```
-[1] 10
+[1] 97
 ```
-
-
 
 try:
 ``` r
-x <- c(5, 8, 13, 51)
 mean(x)
 min(x)
 max(x)
-typeof(x)
-
-y <- c(1, 2, "c", "4")
-mean(y)
 ```   
 
+!!! example
+    === "Examples"
+        When you get used to with the basics we learned to this point, you can already do some basic data manipulation and analysis. 
 
-Function `str()` returns the structure of object. This is useful for more complex objects, but you can use it for vectors too.
+        1. How many values in vector `x` are greater than 5?
+        2. How many times the "species A" is in vector `species`?
+        
+        This can be done with combination of what we learned, however we will learn more efficient ways to do this later in course.
+        
+        ``` r
+        x <- c(1, 2, 3, 4,5, 8, 13, 51)
+        species <- c("species A", "species B", "species C", "species A", "species B", "species A")
+        ``` 
+        
+    === "1"
+        How many values in vector `x` are greater than 5?
+
+        ``` r
+        x <- c(1, 2, 3, 4,5, 8, 13, 51)
+        tf <- x > 5
+        sum(tf)
+        ```
+        or simply:
+        ``` r
+        sum(x > 5)
+        ```
+    === "2"
+        How many times the "species A" is in vector `species`?
+
+        ``` r
+        species <- c("species A", "species B", "species C", "species A", "species B", "species A")
+        tf <- species == "species A"
+        sum(tf)
+        ```
+        or simply:
+        ``` r
+        sum(species == "species A")
+        ```
+
+## Basics of indexing vectors
+
+Indexing is a basic operation used to extract parts of data. We will use indexing extensively throughout this course.
+
+Vectors are not only collections of elements but also ordered structures.  
+This ordering allows us to extract elements by their position using numeric indices or logical vectors inside square brackets `[ ]`. There are also other options in indexing data, but we will keep it simple for now.
+
+Indexing with numeric values means specifying which elements we want to extract by their position in the vector.
+
+
+Get a single element of vector:
 ``` r
-x <- c(5, 8, 13, 51)
-str(x)
+x <- c(10, 20, 30, 40, 50)
+x[2]
+```
+```r
+species <- c("species A", "species B", "species C", "species A", "species B", "species A")
+species[3]
 ```
 
-### Matrix and arrays
-We wont't use them much in this course, so I describe them only briefly. They are similar to vectors (technically they are vectors with `dim` attribute), but with two or more dimensions. Matrix is two dimensional, array is multi-dimensional. You can create them with `matrix()` and `array()` functions.
-
+To extract multiple elements, we can use vector of indices:
 ``` r
-m <- matrix(1:6, nrow = 2, ncol = 3)
-m
+x <- c(10, 20, 30, 40, 50)
+x[c(2, 4)]
 ```
 
-```
-     [,1] [,2] [,3]
-[1,]    1    3    5
-[2,]    2    4    6
-```
-
-
+We can also use vector assigned to variable as index:
 ``` r
-a <- array(1:12, dim = c(2,3,2))
-a
-```
-``` 
-, , 1
-
-     [,1] [,2] [,3]
-[1,]    1    3    5
-[2,]    2    4    6
-
-, , 2
-
-     [,1] [,2] [,3]
-[1,]    7    9   11
-[2,]    8   10   12
-```
-
-Vectors, matrices and arrays can be converted. 
-Try:
-
-``` r
-a <- array(1:12, dim = c(2,3,2))
-c(a)
-m <- matrix(1:6, nrow = 2, ncol = 3)
-c(m)
-v <- 1:10
-dim(v) <- c(2,5)
-v
-v2 <- c(1:12)
-dim(v2) <- c(2,3,2)
-```
-
-### Lists
-Also vectors - collection of objects, which can be different classes. Can be created with `list()` function. This is fundamental data structure in R, and you can store any objects in it, for example another list.
-
-``` r
-my_list <- list(1, "a", TRUE)
-my_list
-```
-
-nesting lists:
-``` r
-my_list <- list(1, "a", TRUE)
-nested_list <- list(my_list, 2, "b", FALSE)
-nested_list
-```
-
-list can be named
-``` r
-named_list <- list(number = 1, text = "a", boolean = TRUE)
-named_list
-```
-### Data frame
-Data frames in R is structure similar to common tables. It is two dimensional array of values, where columns can be different classes. It can be created with `data.frame()` function. In next section we will learn how to create a data frame from `.csv` table with `read.csv()` function. Another representation of data frame is `tibble` from `tidyverse`, or `data.table` from `data.table` package, but we will use `data.frame` through the course.
-
-``` r
-df <- data.frame(species = "species A", count = 5, year = 2020)
-df
-```
-
-``` r
-df <- data.frame(species = c("species A","species B","species C"), count = c(5,10,7), year = c(2020,2020,2020))
-df
-
-class(df)
-str(df)
-
-typeof(df)
-```
-
-## Subsetting data with `[ ]`, `[[ ]]` and `$`
-Subsetting is basic operation which is used to extract part of the data. You can subset data with brackets `[ ]`, `[[ ]]` or `$` operator.
-
-### brackets `[ ]` and `[[ ]]` 
-Single brackets are used to subset vectors, lists, matrices and arrays. You can subset data by index:
-
-#### Subsetting vectors
-``` r
-v <- c(123,789,451,657)
-```
-
-``` r
-v[3]
-```
-
-```
-[1] 451
-```
-
-You can subset data also by logical vector. In this example we want only values greater than 500:
-
-``` r
-v[v > 500]
-# sames as
-# v[c(FALSE, TRUE, FALSE, TRUE)]
-# just we calculate the vector of logical values with
-# v > 500
-```
-
-```
-[1] 789 657
-```
-
-You can subset data also by names:
-
-``` r
-v <- c(first = 123, second = 789, third = 451, fourth = 657)
-v["third"] # returns vector
-```
-```
-third 
-  451  
-```
-
-``` r
-v[["third"]] # also returns vector, but drop names
-```
-```
-[1] 451
-```
-#### Subsetting lists
-If we have this list:
-``` r
-my_list <- list(1, "a", TRUE, c(123,456,789))
-```
-
-
-Single brackets `[ ]` returns **list** of subsetted data:
-``` r
-my_list[2] 
-```
-
-```
-[[1]]
-[1] "a"
-```
-``` r
-my_list[4] 
-```
-
-```
-[[1]]
-[1] 123 456 789
-```
-``` r
-class(my_list[4])
-```
-
-```
-[1] "list"
-```
-Double brackets `[[ ]]`returns the **vector** of subsetted data :
-``` r
-my_list[[2]]
-```
-```
-[1] "a"
-```
-``` r
-my_list[[4]]
-```
-```
-[1] 123 456 789
-```
-``` r
-class(my_list[[4]])
-```
-
-```
-[1] "numeric"
-
-```
-Brackets can be used subsequently:
-``` r
-my_list[[4]][2]
-```
-```
-[1] 456
-```
-#### Subsetting data.frame
-same as lists, but you can also subset row and column, sperated by comma:
-
-``` r
-df <- data.frame(species = c("species A","species B","species C"), count = c(5,10,7), year = c(2020,2020,2020))
-df
-```
-
-```
-    species count year
-1 species A     5 2020
-2 species B    10 2020
-3 species C     7 2020
-```
-
-Subset column:
-``` r
-df["species"] #or df[1]
-```
-
-```    
-    species 
-1 species A 
-2 species B 
-3 species C 
-    
-```
-Subset column returnig vector:
-
-``` r
-df[["species"]] #or df[[1]]df$species
-```
-
-```
-[1] "species A" "species B" "species C"
-```
-Subset rows:
-
-``` r
-df[2,]
-```
-
-```
-    species count year
-2 species B    10 2020
-```
-Subset row and column:
-
-``` r
-df[2, "species"] #or df[2, 1]
-```
-
-```
-[1] "species B"
-```
-remember, you can always use variable names instead of indexes:
-
-``` r
-row_number <- 2
-column_name <- "species"
-df[row_number, column_name]
-```
-
-```
-[1] "species B"
-```
-
-### `$` operator
-`$` operator is used to subset list or column of data frame by **name**. 
-
-``` r
-named_list <- list(number = 1, text = "a", boolean = TRUE, numbers = c(123,456,789))
-named_list$numbers # same as named_list[["numbers"]] or named_list[[4]]
-```
-
-```
-[1] 123 456 789
-```
-
-``` r
-df <- data.frame(species = c("species A","species B","species C"), count = c(5,10,7), year = c(2020,2020,2020))
-
-df$species # same as df[["species"]] or df[[1]]
-```
-
-```
-[1] "species A" "species B" "species C"
+x <- c(10, 20, 30, 40, 50)
+i <- 2
+x[i]
+i <- c(2, 4)
+x[i]
 ```
 
 !!! tip
-    You can also add columns to **data.frame** or elements to named **list** with `[ ]` or `$`, simply declaring its name as its exists:
-    
-    data.frame:
+    Remember that you can always assign the result of any operation to a new variable
+
     ``` r
-    df$source <- "field_obs"
-    # or
-    df["source"] <- "field_obs"
-    df
+    x <- c(10, 20, 30, 40, 50)
+    i <- c(2, 4)
+    y <- x[i]
+    y
     ```
 
-    ```
-        species count year    source
-    1 species A     5 2020 field_obs
-    2 species B    10 2020 field_obs
-    3 species C     7 2020 field_obs
-    ```
-    named list:
+Indexing with logical values works slightly differently. In this case, the vector of logical values (`TRUE` or `FALSE`) is used to select elements from the original vector. The `TRUE` values indicate which elements to extract.
+
+``` r
+x <- c(10, 20, 30, 40, 50)
+x[x > 35]
+```
+```
+[1] 40 50
+```
+
+
+Let's break down what happens in `x[x > 35]`:
+``` r
+x <- c(10, 20, 30, 40, 50)
+x > 35
+```
+``` r
+x <- c(10, 20, 30, 40, 50)
+tf <- x > 35
+x[tf]
+```
+The result will be the same if we directly use the logical condition inside the brackets.
+``` r
+x <- c(10, 20, 30, 40, 50)
+x[c(FALSE, FALSE, FALSE, TRUE, TRUE)]
+```
+but this is not usually how we do it, because we can calculate the logical vector with condition `x > 35` and use it directly as index. 
+
+!!! note "Technical note"
+    The logical index should have the same length as the vector we want to subset, but R will handle this for us. If we use shorter logical vectors, R will recycle the values.
+
     ``` r
-    named_list <- list(number = 1, text = "a", boolean = TRUE)
-    named_list$vect <- c(123,456,789)
-    named_list
-    ```
-    ```
-    $number
-    [1] 1
-
-    $text
-    [1] "a"
-
-    $boolean
-    [1] TRUE
-
-    $vect
-    [1] 123 456 789
+    x <- c(10, 20, 30, 40, 50)
+    i <- c(TRUE, FALSE, TRUE)
+    x[i]
     ```
 
-## Missing values `NA`
-`NA` is simply missing value, `NaN` is 'not a number' (and its also `NA`). `NA` can be any type, but `NaN` is double. You can check if value is `NA` with `is.na()` function.
+Let’s get back to the line labels (`[1]`) that appear when values are printed in the console.  
+The number actually shows the index (position in a vector) of the first element printed on that line.
 
-Numeric vector
-``` r
-x <- c(123, 456, NA, 789, NaN)
-```
+Try executing the sequence `1:100` to see how line labels in the console work:
 
-Check which values are `NA`:
-``` r
-is.na(x)
-```
-
-```
-[1] FALSE FALSE  TRUE FALSE  TRUE
-```
-
-Check which values are `NaN`:
-``` r
-is.nan(x)
-```
-
-```
-[1] FALSE FALSE FALSE FALSE  TRUE
-```
-
-
-
-`NA` values can cause problems in calculations
-
-``` r
-mean(x)
-```
-
-```
-[1] NA
-```
-We can usually remove `NA` values with `na.rm` or similar argument, see help for function with `?`:
-
-``` r
-mean(x, na.rm = TRUE)
-```
-
-```
-[1] 456
-```
-
-`NA` values can be also removed directly with `na.omit()` function:
-
-``` r
-na.omit(x)
-```
-
-```
-[1] 123 456 789
-attr(,"na.action")
-[1] 3 5
-attr(,"class")
-[1] "omit"
-```
-
-String vector (note that `NA` is not quoted in result):
-
-``` r
-x <- c("a", "b", NA, "c", NaN)
+```r
+x <- 25:125
 x
 ```
 
+The nineteenth element of the sequence is `43`, which is indicated by the line label `[19]`, where `43` is printed on first position of that line.
+
+```r
+
+x[19]
+
 ```
-[1] "a"   "b"   NA    "c"   "NaN"
 ```
+[1] 43
+```
+
+# Main outcomes
+- understand basic data types in R
+- what is vector and how to create it
+- how to do basic operations with vectors
+- what is index and how to subset data with `[ ]`
+
+# Function overview
+`typeof()` - type of the object
+`as.*()` - conversion between data types
+`c()` - combine values into vector
+`length()` - length of vector

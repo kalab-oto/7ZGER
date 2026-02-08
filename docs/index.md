@@ -8,6 +8,6 @@ Materials for the course [KFG/7ZGER - Introduction to Geospatial Data Processing
 ## Moodle
 The current year's course is conducted on Moodle, where information for individual exercises and especially assignments can be found:
 
-[KFG/7ZGER - Spring semester 24/25](https://moodle.osu.cz/course/view.php?id=9148)
+[KFG/7ZGER - Spring semester 25/26](https://moodle.osu.cz/course/view.php?id=10888)
 
 ## Other courses

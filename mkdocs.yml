@@ -3,7 +3,7 @@ site_author: Oto Kaláb
 site_url: https://kalab-oto.github.io/7ZGER
 repo_url: https://github.com/kalab-oto/7ZGER
 site_description: "7ZGER - Introduction to geospatial data processing in R"
-copyright: "Oto Kaláb 2025"
+copyright: "Oto Kaláb 2026"
 theme:
   name: material
   

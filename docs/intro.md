@@ -6,22 +6,23 @@
   handling, automatization, web scraping, ...)
 - it is open-source, free and multiplatform
 - [https://cran.r-project.org/](https://cran.r-project.org/)
-- R can be used in two ways: interactively in command line or the code can be saved in scripts - files 
-  with code (`.R`, `.r`)
-- the scripts can be written in **any text editor**, but there are specialized software to make writing and running code
-  easier: IDEs (Integrated Development Environment)
-- the most popular IDE for R is **RStudio** - 
-  [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/) but see 
-  [Positron](https://positron.posit.co/) (IDE based on VS Code)
-- other IDEs used for R: VS Code, Vim, Emacs, *Jupyter Notebook* ...
-- so **R** ≠ **RStudio**
+- R can be used in two main ways: 
+  - interactively writing commands in the console (command line)
+  - the code can be stored in scripts - files with code (`.R`, `.r`), and can be run entirely or partially
+- generally, the scripts can be written in **any text editor**, but there are specialized software (IDE - Integrated Development Environment) to make writing and running code easier: 
+- the most popular IDE for R is [**RStudio**](https://posit.co/download/rstudio-desktop/), but recently same company (*Posit*) 
+  also developes the [Positron](https://positron.posit.co/) based on IDE VS Code
+- other general IDEs used for R: VS Code, Vim, Emacs, *Jupyter Notebook* ...
+- remember **R** ≠ **RStudio**
+  - R - programming language (you can run R and execute R commands in terminal)
+  - RStudio - software application than helps you to write and run R code
 
 ## Why programming for spatial data handling?
 - why write programs/scritps when I can already can do the same in Excel, QGIS, ArcGIS, ... ?
 - practically, you can do the same, but with programming you writing the "reciepe" how to do it, which can leads to:
   
-    - **reproducibility** - run the code again, share, collaborate when coding
-    - **flexibility** - do the same task with different data, change/improve parts of the workflow anytime
+    - **reproducibility** - run the code again, share the workflow, collaborate when coding
+    - **flexibility** - do the same task with different data or parameters repeatedly with minimal effort
 
 !!! example 
 
@@ -35,14 +36,13 @@
       5. extract raster values for the buffer areas, and calculate the mean
       6. write it to a file
 
-    ??? example " But than..."
-        ... what if you need to make same changes in workflow? Like:
+    But what if you need...
 
-        - do this for all other species in the dataset ...
-        - ... and for multiple buffer distances ...
-        - and for other 100 raster tiffs in the direcotry or on servers (monthly temperatures, percipitation, pressure, ...)
+      - do this for all other species in the dataset ...
+      - ... and for multiple buffer distances ...
+      - and for other 100 raster tiffs in the direcotry or on servers (monthly temperatures, percipitation, pressure, ...)
 
-    You can also do this in desktop applications, but it will be time consuming and inefficient. With writing the workflow 
+    You can also do this in desktop applications, but as you can imagine, it will be time consuming and inefficient. With writing the workflow 
     in R, you can easily change the parameters, set multiple values run it on multiple datasets, with minimal effort 
     compared to manual work.
 
@@ -59,8 +59,8 @@
     -  for windows: choose *base* distribution, than click *Download R-4.x.x for Windows* and follow the installation 
        wizard
 
-After installation, you can run R with inbuild IDE *Rgui* on directly in terminal. But in the course we will use 
-RStudio, and I recommend this to all beginners.
+After installation, you can run R with inbuild IDE *Rgui* or directly in terminal. But in the course we will use 
+[**RStudio**](https://posit.co/download/rstudio-desktop/), and I recommend this to all beginners.
 
 ## Rstudio
 
@@ -84,10 +84,5 @@ The GUI consists of four main panes, which can be customized and rearranged. But
 - **Source** - here you can write and save your scripts (files with code), and also send the parts of the code to the 
   console
 
-!!! note
-
-    The R is always running in specific directory, which is called *working directory*. You can show the directory with 
-    `getwd()`, or change the working directory with the function `setwd()`. *Working directory* is important when you 
-    want to work with paths or files. You can use absuloute paths, but better practice is to use relative paths to the 
-    *working directory*.
+****
  

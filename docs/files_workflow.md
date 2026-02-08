@@ -2,9 +2,7 @@
 In this section we learn how to work with simplistic project workflow, and how to read and write processed files.
 
 ## Project workflow
-The directory where the R console is launched is called **Working directory**. This is important when you want to work with files. 
-The working directory can be confortably changed with the function `setwd()`, but its not so good practice, and its 
-better to make habit to work with relative paths in *project directory* based workflow. This ensures that the code will
+The R is always running in specific directory called **working directory**. *Working directory* is important when you want to work with paths or files. You can use absuloute paths, but better practice is to use relative paths to the *working directory*. You can show the path to *working direcotry* with function `getwd()`, or change the path with the function `setwd()`, but its not so good practice, and its better to make habit to work with relative paths in *project directory* based workflow. This ensures that the code will
 work without changes if you move the project direcory to another place, renaming part of path, use other IDE, use Git etc. 
 
 While wokring with the data in R, it is good practice to:
@@ -42,7 +40,7 @@ project_name/
 ### RStudio setting
 
 - **.RData workspace** - R can save the entire workspace (all objects, variables, functions, ...) to the `.RData` file, which can be 
-  restored. Don't use the workspace. Better practice is write your scripts in a way that they recreate the worksapce.
+  restored. I recommend to don't use the workspace, and write your scripts in a way that they recreate the worksapce.
     - option to set: *Tools -> Global options* -> *General/basic* tab: *Workspace* - Restore .RData - **uncheck**; .RData on exit **Never**
 - **text encoding** - use UTF-8 when saving files.
     - option to set: *Tools -> Global options* -> *Code/Saving* tab -> Default text encoding: **UTF-8**
@@ -73,18 +71,18 @@ in the Czech Republic.
 
 **Aim of the project**:
 
-Perform some basic exploration of the data, and create a csv table only with protected areas with area larger than 500 ha, declared from the 2020.
+Perform some basic exploration of the data, and create a `.csv` table only with protected areas with area larger than 500 ha, declared from the 2020.
 
 ### Dataset
 The dataset contain information about smaller specially protected areas in 4 categories: national nature reserves (NPR), nature reserves (PR), national natural monuments (NPP), and natural monuments (PP)
 
 ### Reading data and general exploration
-Our file is `.csv` file, which is simple data structure for storing tables in simple text file, see [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) on Wikipedia. You can open `.csv` in common spreadsheet editor such as MS Excel or Libre Oficce Calc. In R we can read it with the function `read.csv()` from `read.` family of functions. As an argument, we pass the path to the file. The path can be absolute or relative, and it can be also url pointing to the file on some server. 
+Our file is `.csv` file, which is simple data structure for storing tables in simple text file, see [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) on Wikipedia. You can open `.csv` in common spreadsheet editor such as MS Excel or Libre Oficce Calc. In R we can read it with the function `read.csv()`. As an argument, we pass the path to the file. The path can be absolute or relative, and it can be also url pointing to the file on some server. 
 
 ``` r
 df <- read.csv("data/export.csv")
 ```
-Now we have the data stored in the `df` object, which is `data.frame` object. Now you need to check if the data are read  correctly (which is not always the case). You can show the data with calling `df` as any other object:
+Now we have the data stored in the `df` object, which is `data.frame` object. Now you need to check if the data are read correctly (which is not always the case). You can show the data with calling `df` as any other object:
 
 ``` r
 df
@@ -135,7 +133,7 @@ but in following exercises we will do some further exploration.
 This is not some exploration routine, we just show in this section common cases you will encounter while processing data, so you learn how to solve these basic problems.
 
 
-#### Is there any protected area twice in the data?
+<!-- #### Is there any protected area twice in the data?
 
 At first its good to know some nature of the data, for example if the data strictly represent single protected area in each row, e.g. if there are no duplicates.
 
@@ -159,7 +157,7 @@ length(unique(df$Kód))
 length(df$Kód) # length of original data
 ```
 
-So now we know that each protected area is represented by single row.
+So now we know that each protected area is represented by single row. -->
 
 #### Dealing with `NA` - What is the mean area of the protected areas?
 
