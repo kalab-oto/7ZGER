@@ -1,3 +1,6 @@
+!!! warning
+    This page is in state from the spring semester 25, and will undergo changes for the actual semester.
+
 # Reading and writing files, project workflow
 In this section we learn how to work with simplistic project workflow, and how to read and write processed files.
 

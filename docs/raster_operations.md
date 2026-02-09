@@ -1,3 +1,6 @@
+!!! warning
+    This page is in state from the spring semester 25, and will undergo changes for the actual semester.
+
 # Raster data
 
 ## General R functions

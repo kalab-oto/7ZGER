@@ -1,3 +1,6 @@
+!!! warning
+    This page is in state from the spring semester 25, and will undergo changes for the actual semester.
+
 
 <!-- 9. Data Combination - zonal statistics, raster value extraction  
 general string manipulation - for loops, apply functions

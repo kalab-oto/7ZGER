@@ -1,3 +1,7 @@
+!!! warning
+    This page is in state from the spring semester 25, and will undergo changes for the actual semester.
+
+
 # Vector data
 
 In R we can work with vector data using many packages, but the most popular and widely used is `sf` package, and we will use it in following lessons. Other packages used for spatial vector data processing are `stars` and `terra`, and discontinued `sp` and `raster` packages. Each from this packages has its own data classes, but they can be easily converted between each other, which can be useful, since some other packages may be dependent on data classes from specific package.

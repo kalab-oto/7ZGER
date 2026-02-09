@@ -1,3 +1,6 @@
+!!! warning
+    This page is in state from the spring semester 25, and will undergo changes for the actual semester.
+
 # Raster data
 
 As with vector data, raster data can be handled with various packages. The most common package is the `terra` package, successor of the deprecated `raster` package. `terra` package is also capable process vector data, but it is not as complex as `sf` package in this way. 

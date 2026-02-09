@@ -1,3 +1,5 @@
+!!! warning
+    This page is in state from the spring semester 25, and will undergo changes for the actual semester.
 # Packages
 
 Until this point, we relied in the in-built R functions (*Base R*), but in real world you will use function and classes from R extensions called **packages**. 
@@ -17,7 +19,6 @@ In some lesson we will also use these packages:
 
 !!! note
     We will also mention `sp`,`raster` packages. They are predecessors of `sf` and `terra` packages respectively, now **deprecated**, but you can still encounter them in some projects 
-
 
 You can find more packages used in spatial analysis in [Spatial Task View](https://cran.r-project.org/web/views/Spatial.html) on CRAN.
 
