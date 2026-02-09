@@ -24,9 +24,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: |
-          pip install mkdocs-material
-          pip install pymdown-extensions
+        run: pip install mkdocs-material
 
       - name: Deploy MkDocs
         run: mkdocs gh-deploy --force
