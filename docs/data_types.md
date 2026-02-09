@@ -468,7 +468,7 @@ x[19]
 - what is index and how to subset data with `[ ]`
 
 # Function overview
-`typeof()` - type of the object
-`as.*()` - conversion between data types
-`c()` - combine values into vector
-`length()` - length of vector
+- `typeof()` - type of the object
+- `as.*()` - conversion between data types
+- `c()` - combine values into vector
+- `length()` - length of vector

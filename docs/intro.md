@@ -46,13 +46,6 @@
     in R, you can easily change the parameters, set multiple values run it on multiple datasets, with minimal effort 
     compared to manual work.
 
-## R syntax
-- no strinct syntax rules, and naming conventions
-- many ways to do the same thing
-- many packages for different tasks 
-- many packages for same tasks
-- code styles /"grammar" - **base R**, tidyverse, data.table, 
-
 ## Installation of R 
 - Download R from [https://cran.r-project.org/](https://cran.r-project.org/)
     -  choose your system (Windows, macOS or Linux) and follow the instruction
