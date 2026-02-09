@@ -65,6 +65,7 @@ nav:
     - Introduction to R: intro.md
     - R Basics: basics.md
     - Data types and structures: data_types.md
+    - Lists and data frames: list_df.md
     - Working with files, script workflow: files_workflow.md
     - Packages: packages.md
     - Vector data - introduction: vector_intro.md
