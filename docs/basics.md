@@ -209,3 +209,15 @@ y <- 8
 y
 x + y
 ```
+
+## Summary
+
+### Main outcomes
+- use R as calculator and understand basic value comparisons interactively in console
+- what is variable and how to assign values to it with `<-`
+- how to use functions and get help for them
+- how to write and run code from scripts (source pane in RStudio)
+
+### Function overview
+- `round()` - round a number to a specified number of decimal places
+- `abs()` - absolute value of a number
