@@ -461,14 +461,17 @@ x[19]
 [1] 43
 ```
 
-# Main outcomes
+## Summary
+
+### Main outcomes
 - understand basic data types in R
-- what is vector and how to create it
+- what is vector, how to create vectors with multiple values including `c()` function and `:` operator
 - how to do basic operations with vectors
 - what is index and how to subset data with `[ ]`
 
-# Function overview
+### Function overview
 - `typeof()` - type of the object
 - `as.*()` - conversion between data types
-- `c()` - combine values into vector
+- `c()` - combine values into vector with multiple values (*elements*)
 - `length()` - length of vector
+- `min()`,`max()`, `mean()`, `sum()` - calculate descriptive statistics of numeric vector
