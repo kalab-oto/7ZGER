@@ -74,7 +74,7 @@ my_date
 
 #### `apply` family of functions
 
-The `apply` family of functions is used to **apply** a function to each element of an object (like a list or a matrix). The most common functions are `apply` for arrays, matrices and data franes, and `lapply` for lists (or simplified `lapply` - `sapply`, which returns vector).
+The `apply` family of functions is used to **apply** a function to each element of an object (like a list or a matrix). The most common functions are `apply` for arrays, matrices and data frames, and `lapply` for lists (or simplified `lapply` - `sapply`, which returns vector).
 
 ```r
 x <- list(1:10, 11:20, 21:30)
