@@ -429,14 +429,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../list_df/" class="md-nav__link">
+      <a href="../df/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Lists and data frames
+    Data frames
   
 
     
@@ -464,7 +464,7 @@
   <span class="md-ellipsis">
     
   
-    Working with files, script workflow
+    Working with files, workflow
   
 
     
@@ -1071,6 +1071,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1363,7 +1391,7 @@ general string manipulation - for loops, apply functions
 <p class="admonition-title">Todo</p>
 </div>
 <h4 id="apply-family-of-functions"><code>apply</code> family of functions</h4>
-<p>The <code>apply</code> family of functions is used to <strong>apply</strong> a function to each element of an object (like a list or a matrix). The most common functions are <code>apply</code> for arrays, matrices and data franes, and <code>lapply</code> for lists (or simplified <code>lapply</code> - <code>sapply</code>, which returns vector).</p>
+<p>The <code>apply</code> family of functions is used to <strong>apply</strong> a function to each element of an object (like a list or a matrix). The most common functions are <code>apply</code> for arrays, matrices and data frames, and <code>lapply</code> for lists (or simplified <code>lapply</code> - <code>sapply</code>, which returns vector).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="o">:</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="m">21</span><span class="o">:</span><span class="m">30</span><span class="p">)</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nf">lapply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>

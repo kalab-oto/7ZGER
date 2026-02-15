@@ -12,13 +12,11 @@
         <meta name="author" content="Oto Kaláb">
       
       
-        <link rel="canonical" href="https://kalab-oto.github.io/7ZGER/list_df/">
+        <link rel="canonical" href="https://kalab-oto.github.io/7ZGER/functions/">
       
       
-        <link rel="prev" href="../data_types/">
+        <link rel="prev" href="../data/">
       
-      
-        <link rel="next" href="../files_workflow/">
       
       
         
@@ -29,7 +27,7 @@
     
     
       
-        <title>Lists and data frames - KFG/7ZGER - Introduction to geospatial data processing in R</title>
+        <title>Functions - KFG/7ZGER - Introduction to geospatial data processing in R</title>
       
     
     
@@ -81,11 +79,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#lists-and-data-frames" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -118,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lists and data frames
+              Functions
             
           </span>
         </div>
@@ -288,8 +281,6 @@
       
   
   
-    
-  
   
   
     
@@ -302,11 +293,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -327,7 +318,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -426,26 +417,17 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../df/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Lists and data frames
+    Data frames
   
 
     
@@ -454,7 +436,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -474,7 +455,7 @@
   <span class="md-ellipsis">
     
   
-    Working with files, script workflow
+    Working with files, workflow
   
 
     
@@ -751,8 +732,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -763,11 +746,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -788,7 +771,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -855,6 +838,42 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -879,8 +898,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -900,7 +917,22 @@
   
 
 
-<h1 id="lists-and-data-frames">Lists and Data frames</h1>
+  <h1>Functions</h1>
+
+<p>Summary of used functions in the course sorted by the order of appearance in the course. </p>
+<ul>
+<li><code>round()</code> - round a number to a specified number of decimal places</li>
+<li>
+<p><code>abs()</code> - absolute value of a number</p>
+</li>
+<li>
+<p><code>typeof()</code> - type of the object</p>
+</li>
+<li><code>as.*()</code> - conversion between data types</li>
+<li><code>c()</code> - combine values into vector</li>
+<li><code>length()</code> - length of vector</li>
+<li><code>min()</code>,<code>max()</code>, <code>mean()</code>, <code>sum()</code> - calculate descriptive statistics of numeric vector</li>
+</ul>
 
 
 
