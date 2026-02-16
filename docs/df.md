@@ -74,7 +74,7 @@ df <- data.frame(
 
     In the previous lesson, we skipped the data type *list* because we will explain it later in the course. When you try call function `typeof()` on data frame object, the result will be `"list"`. So don't be confused by this, because data frame is a special type of list, which will be explained in the detail later in the course.
 
-## Subsetting data
+## Subsetting data - using indices
 The are various ways to subset data frame with row and column names and position (index). The basic way to subset data frame is with `$` and `[]` operator as we do with vectors, but with data frames we can subset rows and columns.
 
 ### `$` operator
@@ -108,8 +108,6 @@ mean(df$sp_count)
 ```
 
 We will use this a lot in filtering data during the course.
-
-
 
 ### `[]` operator
 The brackets `[]` operator is used to subset rows and columns by name or index. The basic syntax is `data_frame[row, column]`, where `row` and `column` can be name or index (numeric or logical), same as we subset vectods. If you want to subset only rows or columns, you can leave the other part empty (e.g. `data_frame[row, ]`). 
@@ -223,6 +221,10 @@ df[1:2, "taxon"]
 
     Theere is third way to subset column, which is use of double brackets, like `df[["taxon"]]` or `df[[1]]`. This is similar to `$` operator, but you can use variable as column name if needed. -->
 
+<!-- !!! note "Technical note"
+list/matrix like?
+    -->
+
 
 #### Using logical values for subsetting
 Most of the time you will subset a data with some condition, and you can do this with logical values in row index, same as we did it with vectors. In this case this returns only rows with position that corresponds to the position of `TRUE` value in logical vector.
@@ -281,6 +283,61 @@ min(birds_df$sp_count)
 ```
 [1] 10
 ```
+
+### Mixing the subsetting methods
+You can also mix the subsetting methods
+
+``` r
+df$sp_count[df$taxon == "birds"]
+```
+```
+[1] 10 15
+```
+``` r
+df[df$year == 2020,]$taxon
+```
+```
+[1] "birds"    "reptiles" "mammals" 
+```
+## Inspecting data frame
+`str()` 
+`summary()`
+`dim()`
+`nrow()`
+`ncol()`/`length()`
+`head()`
+`tail()`
+
+
+## Editing data frame
+```r
+df$month <- 8
+df
+```
+```
+     taxon sp_count year month
+1    birds       10 2020     8
+2 reptiles        2 2020     8
+3  mammals        4 2020     8
+4    birds       15 2021     8
+
+``` r
+df$month <- c(7,8)
+df
+```
+```
+     taxon sp_count year month
+1    birds       10 2020     7
+2 reptiles        2 2020     8
+3  mammals        4 2020     7
+4    birds       15 2021     8
+```
+
+`rbind()`
+`cbind()`
+
+
+
 ## Summary
 
 ### Main outcomes
@@ -298,7 +355,7 @@ min(birds_df$sp_count)
 - `summary()` - show summary statistics of each column -->
 
 
-
+<!-- 
 !!! note "Technical note: array and matrix"
     Simplier multi-dimensional structures are arrays and matrices, which are atomic vectors with two (matrix/array) or more (array) dimensions. You can create them with `matrix()` and `array()` functions. We wont't use them much in this course. 
 
@@ -332,4 +389,4 @@ min(birds_df$sp_count)
         [,1] [,2] [,3]
     [1,]    7    9   11
     [2,]    8   10   12
-    ```
+    ``` -->
