@@ -1306,10 +1306,6 @@ this returns a data frame with one row and three columns</p>
 <p class="admonition-title">Info</p>
 <p>Most of the time you will work with data frames created by reading tables from files. We will learn how to work with files in the <a href="../files_workflow/">Working with files, workflow</a> lesson.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Technical note: list?</p>
-<p>In the previous lesson, we skipped the data type <em>list</em> because we will explain it later in the course. When you try call function <code>typeof()</code> on data frame object, the result will be <code>"list"</code>. So don't be confused by this, because data frame is a special type of list, which will be explained in the detail later in the course.</p>
-</div>
 <h2 id="subsetting-data-using-indices">Subsetting data - using indices</h2>
 <p>The are various ways to subset data frame with row and column names and position (index). The basic way to subset data frame is with <code>$</code> and <code>[]</code> operator as we do with vectors, but with data frames we can subset rows and columns.</p>
 <h3 id="operator"><code>$</code> operator</h3>
@@ -1405,85 +1401,152 @@ or
 list/matrix like?
     -->
 
+<div class="admonition note">
+<p class="admonition-title">Technical note: list? matrix?</p>
+<p>In the previous lesson, we skipped the data type <em>list</em> because we will explain it later in the course. When you try call function <code>typeof()</code> on data frame object, the result will be <code>"list"</code>. So don't be confused by this, because data frame is a special type of list, which will be explained in the detail later in the course.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">l</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;birds&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;reptiles&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mammals&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">2021</span><span class="p">))</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="n">l</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">l</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">taxon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;birds&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;reptiles&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mammals&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">sp_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">),</span><span class="w"> </span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">2021</span><span class="p">))</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="n">l</span>
+</code></pre></div></p>
+<p>Also simplier multi-dimensional structures exists in R. These are <em>arrays</em> and <em>matrices</em>, which are atomic vectors with two (matrix/array) or more (array) dimensions.</p>
+<p>matrix with 2 rows and 3 columns:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="n">m</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>    [,1] [,2] [,3]
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>[1,]    1    5    9
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>[2,]    2    6   10
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>[3,]    3    7   11
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>[4,]    4    8   12
+</code></pre></div>
+<p>While <em>data.frame</em> is a special <em>list</em>, its rectangular structure makes it also similiar to <em>matrix</em>. That's why we can subset data various ways, with <code>$</code> and single index <code>[i]</code> like list, but also with two indices <code>[row, column]</code> like matrix.</p>
+</div>
 <h4 id="using-logical-values-for-subsetting">Using logical values for subsetting</h4>
 <p>Most of the time you will subset a data with some condition, and you can do this with logical values in row index, same as we did it with vectors. In this case this returns only rows with position that corresponds to the position of <code>TRUE</code> value in logical vector.</p>
 <p>For example, if you want to subset only rows with <code>sp_count</code> greater than 5, you can do it like this:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">sp_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">5</span><span class="p">,]</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">sp_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">5</span><span class="p">,]</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>     taxon sp_count year
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>1    birds       10 2020
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>4    birds       15 2021
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>     taxon sp_count year
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>1    birds       10 2020
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>4    birds       15 2021
 </code></pre></div>
 if we break it down, its like:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">condition</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">sp_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">5</span>
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="n">df</span><span class="p">[</span><span class="n">condition</span><span class="p">,]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">condition</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">sp_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">5</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="n">df</span><span class="p">[</span><span class="n">condition</span><span class="p">,]</span>
 </code></pre></div>
 where:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">condition</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">condition</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>[1]  TRUE FALSE FALSE  TRUE
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>[1]  TRUE FALSE FALSE  TRUE
 </code></pre></div></p>
 <p>so we subset only 1. and 4. row, because only in these rows the condition is <code>TRUE</code></p>
 <p>Another example, get only <code>birds</code> <code>sp_count</code>:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">taxon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sp_count&quot;</span><span class="p">]</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">taxon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sp_count&quot;</span><span class="p">]</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>[1] 10 15
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>[1] 10 15
 </code></pre></div>
 this is same as:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">birds_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">taxon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">,]</span>
-<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="n">birds_df</span><span class="o">$</span><span class="n">sp_count</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="n">birds_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">taxon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">,]</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="n">birds_df</span><span class="o">$</span><span class="n">sp_count</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>[1] 10 15
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>[1] 10 15
 </code></pre></div>
 so you can calculate some statstics for <code>birds</code> only, like what is the minimum of recorded bird species in the data:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nf">min</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">taxon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sp_count&quot;</span><span class="p">])</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nf">min</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">taxon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sp_count&quot;</span><span class="p">])</span>
 </code></pre></div>
 or
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="n">birds_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">taxon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">,]</span>
-<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="nf">min</span><span class="p">(</span><span class="n">birds_df</span><span class="o">$</span><span class="n">sp_count</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="n">birds_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">taxon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">,]</span>
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="nf">min</span><span class="p">(</span><span class="n">birds_df</span><span class="o">$</span><span class="n">sp_count</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>[1] 10
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>[1] 10
 </code></pre></div></p>
 <h3 id="mixing-the-subsetting-methods">Mixing the subsetting methods</h3>
 <p>You can also mix the subsetting methods</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="n">df</span><span class="o">$</span><span class="n">sp_count</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">taxon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">]</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="n">df</span><span class="o">$</span><span class="n">sp_count</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">taxon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">]</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>[1] 10 15
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>[1] 10 15
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2020</span><span class="p">,]</span><span class="o">$</span><span class="n">taxon</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2020</span><span class="p">,]</span><span class="o">$</span><span class="n">taxon</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>[1] &quot;birds&quot;    &quot;reptiles&quot; &quot;mammals&quot; 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>[1] &quot;birds&quot;    &quot;reptiles&quot; &quot;mammals&quot; 
 </code></pre></div></p>
 <h2 id="inspecting-data-frame">Inspecting data frame</h2>
-<p><code>str()</code> 
-<code>summary()</code>
-<code>dim()</code>
-<code>nrow()</code>
-<code>ncol()</code>/<code>length()</code>
-<code>head()</code>
-<code>tail()</code></p>
-<h2 id="editing-data-frame">Editing data frame</h2>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="n">df</span><span class="o">$</span><span class="n">month</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">8</span>
-<a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="n">df</span>
+<p>The most common function to inspect objects in R is <code>str()</code>, which shows the structure of the object. It gives information about the type of object (called <em>class</em>, not so important for now), number of rows and columns, and data type of each column.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>     taxon sp_count year month
-<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>1    birds       10 2020     8
-<a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>2 reptiles        2 2020     8
-<a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>3  mammals        4 2020     8
-<a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a>4    birds       15 2021     8
-<a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a>
-<a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a>``` r
-<a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>df$month &lt;- c(7,8)
-<a id="__codelineno-50-9" name="__codelineno-50-9" href="#__codelineno-50-9"></a>df
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>     taxon sp_count year month
-<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>1    birds       10 2020     7
-<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>2 reptiles        2 2020     8
-<a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>3  mammals        4 2020     7
-<a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a>4    birds       15 2021     8
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>&#39;data.frame&#39;:   4 obs. of  3 variables:
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a> $ taxon   : chr  &quot;birds&quot; &quot;reptiles&quot; &quot;mammals&quot; &quot;birds&quot;
+<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a> $ sp_count: num  10 2 4 15
+<a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a> $ year    : num  2020 2020 2020 2021
 </code></pre></div></p>
-<p><code>rbind()</code>
-<code>cbind()</code></p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Try function <code>str()</code> on other objects </p>
+</div>
+<p>Function <code>summary()</code> gives summary based on object nature. For data frame it gives summary statistics of each column.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="nf">summary</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>    taxon              sp_count          year     
+<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a> Length:4           Min.   : 2.00   Min.   :2020  
+<a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a> Class :character   1st Qu.: 3.50   1st Qu.:2020  
+<a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a> Mode  :character   Median : 7.00   Median :2020  
+<a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a>                    Mean   : 7.75   Mean   :2020  
+<a id="__codelineno-56-6" name="__codelineno-56-6" href="#__codelineno-56-6"></a>                    3rd Qu.:11.25   3rd Qu.:2020  
+<a id="__codelineno-56-7" name="__codelineno-56-7" href="#__codelineno-56-7"></a>                    Max.   :15.00   Max.   :2021  
+</code></pre></div></p>
+<p>For quickly accessing dimensions of data frame, you can use functions<code>dim()</code>, <code>nrow()</code>, and <code>ncol()</code>/<code>length()</code>, which returns vectors with number of rows and columns, respectively:</p>
+<p>dimensions - rows and columns
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="nf">dim</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>[1] 4 3
+</code></pre></div>
+number of rows directly
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>[1] 4
+</code></pre></div>
+number of columns directly
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="nf">ncol</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>[1] 3
+</code></pre></div>
+number of columns with <code>length()</code> (same as <code>ncol()</code>)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="nf">length</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>[1] 3
+</code></pre></div></p>
+<p>Also for larger data frames, you can use <code>head()</code> and <code>tail()</code> functions to show first and last rows of data frame, the default value is <code>6</code>, but number of rows can be specified with <code>n</code> (second) argument:</p>
+<p>first 6 rows of data frame, which is in our case all rows</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<p>first 2 rows of data frame
+<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+</code></pre></div></p>
+<p>last 2 rows of data frame
+<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="nf">tail</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+</code></pre></div></p>
+<h2 id="editing-data-frame">Editing data frame</h2>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="n">df</span><span class="o">$</span><span class="n">month</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">8</span>
+<a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a><span class="n">df</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>     taxon sp_count year month
+<a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>1    birds       10 2020     8
+<a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a>2 reptiles        2 2020     8
+<a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>3  mammals        4 2020     8
+<a id="__codelineno-69-5" name="__codelineno-69-5" href="#__codelineno-69-5"></a>4    birds       15 2021     8
+<a id="__codelineno-69-6" name="__codelineno-69-6" href="#__codelineno-69-6"></a>
+<a id="__codelineno-69-7" name="__codelineno-69-7" href="#__codelineno-69-7"></a>``` r
+<a id="__codelineno-69-8" name="__codelineno-69-8" href="#__codelineno-69-8"></a>df$month &lt;- c(7,8)
+<a id="__codelineno-69-9" name="__codelineno-69-9" href="#__codelineno-69-9"></a>df
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a>     taxon sp_count year month
+<a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a>1    birds       10 2020     7
+<a id="__codelineno-70-3" name="__codelineno-70-3" href="#__codelineno-70-3"></a>2 reptiles        2 2020     8
+<a id="__codelineno-70-4" name="__codelineno-70-4" href="#__codelineno-70-4"></a>3  mammals        4 2020     7
+<a id="__codelineno-70-5" name="__codelineno-70-5" href="#__codelineno-70-5"></a>4    birds       15 2021     8
+</code></pre></div></p>
 <h2 id="summary">Summary</h2>
 <h3 id="main-outcomes">Main outcomes</h3>
 <ul>
@@ -1497,44 +1560,14 @@ or
 <!-- - `read.csv()` - read comma separated values (CSV) files -->
 <ul>
 <li><code>data.frame()</code> - create a data frame</li>
+<li><code>str()</code> - show structure of object</li>
+<li><code>summary()</code> - show summary statistics of each column</li>
+<li><code>dim()</code> - show dimensions of data frame</li>
+<li><code>nrow()</code> - show number of rows</li>
+<li><code>ncol()</code>/<code>length()</code> - show number of columns</li>
+<li><code>head()</code> - show first rows of data frame</li>
+<li><code>tail()</code> - show last rows of data frame</li>
 </ul>
-<!-- - `str()` - show structure of object
-- `head()` - show first rows of data frame
-- `tail()` - show last rows of data frame
-- `summary()` - show summary statistics of each column -->
-
-<!-- 
-!!! note "Technical note: array and matrix"
-    Simplier multi-dimensional structures are arrays and matrices, which are atomic vectors with two (matrix/array) or more (array) dimensions. You can create them with `matrix()` and `array()` functions. We wont't use them much in this course. 
-
-    matrix with 2 rows and 3 columns:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
-<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="n">m</span>
-</code></pre></div>
-
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>    [,1] [,2] [,3]
-<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>[1,]    1    3    5
-<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>[2,]    2    4    6
-</code></pre></div>
-
-    array with 2 rows, 3 columns and 2 "layers":
-
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">array</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a><span class="n">a</span>
-</code></pre></div>
-    ``` 
-    , , 1
-
-        [,1] [,2] [,3]
-    [1,]    1    3    5
-    [2,]    2    4    6
-
-    , , 2
-
-        [,1] [,2] [,3]
-    [1,]    7    9   11
-    [2,]    8   10   12
-    ``` -->
 
 
 
