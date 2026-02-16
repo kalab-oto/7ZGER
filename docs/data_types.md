@@ -290,7 +290,7 @@ x <- c(x, "d")
 x
 ```
 
-Function `length()` returns the length of the vector (value of attribute length).
+Function `length()` returns the length of the vector - number of elements in the vector.
 
 ``` r
 x <- c(1, 2, 3, 4)
