@@ -500,15 +500,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#subsetting-data" class="md-nav__link">
+  <a href="#subsetting-data-using-indices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Subsetting data
+        Subsetting data - using indices
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Subsetting data">
+    <nav class="md-nav" aria-label="Subsetting data - using indices">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -550,8 +550,41 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mixing-the-subsetting-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixing the subsetting methods
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspecting-data-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspecting data frame
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editing-data-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Editing data frame
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1071,15 +1104,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#subsetting-data" class="md-nav__link">
+  <a href="#subsetting-data-using-indices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Subsetting data
+        Subsetting data - using indices
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Subsetting data">
+    <nav class="md-nav" aria-label="Subsetting data - using indices">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1121,8 +1154,41 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mixing-the-subsetting-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixing the subsetting methods
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspecting-data-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspecting data frame
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editing-data-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Editing data frame
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1244,7 +1310,7 @@ this returns a data frame with one row and three columns</p>
 <p class="admonition-title">Technical note: list?</p>
 <p>In the previous lesson, we skipped the data type <em>list</em> because we will explain it later in the course. When you try call function <code>typeof()</code> on data frame object, the result will be <code>"list"</code>. So don't be confused by this, because data frame is a special type of list, which will be explained in the detail later in the course.</p>
 </div>
-<h2 id="subsetting-data">Subsetting data</h2>
+<h2 id="subsetting-data-using-indices">Subsetting data - using indices</h2>
 <p>The are various ways to subset data frame with row and column names and position (index). The basic way to subset data frame is with <code>$</code> and <code>[]</code> operator as we do with vectors, but with data frames we can subset rows and columns.</p>
 <h3 id="operator"><code>$</code> operator</h3>
 <p>Let's start with <code>$</code> operator. This simply returns the column (vector) by its name:</p>
@@ -1335,6 +1401,10 @@ or
 
     Theere is third way to subset column, which is use of double brackets, like `df[["taxon"]]` or `df[[1]]`. This is similar to `$` operator, but you can use variable as column name if needed. -->
 
+<!-- !!! note "Technical note"
+list/matrix like?
+    -->
+
 <h4 id="using-logical-values-for-subsetting">Using logical values for subsetting</h4>
 <p>Most of the time you will subset a data with some condition, and you can do this with logical values in row index, same as we did it with vectors. In this case this returns only rows with position that corresponds to the position of <code>TRUE</code> value in logical vector.</p>
 <p>For example, if you want to subset only rows with <code>sp_count</code> greater than 5, you can do it like this:</p>
@@ -1374,6 +1444,46 @@ or
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>[1] 10
 </code></pre></div></p>
+<h3 id="mixing-the-subsetting-methods">Mixing the subsetting methods</h3>
+<p>You can also mix the subsetting methods</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="n">df</span><span class="o">$</span><span class="n">sp_count</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">taxon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>[1] 10 15
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2020</span><span class="p">,]</span><span class="o">$</span><span class="n">taxon</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>[1] &quot;birds&quot;    &quot;reptiles&quot; &quot;mammals&quot; 
+</code></pre></div></p>
+<h2 id="inspecting-data-frame">Inspecting data frame</h2>
+<p><code>str()</code> 
+<code>summary()</code>
+<code>dim()</code>
+<code>nrow()</code>
+<code>ncol()</code>/<code>length()</code>
+<code>head()</code>
+<code>tail()</code></p>
+<h2 id="editing-data-frame">Editing data frame</h2>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="n">df</span><span class="o">$</span><span class="n">month</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">8</span>
+<a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="n">df</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>     taxon sp_count year month
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>1    birds       10 2020     8
+<a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>2 reptiles        2 2020     8
+<a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>3  mammals        4 2020     8
+<a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a>4    birds       15 2021     8
+<a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a>
+<a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a>``` r
+<a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>df$month &lt;- c(7,8)
+<a id="__codelineno-50-9" name="__codelineno-50-9" href="#__codelineno-50-9"></a>df
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>     taxon sp_count year month
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>1    birds       10 2020     7
+<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>2 reptiles        2 2020     8
+<a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>3  mammals        4 2020     7
+<a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a>4    birds       15 2021     8
+</code></pre></div></p>
+<p><code>rbind()</code>
+<code>cbind()</code></p>
 <h2 id="summary">Summary</h2>
 <h3 id="main-outcomes">Main outcomes</h3>
 <ul>
@@ -1393,34 +1503,38 @@ or
 - `tail()` - show last rows of data frame
 - `summary()` - show summary statistics of each column -->
 
-<div class="admonition note">
-<p class="admonition-title">Technical note: array and matrix</p>
-<p>Simplier multi-dimensional structures are arrays and matrices, which are atomic vectors with two (matrix/array) or more (array) dimensions. You can create them with <code>matrix()</code> and <code>array()</code> functions. We wont't use them much in this course. </p>
-<p>matrix with 2 rows and 3 columns:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
-<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="n">m</span>
-</code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>    [,1] [,2] [,3]
-<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>[1,]    1    3    5
-<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>[2,]    2    4    6
+<!-- 
+!!! note "Technical note: array and matrix"
+    Simplier multi-dimensional structures are arrays and matrices, which are atomic vectors with two (matrix/array) or more (array) dimensions. You can create them with `matrix()` and `array()` functions. We wont't use them much in this course. 
+
+    matrix with 2 rows and 3 columns:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="n">m</span>
 </code></pre></div>
-<p>array with 2 rows, 3 columns and 2 "layers":</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">array</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="n">a</span>
+
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>    [,1] [,2] [,3]
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>[1,]    1    3    5
+<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>[2,]    2    4    6
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>, , 1
-<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>
-<a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>    [,1] [,2] [,3]
-<a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a>[1,]    1    3    5
-<a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a>[2,]    2    4    6
-<a id="__codelineno-48-6" name="__codelineno-48-6" href="#__codelineno-48-6"></a>
-<a id="__codelineno-48-7" name="__codelineno-48-7" href="#__codelineno-48-7"></a>, , 2
-<a id="__codelineno-48-8" name="__codelineno-48-8" href="#__codelineno-48-8"></a>
-<a id="__codelineno-48-9" name="__codelineno-48-9" href="#__codelineno-48-9"></a>    [,1] [,2] [,3]
-<a id="__codelineno-48-10" name="__codelineno-48-10" href="#__codelineno-48-10"></a>[1,]    7    9   11
-<a id="__codelineno-48-11" name="__codelineno-48-11" href="#__codelineno-48-11"></a>[2,]    8   10   12
-</code></pre></div></p>
-</div>
+
+    array with 2 rows, 3 columns and 2 "layers":
+
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">array</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a><span class="n">a</span>
+</code></pre></div>
+    ``` 
+    , , 1
+
+        [,1] [,2] [,3]
+    [1,]    1    3    5
+    [2,]    2    4    6
+
+    , , 2
+
+        [,1] [,2] [,3]
+    [1,]    7    9   11
+    [2,]    8   10   12
+    ``` -->
 
 
 
