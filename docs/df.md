@@ -70,9 +70,7 @@ df <- data.frame(
 
     Most of the time you will work with data frames created by reading tables from files. We will learn how to work with files in the [Working with files, workflow](files_workflow.md) lesson.
 
-!!! note "Technical note: list?"
 
-    In the previous lesson, we skipped the data type *list* because we will explain it later in the course. When you try call function `typeof()` on data frame object, the result will be `"list"`. So don't be confused by this, because data frame is a special type of list, which will be explained in the detail later in the course.
 
 ## Subsetting data - using indices
 The are various ways to subset data frame with row and column names and position (index). The basic way to subset data frame is with `$` and `[]` operator as we do with vectors, but with data frames we can subset rows and columns.
@@ -225,6 +223,39 @@ df[1:2, "taxon"]
 list/matrix like?
     -->
 
+!!! note "Technical note: list? matrix?"
+
+    In the previous lesson, we skipped the data type *list* because we will explain it later in the course. When you try call function `typeof()` on data frame object, the result will be `"list"`. So don't be confused by this, because data frame is a special type of list, which will be explained in the detail later in the course.
+
+    ``` r
+    l <- list(c("birds", "reptiles", "mammals", "birds"), c(10, 2, 4, 15), c(2020, 2020, 2020, 2021))
+    l
+    ```
+    ``` r
+    l <- list(taxon = c("birds", "reptiles", "mammals", "birds"), sp_count = c(10, 2, 4, 15), year = c(2020, 2020, 2020, 2021))
+    l
+    ```
+
+    Also simplier multi-dimensional structures exists in R. These are *arrays* and *matrices*, which are atomic vectors with two (matrix/array) or more (array) dimensions.
+
+    matrix with 2 rows and 3 columns:
+
+    ``` r
+    m <- matrix(1:12, nrow = 4, ncol = 3)
+    m
+    ```
+
+    ```
+        [,1] [,2] [,3]
+    [1,]    1    5    9
+    [2,]    2    6   10
+    [3,]    3    7   11
+    [4,]    4    8   12
+    ```
+    
+    While *data.frame* is a special *list*, its rectangular structure makes it also similiar to *matrix*. That's why we can subset data various ways, with `$` and single index `[i]` like list, but also with two indices `[row, column]` like matrix.
+   
+
 
 #### Using logical values for subsetting
 Most of the time you will subset a data with some condition, and you can do this with logical values in row index, same as we did it with vectors. In this case this returns only rows with position that corresponds to the position of `TRUE` value in logical vector.
@@ -300,13 +331,84 @@ df[df$year == 2020,]$taxon
 [1] "birds"    "reptiles" "mammals" 
 ```
 ## Inspecting data frame
-`str()` 
-`summary()`
-`dim()`
-`nrow()`
-`ncol()`/`length()`
-`head()`
-`tail()`
+The most common function to inspect objects in R is `str()`, which shows the structure of the object. It gives information about the type of object (called *class*, not so important for now), number of rows and columns, and data type of each column.
+
+``` r 
+str(df)
+```
+```
+'data.frame':   4 obs. of  3 variables:
+ $ taxon   : chr  "birds" "reptiles" "mammals" "birds"
+ $ sp_count: num  10 2 4 15
+ $ year    : num  2020 2020 2020 2021
+```
+
+!!! question
+    Try function `str()` on other objects 
+
+
+Function `summary()` gives summary based on object nature. For data frame it gives summary statistics of each column.
+``` r 
+summary(df)
+```
+```
+    taxon              sp_count          year     
+ Length:4           Min.   : 2.00   Min.   :2020  
+ Class :character   1st Qu.: 3.50   1st Qu.:2020  
+ Mode  :character   Median : 7.00   Median :2020  
+                    Mean   : 7.75   Mean   :2020  
+                    3rd Qu.:11.25   3rd Qu.:2020  
+                    Max.   :15.00   Max.   :2021  
+```
+
+For quickly accessing dimensions of data frame, you can use functions`dim()`, `nrow()`, and `ncol()`/`length()`, which returns vectors with number of rows and columns, respectively:
+
+dimensions - rows and columns
+``` r
+dim(df)
+```
+```
+[1] 4 3
+```
+number of rows directly
+``` r
+nrow(df)
+```
+```
+[1] 4
+```
+number of columns directly
+``` r
+ncol(df)
+```
+```
+[1] 3
+```
+number of columns with `length()` (same as `ncol()`)
+``` r
+length(df)
+```
+```
+[1] 3
+```
+
+Also for larger data frames, you can use `head()` and `tail()` functions to show first and last rows of data frame, the default value is `6`, but number of rows can be specified with `n` (second) argument:
+
+first 6 rows of data frame, which is in our case all rows
+
+```r
+head(df)
+```
+
+first 2 rows of data frame
+```r
+head(df, n = 2)
+```
+
+last 2 rows of data frame
+```r
+tail(df, n = 2)
+```
 
 
 ## Editing data frame
@@ -333,9 +435,6 @@ df
 4    birds       15 2021     8
 ```
 
-`rbind()`
-`cbind()`
-
 
 
 ## Summary
@@ -349,44 +448,12 @@ df
 ### Function overview
 <!-- - `read.csv()` - read comma separated values (CSV) files -->
 - `data.frame()` - create a data frame
-<!-- - `str()` - show structure of object
+- `str()` - show structure of object
+- `summary()` - show summary statistics of each column
+- `dim()` - show dimensions of data frame
+- `nrow()` - show number of rows
+- `ncol()`/`length()` - show number of columns
 - `head()` - show first rows of data frame
 - `tail()` - show last rows of data frame
-- `summary()` - show summary statistics of each column -->
 
 
-<!-- 
-!!! note "Technical note: array and matrix"
-    Simplier multi-dimensional structures are arrays and matrices, which are atomic vectors with two (matrix/array) or more (array) dimensions. You can create them with `matrix()` and `array()` functions. We wont't use them much in this course. 
-
-    matrix with 2 rows and 3 columns:
-    ``` r
-    m <- matrix(1:6, nrow = 2, ncol = 3)
-    m
-    ```
-
-    ```
-        [,1] [,2] [,3]
-    [1,]    1    3    5
-    [2,]    2    4    6
-    ```
-
-    array with 2 rows, 3 columns and 2 "layers":
-
-    ``` r
-    a <- array(1:12, dim = c(2,3,2))
-    a
-    ```
-    ``` 
-    , , 1
-
-        [,1] [,2] [,3]
-    [1,]    1    3    5
-    [2,]    2    4    6
-
-    , , 2
-
-        [,1] [,2] [,3]
-    [1,]    7    9   11
-    [2,]    8   10   12
-    ``` -->
