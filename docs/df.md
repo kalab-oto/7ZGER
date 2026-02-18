@@ -412,6 +412,21 @@ tail(df, n = 2)
 
 
 ## Editing data frame
+
+Use of `$`  allows you to add new column if the column name does not exist in the data frame:
+
+```r
+df
+```
+```
+     taxon sp_count year
+1    birds       10 2020
+2 reptiles        2 2020
+3  mammals        4 2020
+4    birds       15 2021
+```
+
+
 ```r
 df$month <- 8
 df
@@ -422,6 +437,10 @@ df
 2 reptiles        2 2020     8
 3  mammals        4 2020     8
 4    birds       15 2021     8
+
+```
+
+If the column name already exists, it replace the values. *Recycling* rule applies here
 
 ``` r
 df$month <- c(7,8)
@@ -435,6 +454,55 @@ df
 4    birds       15 2021     8
 ```
 
+Specific value can be also edited with row and column index:
+
+``` r
+df[2, 4]
+```
+```
+[1] 8
+```
+
+``` r
+df[2, 4] <- 9
+df
+```
+```     taxon sp_count year month
+1    birds       10 2020     7
+2 reptiles        2 2020     9
+3  mammals        4 2020     7
+4    birds       15 2021     8
+```
+or with logical values for row index. For example, you realize that birds were recorded in 2019
+
+``` r
+df[df$taxon == "birds", "year"] <- 2019
+# or
+# df$year[df$taxon == "birds"] <- 2019
+# or
+# df[df$taxon == "birds",]$year <- 2019
+df
+```
+```
+     taxon sp_count year month
+1    birds       10 2019     7
+2 reptiles        2 2020     9
+3  mammals        4 2020     7
+4    birds       15 2019     8
+```
+multiple values can be edited as well
+
+``` r
+df[df$taxon == "birds", ]$year <- c(2022, 2025)
+df
+```
+```
+     taxon sp_count year month
+1    birds       10 2022     7
+2 reptiles        2 2020     9
+3  mammals        4 2020     7
+4    birds       15 2025     8
+```
 
 
 ## Summary
@@ -446,7 +514,6 @@ df
 <!-- - indices can be negative - subsetting with negative index returns all values except the indexed one -->
 
 ### Function overview
-<!-- - `read.csv()` - read comma separated values (CSV) files -->
 - `data.frame()` - create a data frame
 - `str()` - show structure of object
 - `summary()` - show summary statistics of each column
