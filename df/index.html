@@ -1528,24 +1528,72 @@ number of columns with <code>length()</code> (same as <code>ncol()</code>)
 <div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="nf">tail</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
 </code></pre></div></p>
 <h2 id="editing-data-frame">Editing data frame</h2>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="n">df</span><span class="o">$</span><span class="n">month</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">8</span>
-<a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a><span class="n">df</span>
+<p>Use of <code>$</code>  allows you to add new column if the column name does not exist in the data frame:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="n">df</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>     taxon sp_count year month
-<a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>1    birds       10 2020     8
-<a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a>2 reptiles        2 2020     8
-<a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>3  mammals        4 2020     8
-<a id="__codelineno-69-5" name="__codelineno-69-5" href="#__codelineno-69-5"></a>4    birds       15 2021     8
-<a id="__codelineno-69-6" name="__codelineno-69-6" href="#__codelineno-69-6"></a>
-<a id="__codelineno-69-7" name="__codelineno-69-7" href="#__codelineno-69-7"></a>``` r
-<a id="__codelineno-69-8" name="__codelineno-69-8" href="#__codelineno-69-8"></a>df$month &lt;- c(7,8)
-<a id="__codelineno-69-9" name="__codelineno-69-9" href="#__codelineno-69-9"></a>df
+<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>     taxon sp_count year
+<a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>1    birds       10 2020
+<a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a>2 reptiles        2 2020
+<a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>3  mammals        4 2020
+<a id="__codelineno-69-5" name="__codelineno-69-5" href="#__codelineno-69-5"></a>4    birds       15 2021
+</code></pre></div></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="n">df</span><span class="o">$</span><span class="n">month</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">8</span>
+<a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a><span class="n">df</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a>     taxon sp_count year month
-<a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a>1    birds       10 2020     7
-<a id="__codelineno-70-3" name="__codelineno-70-3" href="#__codelineno-70-3"></a>2 reptiles        2 2020     8
-<a id="__codelineno-70-4" name="__codelineno-70-4" href="#__codelineno-70-4"></a>3  mammals        4 2020     7
-<a id="__codelineno-70-5" name="__codelineno-70-5" href="#__codelineno-70-5"></a>4    birds       15 2021     8
+<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>     taxon sp_count year month
+<a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>1    birds       10 2020     8
+<a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>2 reptiles        2 2020     8
+<a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a>3  mammals        4 2020     8
+<a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a>4    birds       15 2021     8
+</code></pre></div></p>
+<p>If the column name already exists, it replace the values. <em>Recycling</em> rule applies here</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="n">df</span><span class="o">$</span><span class="n">month</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">7</span><span class="p">,</span><span class="m">8</span><span class="p">)</span>
+<a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a><span class="n">df</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a>     taxon sp_count year month
+<a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a>1    birds       10 2020     7
+<a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a>2 reptiles        2 2020     8
+<a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a>3  mammals        4 2020     7
+<a id="__codelineno-73-5" name="__codelineno-73-5" href="#__codelineno-73-5"></a>4    birds       15 2021     8
+</code></pre></div></p>
+<p>Specific value can be also edited with row and column index:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="n">df</span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>[1] 8
+</code></pre></div></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="n">df</span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">9</span>
+<a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a><span class="n">df</span>
+</code></pre></div>
+```     taxon sp_count year month
+1    birds       10 2020     7
+2 reptiles        2 2020     9
+3  mammals        4 2020     7
+4    birds       15 2021     8
+<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a>or with logical values for row index. For example, you realize that birds were recorded in 2019
+<a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a>
+<a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>``` r
+<a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a>df[df$taxon == &quot;birds&quot;, &quot;year&quot;] &lt;- 2019
+<a id="__codelineno-77-5" name="__codelineno-77-5" href="#__codelineno-77-5"></a># or
+<a id="__codelineno-77-6" name="__codelineno-77-6" href="#__codelineno-77-6"></a># df$year[df$taxon == &quot;birds&quot;] &lt;- 2019
+<a id="__codelineno-77-7" name="__codelineno-77-7" href="#__codelineno-77-7"></a># or
+<a id="__codelineno-77-8" name="__codelineno-77-8" href="#__codelineno-77-8"></a># df[df$taxon == &quot;birds&quot;,]$year &lt;- 2019
+<a id="__codelineno-77-9" name="__codelineno-77-9" href="#__codelineno-77-9"></a>df
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a>     taxon sp_count year month
+<a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a>1    birds       10 2019     7
+<a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a>2 reptiles        2 2020     9
+<a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a>3  mammals        4 2020     7
+<a id="__codelineno-78-5" name="__codelineno-78-5" href="#__codelineno-78-5"></a>4    birds       15 2019     8
+</code></pre></div>
+multiple values can be edited as well</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">taxon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;birds&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2022</span><span class="p">,</span><span class="w"> </span><span class="m">2025</span><span class="p">)</span>
+<a id="__codelineno-79-2" name="__codelineno-79-2" href="#__codelineno-79-2"></a><span class="n">df</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a>     taxon sp_count year month
+<a id="__codelineno-80-2" name="__codelineno-80-2" href="#__codelineno-80-2"></a>1    birds       10 2022     7
+<a id="__codelineno-80-3" name="__codelineno-80-3" href="#__codelineno-80-3"></a>2 reptiles        2 2020     9
+<a id="__codelineno-80-4" name="__codelineno-80-4" href="#__codelineno-80-4"></a>3  mammals        4 2020     7
+<a id="__codelineno-80-5" name="__codelineno-80-5" href="#__codelineno-80-5"></a>4    birds       15 2025     8
 </code></pre></div></p>
 <h2 id="summary">Summary</h2>
 <h3 id="main-outcomes">Main outcomes</h3>
@@ -1557,7 +1605,6 @@ number of columns with <code>length()</code> (same as <code>ncol()</code>)
 <!-- - indices can be negative - subsetting with negative index returns all values except the indexed one -->
 
 <h3 id="function-overview">Function overview</h3>
-<!-- - `read.csv()` - read comma separated values (CSV) files -->
 <ul>
 <li><code>data.frame()</code> - create a data frame</li>
 <li><code>str()</code> - show structure of object</li>
