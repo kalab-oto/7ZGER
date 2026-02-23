@@ -16,6 +16,10 @@ The absolute path should be replaced with the path to the file on your computer,
 df <- read.csv("C:/Users/student/Downloads/simple_data.csv")
 ```
 
+!!! tip
+    You can copy the absolute path to the file, simply the way as you wnat copy whole file - select the file in file explorer, select copy (or `ctrl+c`) and paste (`ctrl+v`) it to the source pane in Rstudio.
+
+
 Now we have the data stored in the `df` object, which is `data.frame` object. 
 
 ``` r
