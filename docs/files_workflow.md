@@ -18,6 +18,17 @@ df <- read.csv("C:/Users/student/Downloads/simple_data.csv")
 
 Now we have the data stored in the `df` object, which is `data.frame` object. 
 
+``` r
+df
+```
+```
+     taxon sp_count year
+1    birds       10 2020
+2 reptiles        2 2020
+3  mammals        4 2020
+4    birds       15 2021
+```
+
 ## Project workflow
 The R is always running in specific directory called **working directory**. *Working directory* is important when you want to work with paths or files. You can use absuloute paths, but better practice is to use relative paths to the *working directory*. You can show the path to *working direcotry* with function `getwd()`, or change the path with the function `setwd()`, but its not so good practice, and its better to make habit to work with relative paths in *project directory* based workflow. This ensures that the code will
 work without changes if you move the project direcory to another place, renaming part of path, use other IDE, use Git etc. 
