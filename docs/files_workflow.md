@@ -4,6 +4,20 @@
 # Reading and writing files, project workflow
 In this section we learn how to work with simplistic project workflow, and how to read and write processed files.
 
+## Reading files and `CSV` files
+
+In this section we will work with `.csv` files, which is simple data structure for storing tables in simple text file, see [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) on Wikipedia. You can open `.csv` in common spreadsheet editor such as MS Excel or Libre Oficce Calc. In R we can read it with the function `read.csv()`. As an argument, we pass the path to the file. The path can be absolute or relative, and it can be also url pointing to the file on some server. This principle is same in reading any other file types as `.shp`, `.tif` etc., but in theese cases, there are specific functions for reading the files.
+
+At first we will read simple `.csv` file with same data we have in the previous section, but now stored in the file `simple_data.csv`. We will read the file with the `read.csv()`, pointing to the file with absolute path.
+
+
+``` r
+df <- read.csv("C:/Users/student/Downloads/simple_data.csv")
+df <- read.csv("/home/kalab/Stažené/simple_data.csv")
+```
+
+Now we have the data stored in the `df` object, which is `data.frame` object. 
+
 ## Project workflow
 The R is always running in specific directory called **working directory**. *Working directory* is important when you want to work with paths or files. You can use absuloute paths, but better practice is to use relative paths to the *working directory*. You can show the path to *working direcotry* with function `getwd()`, or change the path with the function `setwd()`, but its not so good practice, and its better to make habit to work with relative paths in *project directory* based workflow. This ensures that the code will
 work without changes if you move the project direcory to another place, renaming part of path, use other IDE, use Git etc. 
@@ -65,12 +79,15 @@ in the Czech Republic.
 1. Create a new project and directory (*first_project* or name it as you want) - this can be done in RStudio
 2. Create subdirectories in *data*, *scripts* and *outputs* - just creating directories
 3. Create a new script file *first_script.R* in the *scripts* directory - just creating file
-4. Download the data file
-    - go to the [https://drusop.nature.cz/](https://drusop.nature.cz/) and select *Maloplošná zvláště chráněná území* in
-     the **Objekty ústředního seznamu** section.
-    - click the *Export* button, - check all with *Označ/Zruš VŠE na stránce*, select *Excel (CSV)* format in *Formát*,
-     *UTF-8* encoding in *Kódování*, and click export *Exportovat*. This will download the file *export.csv*. Move this
-     file to the *data* directory.
+4. Copy the *export.csv* to the *data* directory
+
+!!! note
+    Originally the file was downloaded this way
+        - go to the [https://drusop.nature.cz/](https://drusop.nature.cz/) and select *Maloplošná zvláště chráněná území* in
+        the **Objekty ústředního seznamu** section.
+        - click the *Export* button, - check all with *Označ/Zruš VŠE na stránce*, select *Excel (CSV)* format in *Formát*,
+        *UTF-8* encoding in *Kódování*, and click export *Exportovat*. This will download the file *export.csv*. Move this
+        file to the *data* directory.
 
 **Aim of the project**:
 
@@ -79,13 +96,11 @@ Perform some basic exploration of the data, and create a `.csv` table only with 
 ### Dataset
 The dataset contain information about smaller specially protected areas in 4 categories: national nature reserves (NPR), nature reserves (PR), national natural monuments (NPP), and natural monuments (PP)
 
-### Reading data and general exploration
-Our file is `.csv` file, which is simple data structure for storing tables in simple text file, see [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) on Wikipedia. You can open `.csv` in common spreadsheet editor such as MS Excel or Libre Oficce Calc. In R we can read it with the function `read.csv()`. As an argument, we pass the path to the file. The path can be absolute or relative, and it can be also url pointing to the file on some server. 
-
 ``` r
 df <- read.csv("data/export.csv")
 ```
-Now we have the data stored in the `df` object, which is `data.frame` object. Now you need to check if the data are read correctly (which is not always the case). You can show the data with calling `df` as any other object:
+
+Now you need to check if the data are read correctly (which is not always the case). You can show the data with calling `df` as any other object:
 
 ``` r
 df
