@@ -252,7 +252,7 @@ Choose the one you like the most, and assign it to the `df` object:
 ``` r
 df <- df[!is.na(df$Rozloha..ha), ]
 ```
-
+<!-- 
 #### Dealing with Dates
 There are few columns with dates in the data, for example `Datum.prvního.vyhlášení`. This column is the `character` data type, but if we want to work with dates, we have to convert it for further analyssis like counting the number of protected areas with certain year of declaration, etc.
 
@@ -290,9 +290,9 @@ Now we can filter the data with the date, for example to get the protected areas
 ``` r
 d <- as.Date("2020-01-01")
 df[df$Datum.prvního.vyhlášení > d,]
-```
+``` -->
 
-#### Other exploration
+#### Data exploration
 ##### Get the protected areas with area larger than 500 ha and category NPR
 
 ``` r
@@ -323,10 +323,10 @@ If the task was: Create export of the protected areas with area larger than 500 
 df <- read.csv("data/export.csv", sep = ";", dec = ",")
 
 df <- df[!is.na(df$Rozloha..ha), ]
-df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y")
+# df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y")
 
-d <- as.Date("2020-01-01")
-df <- df[df$Datum.prvního.vyhlášení > d,]
+# d <- as.Date("2020-01-01")
+# df <- df[df$Datum.prvního.vyhlášení > d,]
 
 df <- df[df$Rozloha..ha > 500,]
 df <- df[df$Kategorie == "NPR",]
@@ -339,8 +339,8 @@ or using the "and" operator `&`:
 ``` r
 df <- read.csv("data/export.csv", sep = ";", dec = ",")
 
-df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y")
-d <- as.Date("2020-01-01")
+# df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y")
+# d <- as.Date("2020-01-01")
 df <- df[!is.na(df$Rozloha..ha) & df$Rozloha..ha > 500 & df$Kategorie == "NPR" & df$Datum.prvního.vyhlášení > d, ]
 
 write.csv(df, "outputs/processed_data.csv", row.names = FALSE)
@@ -375,7 +375,7 @@ Practice some exploration on the Zoraptera Occurrence Dataset (https://zenodo.or
  
     Is there `species` column in the data?
 
-=== "solutfion 3"
+=== "solution 3"
  
     There is no `species` column
 
@@ -386,7 +386,7 @@ Practice some exploration on the Zoraptera Occurrence Dataset (https://zenodo.or
  
     How many records are not identified to the species level?
     
-=== "solutfion 4"
+=== "solution 4"
  
     `581`
 
@@ -396,7 +396,7 @@ Practice some exploration on the Zoraptera Occurrence Dataset (https://zenodo.or
  
     What is the most common species in the data?
 
-=== "solutfion 5"
+=== "solution 5"
   
       `Usazoros hubbardi`
 
