@@ -42,8 +42,6 @@ While wokring with the data in R, it is good practice to:
 1. **one directory** - keep all files (data, scripts, outputs) in one directory (*project* or *workspace* directory) and run R from this 
 directory (*working directory*)
 
-2. **automate as much as possible** - write scripts that  reproduce the workflow, without the need to store some workspace files (`.RData`). This includes
-reading data, processing, writing outputs etc. 
 
 !!! note
     This is not necessary for working with R, but it is good practice to avoid building bad habits. In some cases, you
@@ -62,34 +60,31 @@ project_name/
 ├── outputs/
 ```
 
-- *data/* - directory for all input data (`.csv`, `.shp`, `.gpkg`,`.tif`, ...)
+- *data/* - directory for all input data
 - *scripts/* - directory for R scripts
 - *outputs/* - directory for output files - plots, tables, ...
 
 !!! tip
     You can create this structure in RStudio by creating a new project and than creating the directories incliding files (scripts, etc.) in the *Files* pane.
 
-### RStudio setting
+### RStudio project
 
-- **.RData workspace** - R can save the entire workspace (all objects, variables, functions, ...) to the `.RData` file, which can be 
-  restored. I recommend to don't use the workspace, and write your scripts in a way that they recreate the worksapce.
-    - option to set: *Tools -> Global options* -> *General/basic* tab: *Workspace* - Restore .RData - **uncheck**; .RData on exit **Never**
-- **text encoding** - use UTF-8 when saving files.
-    - option to set: *Tools -> Global options* -> *Code/Saving* tab -> Default text encoding: **UTF-8**
-- **Working directory** -  use the *Project* feature, which creates a project file `.Rproj` in the project 
-  directory. Loading `.Rproj` automatically set the working directory to the project directory.
-    - no option to set, jsut keep in mind that you are working in project directory, use relative paths while 
-      working with files and save `.Rproj` (if you use RStudio)
-      file in the project directory
+Use the *Project* feature, which creates a project file `.Rproj` in the project directory. Loading `.Rproj` automatically set the working directory to the project directory.
     - creating project - *File -> New Project...*
-    - opening existing project - *File -> Open Project...* or *File -> Recent Projects*
+    - opening existing project - *File -> Open Project...* or *File -> Recent Projects*, or simply open the `.Rproj` file in the file explorer
     - RStudio opens last project by default, but you can change this in *Tools -> Global options* -> *General/basic* 
       tab: *Default working directory* - disable *Restore most recently opened project at startup*
 
+!!! note 
+    Other useful settings for working with projects:
+      - **.RData workspace** - R can save the entire workspace (all objects, variables, functions, ...) to the `.RData` file, which can be restored. I recommend to don't use the workspace, and write your scripts in a way that they recreate the worksapce.
+        - option to set: *Tools -> Global options* -> *General/basic* tab: *Workspace* - Restore .RData - **uncheck**; .RData on exit **Never**
+      - **text encoding** - use UTF-8 when saving files.
+        - option to set: *Tools -> Global options* -> *Code/Saving* tab -> Default text encoding: **UTF-8**
+
+
 ## First project
-In this example project we write one script that reads the data, makes some simple processing and writes the output 
-to new file. We will work with export from DRUSOP which is digital register of central list of nature conservation 
-in the Czech Republic.
+In this example project we write one script that reads the data, makes some simple processing and writes the output to new file. We will work with export from DRUSOP which is digital register of central list of nature conservation in the Czech Republic.
 
 1. Create a new project and directory (*first_project* or name it as you want) - this can be done in RStudio
 2. Create subdirectories in *data*, *scripts* and *outputs* - just creating directories
@@ -106,7 +101,7 @@ in the Czech Republic.
 
 **Aim of the project**:
 
-Perform some basic exploration of the data, and create a `.csv` table only with protected areas with area larger than 500 ha, declared from the 2020.
+Perform some basic exploration of the data, and create a `.csv` table only with protected areas with area larger than 500 ha.
 
 ### Dataset
 The dataset contain information about smaller specially protected areas in 4 categories: national nature reserves (NPR), nature reserves (PR), national natural monuments (NPP), and natural monuments (PP)
@@ -349,6 +344,26 @@ df <- df[!is.na(df$Rozloha..ha) & df$Rozloha..ha > 500 & df$Kategorie == "NPR" &
 
 write.csv(df, "outputs/processed_data.csv", row.names = FALSE)
 ```
+
+
+## Summary
+
+### Main outcomes
+- understand the simple project workflow - working directory, project, relative paths
+- read CSV files with the `read.csv()` function, and set the parameters to read the data correctly
+- write CSV files with the `write.csv()` function
+- work with `NA` values - check for `NA` values with `is.na()`, and remove them from calculations with `na.rm` argument, or subset the data to remove rows with `NA` values
+- negating logical vector with `!` operator, and subsetting data with `-` to exclude rows/columns with specific index
+  
+<!-- - indices can be negative - subsetting with negative index returns all values except the indexed one -->
+
+### Function overview
+- `read.csv()` - read a CSV file and create a data frame
+- `write.csv()` - write a data frame to a CSV file
+- `is.na()` - return logical vector of `TRUE` and `FALSE` values, where `TRUE` means that the value is `NA`
+- `table()` - count the unique values of a vector
+- `unique()` - return unique values of a vector
+
 ## Practice exploration
 Practice some exploration on the Zoraptera Occurrence Dataset (https://zenodo.org/records/14652555). The dataset contains information about the occurrence of the order Zoraptera. The link directly to dataset is "https://raw.githubusercontent.com/kalab-oto/zoraptera-occurrence-dataset/refs/tags/1.1.0/zoraptera_occs.csv"
 
