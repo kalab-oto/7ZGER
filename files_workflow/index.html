@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -517,6 +517,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#reading-files-and-csv-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading files and CSV files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#project-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -572,17 +583,6 @@
     <span class="md-ellipsis">
       
         Dataset
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reading-data-and-general-exploration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reading data and general exploration
       
     </span>
   </a>
@@ -1204,6 +1204,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#reading-files-and-csv-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading files and CSV files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#project-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1259,17 +1270,6 @@
     <span class="md-ellipsis">
       
         Dataset
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reading-data-and-general-exploration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reading data and general exploration
       
     </span>
   </a>
@@ -1479,6 +1479,13 @@
 </div>
 <h1 id="reading-and-writing-files-project-workflow">Reading and writing files, project workflow</h1>
 <p>In this section we learn how to work with simplistic project workflow, and how to read and write processed files.</p>
+<h2 id="reading-files-and-csv-files">Reading files and <code>CSV</code> files</h2>
+<p>In this section we will work with <code>.csv</code> files, which is simple data structure for storing tables in simple text file, see <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> on Wikipedia. You can open <code>.csv</code> in common spreadsheet editor such as MS Excel or Libre Oficce Calc. In R we can read it with the function <code>read.csv()</code>. As an argument, we pass the path to the file. The path can be absolute or relative, and it can be also url pointing to the file on some server. This principle is same in reading any other file types as <code>.shp</code>, <code>.tif</code> etc., but in theese cases, there are specific functions for reading the files.</p>
+<p>At first we will read simple <code>.csv</code> file with same data we have in the previous section, but now stored in the file <code>simple_data.csv</code>. We will read the file with the <code>read.csv()</code>, pointing to the file with absolute path.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;C:/Users/student/Downloads/simple_data.csv&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;/home/kalab/Stažené/simple_data.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Now we have the data stored in the <code>df</code> object, which is <code>data.frame</code> object. </p>
 <h2 id="project-workflow">Project workflow</h2>
 <p>The R is always running in specific directory called <strong>working directory</strong>. <em>Working directory</em> is important when you want to work with paths or files. You can use absuloute paths, but better practice is to use relative paths to the <em>working directory</em>. You can show the path to <em>working direcotry</em> with function <code>getwd()</code>, or change the path with the function <code>setwd()</code>, but its not so good practice, and its better to make habit to work with relative paths in <em>project directory</em> based workflow. This ensures that the code will
 work without changes if you move the project direcory to another place, renaming part of path, use other IDE, use Git etc. </p>
@@ -1501,10 +1508,10 @@ general data which are often used. But try to avoid it as much as possible, sinc
 </div>
 <h3 id="setting-project-directory">Setting <em>project</em> directory</h3>
 <p>When starting, just create a directory for your project, move data files to the <em>data</em> directory, and create scripts in the <em>scripts</em> directory. Example of simple project directory structure:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>project_name/
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── data/
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── scripts/
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── outputs/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>project_name/
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── data/
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├── scripts/
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>├── outputs/
 </code></pre></div>
 <ul>
 <li><em>data/</em> - directory for all input data (<code>.csv</code>, <code>.shp</code>, <code>.gpkg</code>,<code>.tif</code>, ...)</li>
@@ -1546,33 +1553,33 @@ in the Czech Republic.</p>
 <li>Create a new project and directory (<em>first_project</em> or name it as you want) - this can be done in RStudio</li>
 <li>Create subdirectories in <em>data</em>, <em>scripts</em> and <em>outputs</em> - just creating directories</li>
 <li>Create a new script file <em>first_script.R</em> in the <em>scripts</em> directory - just creating file</li>
-<li>Download the data file<ul>
-<li>go to the <a href="https://drusop.nature.cz/">https://drusop.nature.cz/</a> and select <em>Maloplošná zvláště chráněná území</em> in
- the <strong>Objekty ústředního seznamu</strong> section.</li>
-<li>click the <em>Export</em> button, - check all with <em>Označ/Zruš VŠE na stránce</em>, select <em>Excel (CSV)</em> format in <em>Formát</em>,
- <em>UTF-8</em> encoding in <em>Kódování</em>, and click export <em>Exportovat</em>. This will download the file <em>export.csv</em>. Move this
- file to the <em>data</em> directory.</li>
-</ul>
-</li>
+<li>Copy the <em>export.csv</em> to the <em>data</em> directory</li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Originally the file was downloaded this way
+    - go to the <a href="https://drusop.nature.cz/">https://drusop.nature.cz/</a> and select <em>Maloplošná zvláště chráněná území</em> in
+    the <strong>Objekty ústředního seznamu</strong> section.
+    - click the <em>Export</em> button, - check all with <em>Označ/Zruš VŠE na stránce</em>, select <em>Excel (CSV)</em> format in <em>Formát</em>,
+    <em>UTF-8</em> encoding in <em>Kódování</em>, and click export <em>Exportovat</em>. This will download the file <em>export.csv</em>. Move this
+    file to the <em>data</em> directory.</p>
+</div>
 <p><strong>Aim of the project</strong>:</p>
 <p>Perform some basic exploration of the data, and create a <code>.csv</code> table only with protected areas with area larger than 500 ha, declared from the 2020.</p>
 <h3 id="dataset">Dataset</h3>
 <p>The dataset contain information about smaller specially protected areas in 4 categories: national nature reserves (NPR), nature reserves (PR), national natural monuments (NPP), and natural monuments (PP)</p>
-<h3 id="reading-data-and-general-exploration">Reading data and general exploration</h3>
-<p>Our file is <code>.csv</code> file, which is simple data structure for storing tables in simple text file, see <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> on Wikipedia. You can open <code>.csv</code> in common spreadsheet editor such as MS Excel or Libre Oficce Calc. In R we can read it with the function <code>read.csv()</code>. As an argument, we pass the path to the file. The path can be absolute or relative, and it can be also url pointing to the file on some server. </p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">)</span>
 </code></pre></div>
-Now we have the data stored in the <code>df</code> object, which is <code>data.frame</code> object. Now you need to check if the data are read correctly (which is not always the case). You can show the data with calling <code>df</code> as any other object:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">df</span>
+<p>Now you need to check if the data are read correctly (which is not always the case). You can show the data with calling <code>df</code> as any other object:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">df</span>
 </code></pre></div>
 But as you see this is not ideal. There are two functions to explore the data - <code>head()</code> and <code>str()</code> (from previous section).</p>
 <p><code>head()</code> returns a <code>data.frame</code> with the first 6 rows of the original data frame:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
 <p>Now we can se that the data is messy. Better way to explore the data is to use <code>str()</code> function, which returns the 
 structure of the data frame, including rows and columns count, columns data types and names, and example of first values in the columns</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1583,12 +1590,12 @@ Evidently this is caused by reading data with wrong separator, because the <code
 default separator, but the data are separated by semicolon (<code>;</code>).</p>
 <p>This and many ohter parameters can be set in the <code>read.csv()</code> function as arguments, see <code>?read.csv</code> for help.</p>
 <p>To set the separator, we can use the <code>sep</code> argument:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
 <p>Strucutre of the data now looks better but still not ideal - check the column <code>Rozloha..ha</code> which have data type <code>chr</code> (<em>character</em>) but should be <code>num</code> (<em>numeric</em>). This is caused by the decimal separator, which is comma (<code>,</code>) instead of dot (<code>.</code>). This can be set in the <code>read.csv()</code> function with the <code>dec</code> argument:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="exploring-and-cleaning-data">Exploring and cleaning data</h3>
 <p>Now when we correctly read the data, we can explore them. We did some exploration with the <code>str()</code> function, 
@@ -1602,18 +1609,18 @@ We can check this by many ways. We know that every monument has its unique code 
 
 - using the `duplicated()` and `sum()` - `duplicated()` returns logical vector of duplicated rows (vector of `TRUE` or `FLASE` values), and `sum()` counts the number of `TRUE` values:
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">dupl_kod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">duplicated</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="p">)</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nf">sum</span><span class="p">(</span><span class="n">dupl_kod</span><span class="p">)</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># or simply</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nf">sum</span><span class="p">(</span><span class="nf">duplicated</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">dupl_kod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">duplicated</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="p">)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nf">sum</span><span class="p">(</span><span class="n">dupl_kod</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># or simply</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nf">sum</span><span class="p">(</span><span class="nf">duplicated</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="p">))</span>
 </code></pre></div>
 - using the `unique()` and `length()` - `unique()` returns unique values in the vector, and `length()` counts the number of unique values, so if length of unique values is same as length of the original data, there are no duplicates:
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">uniq_kod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">unique</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="p">)</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nf">length</span><span class="p">(</span><span class="n">uniq_kod</span><span class="p">)</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># or simply</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="p">))</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nf">length</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="p">)</span><span class="w"> </span><span class="c1"># length of original data</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">uniq_kod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">unique</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">length</span><span class="p">(</span><span class="n">uniq_kod</span><span class="p">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># or simply</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="p">))</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nf">length</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="p">)</span><span class="w"> </span><span class="c1"># length of original data</span>
 </code></pre></div>
 
 So now we know that each protected area is represented by single row. -->
@@ -1622,20 +1629,20 @@ So now we know that each protected area is represented by single row. -->
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">code</label><label for="__tabbed_1_2">solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">)</span>
 </code></pre></div>
 <p>returns <code>NA</code>, which indicates that there are some <code>NA</code> values in the data. </p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>This can be further explored by the <code>is.na()</code> function, which returns logical vector of <code>TRUE</code> and <code>FALSE</code> values. This can be simply checked be <code>unique()</code> function (show unique values of vector), or summarized with <code>table()</code> function (counts the unique values of vector).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">table</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">))</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nf">unique</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nf">table</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">))</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nf">unique</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">))</span>
 </code></pre></div>
 </div>
 </div>
 <div class="tabbed-block">
 <p>We can use the <code>na.rm</code> argument to remove the <code>NA</code> values from the calculation:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 </code></pre></div>
 </div>
 </div>
@@ -1643,7 +1650,7 @@ So now we know that each protected area is represented by single row. -->
 <h4 id="explore-the-na-value-of-the-rozlohaha-column">Explore the <code>NA</code> value of the <code>Rozloha..ha</code> column</h4>
 <p>We know that we can perform some calculation ommiting the na with the <code>na.rm</code> argument, but its good to know what is the <code>NA</code> value in the data.</p>
 <p>We know that we can return logical vector of <code>TRUE</code> and <code>FALSE</code> values with the <code>is.na()</code> function, and further use this vector to subset the data frame, returning only the row with <code>NA</code> value in the <code>Rozloha..ha</code> column: </p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">df</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),]</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">df</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),]</span>
 </code></pre></div>
 Which returns line <code>2681</code>, and as we know the <code>df</code> have <code>2681</code> rows (<em>observations</em>), so its the last row of the data.</p>
 <p>Its clear that the last row is not a valid observation, and in this case its kind of metadata from data provider, so it should be cleaned up from the data.</p>
@@ -1652,48 +1659,48 @@ Which returns line <code>2681</code>, and as we know the <code>df</code> have <c
 <ul>
 <li>simpy with the <code>[-2681]</code> notation, where <code>-</code> mens to exclude the row with index <code>2681</code>:</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">df</span><span class="p">[</span><span class="m">-2681</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">df</span><span class="p">[</span><span class="m">-2681</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 - with the subset of using <code>is.na()</code> function, but using <code>!</code> operator to negate (<em>reverse</em>) the logical vector, so it performs the opposite operation - get all rows where <code>Rozloha..ha</code> is not <code>NA</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 <ul>
 <li>with the subset of string of some column</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;COUNT:&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Kód</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;COUNT:&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 <p>Choose the one you like the most, and assign it to the <code>df</code> object:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 <h4 id="dealing-with-dates">Dealing with Dates</h4>
 <p>There are few columns with dates in the data, for example <code>Datum.prvního.vyhlášení</code>. This column is the <code>character</code> data type, but if we want to work with dates, we have to convert it for further analyssis like counting the number of protected areas with certain year of declaration, etc.</p>
 <p>We can convert the column to the <code>Date</code> class with the <code>as.Date()</code> function. Or just retrieve the desired information (year) with the <code>substr()</code> function.</p>
 <p>We need to know how the dates looks like, so we list first, or first few dates:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">]</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">]</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">])</span>
 </code></pre></div>
 <p>So this date is formatted as <code>dd.mm.yyyy</code> - <code>day.month.year</code>, so we can use the <code>as.Date()</code> function with the <code>format</code> argument with <code>"%d.%m.%Y"</code> to convert the column to the <code>Date</code> class (in <code>YYYY-MM-DD</code> format):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nf">class</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nf">class</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">))</span>
 </code></pre></div>
 <p>If we have task to find the newest protected area, we can use the <code>max()</code> function on the converted column:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nf">max</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">)</span><span class="w"> </span><span class="c1"># nonsense, its character - text</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nf">max</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nf">max</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">)</span><span class="w"> </span><span class="c1"># nonsense, its character - text</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nf">max</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">))</span>
 </code></pre></div>
 <p>Converting column to the <code>Date</code> class is just replacing the values with the new values in <code>Date</code> class:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nf">max</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="nf">max</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">)</span>
 </code></pre></div>
 Now we can filter the data with the date, for example to get the protected areas declared after 2020:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-01-01&quot;</span><span class="p">)</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-01-01&quot;</span><span class="p">)</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,]</span>
 </code></pre></div>
 <h4 id="other-exploration">Other exploration</h4>
 <h5 id="get-the-protected-areas-with-area-larger-than-500-ha-and-category-npr">Get the protected areas with area larger than 500 ha and category NPR</h5>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="p">,]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="p">,]</span>
 </code></pre></div>
 <h5 id="get-the-protected-areas-with-area-larger-than-500-ha-and-category-npr_1">Get the protected areas with area larger than 500 ha and category NPR</h5>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Kategorie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NPR&quot;</span><span class="p">,]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Kategorie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NPR&quot;</span><span class="p">,]</span>
 </code></pre></div>
 <h5 id="what-is-the-total-area-of-the-protected-areas">What is the total area of the protected areas?</h5>
 <h5 id="which-protected-area-is-the-largest">Which protected area is the largest?</h5>
@@ -1701,31 +1708,31 @@ Now we can filter the data with the date, for example to get the protected areas
 <h5 id="how-many-protected-areas-are-in-each-category">How many protected areas are in each category?</h5>
 <h3 id="writing-the-output">Writing the output</h3>
 <p>As we cane read the <code>.csv</code> file, we can also creating/write it. We can use the <code>write.csv()</code> function from the <code>write.</code> family of functions. The <code>write.csv()</code> function writes the <code>data.frame</code> to the <code>.csv</code> file. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nf">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/processed_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="c1"># we use the row.names = FALSE to not write the row names to the file</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nf">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/processed_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="c1"># we use the row.names = FALSE to not write the row names to the file</span>
 </code></pre></div>
 <p>If the task was: Create export of the protected areas with area larger than 500 ha and category NPR, the entire script can look like this:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-01-01&quot;</span><span class="p">)</span>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,]</span>
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
-<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="p">,]</span>
-<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Kategorie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NPR&quot;</span><span class="p">,]</span>
-<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>
-<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="nf">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/processed_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-</code></pre></div>
-<p>or using the "and" operator <code>&amp;</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
 <a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-01-01&quot;</span><span class="p">)</span>
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Kategorie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NPR&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
-<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="nf">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/processed_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-01-01&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,]</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="p">,]</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Kategorie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NPR&quot;</span><span class="p">,]</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="nf">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/processed_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+</code></pre></div>
+<p>or using the "and" operator <code>&amp;</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-01-01&quot;</span><span class="p">)</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Kategorie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NPR&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="nf">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/processed_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="practice-exploration">Practice exploration</h2>
 <p>Practice some exploration on the Zoraptera Occurrence Dataset (https://zenodo.org/records/14652555). The dataset contains information about the occurrence of the order Zoraptera. The link directly to dataset is "https://raw.githubusercontent.com/kalab-oto/zoraptera-occurrence-dataset/refs/tags/1.1.0/zoraptera_occs.csv"</p>
@@ -1736,7 +1743,7 @@ Now we can filter the data with the date, for example to get the protected areas
 <p>Read the data, and assign them to the <code>zoraptera</code> object</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">zoraptera</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;https://raw.githubusercontent.com/kalab-oto/zoraptera-occurrence-dataset/refs/tags/1.1.0/zoraptera_occs.csv&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">zoraptera</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;https://raw.githubusercontent.com/kalab-oto/zoraptera-occurrence-dataset/refs/tags/1.1.0/zoraptera_occs.csv&quot;</span><span class="p">)</span>
 </code></pre></div>
 </div>
 </div>
