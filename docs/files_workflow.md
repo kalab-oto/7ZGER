@@ -11,9 +11,9 @@ In this section we will work with `.csv` files, which is simple data structure f
 At first we will read simple `.csv` file with same data we have in the previous section, but now stored in the file `simple_data.csv`. We will read the file with the `read.csv()`, pointing to the file with absolute path.
 
 
+The absolute path should be replaced with the path to the file on your computer, for example:
 ``` r
 df <- read.csv("C:/Users/student/Downloads/simple_data.csv")
-df <- read.csv("/home/kalab/Stažené/simple_data.csv")
 ```
 
 Now we have the data stored in the `df` object, which is `data.frame` object. 
