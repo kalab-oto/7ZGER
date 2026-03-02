@@ -55,3 +55,13 @@ When writing scripts, it is good practice to load all packages at the beginning 
 
 !!! note "Technical note"
     Sometimes you can also see use of `require()` function, which is similar to `library()`, but it returns `TRUE` or `FALSE` if the package is loaded or not. And also use of `::` operator, which is used to call functions from package without loading it, like `sf::st_read()` for using `st_read()` function from `sf` package without loading it. Also the `::` operator is used to declare from which package the function is, when there are functions with the same name in the environment (R base or from different packages).
+
+## Summary
+
+### Main outcomes
+- awerness of that there are different classes of objects in R
+- what is package and how to install and load it
+
+### Function overview
+- `install.packages()` - install packages from CRAN
+- `library()` - load package in session
