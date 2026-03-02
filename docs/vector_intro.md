@@ -30,11 +30,11 @@ To read the data we will use `st_read()` function, in same way as we read the `c
 vzchu <- st_read("data/vzchu/vzchu.shp")
 ```
 
-!!! note "`read_sf`"
-    there is also function `read_sf` - which is only alias for `st_read` with different default arguments. For more info see `?st_read` or `?read_sf` (similar applies for `write_sf` and `st_write`). The main noticable difference is that `read_sf` reads data as `sf-tibble` and `st_read` as `sf-data.frame`. 
+<!-- !!! note "`read_sf`"
+    there is also function `read_sf` - which is only alias for `st_read` with different default arguments. For more info see `?st_read` or `?read_sf` (similar applies for `write_sf` and `st_write`). The main noticable difference is that `read_sf` reads data as `sf-tibble` and `st_read` as `sf-data.frame`.  -->
 
 
-!!! note "`st_layers`"
+!!! note "More layers in a file"
     If you work with files that can store multiple layers (like `geopackage`), you have to specify which layer to read by adding `layer` argument. To see available layers in file use `st_layers` function.
 
 Check the structure of the data
@@ -177,12 +177,12 @@ plot(vzchu[vzchu$NAZEV == "Labské pískovce","geometry"])
 
 !!! info "Do you remeber the difference of `[]` and `$` operators?"
 
-    `[]` - keeping classes, with `list` this returns `list`, with `data.frame` returns the `data.frame`, and now with `sf` object - returns `sf` object
+    `[]` - keeping classes, with `data.frame` returns the `data.frame`, and now with `sf` object - returns `sf` object. ``$` - subset which always returns the vector of the column.
    
     ``` r
     vzchu["SHAPE_AREA"]
-    class(vzchu["SHAPE_AREA"])
     ```
+    <!-- class(vzchu["SHAPE_AREA"]) -->
     thus plot use `sf` object
     
     ``` r
@@ -193,8 +193,8 @@ plot(vzchu[vzchu$NAZEV == "Labské pískovce","geometry"])
 
     ``` r
     vzchu$SHAPE_AREA
-    class(vzchu["SHAPE_AREA"])
     ```
+    <!-- class(vzchu$SHAPE_AREA) -->
     plot use `numeric` vector
 
     ``` r
@@ -205,8 +205,8 @@ plot(vzchu[vzchu$NAZEV == "Labské pískovce","geometry"])
 
     ``` r
     vzchu$geometry
-    class(vzchu$geometry)
     ```
+    <!-- class(vzchu$geometry) -->
     thus plotting:
     
     ``` r
@@ -220,7 +220,7 @@ plot(vzchu[vzchu$NAZEV == "Labské pískovce","geometry"])
 
 Now we will explore some spatial properties of the data.
 
-#### Geometry type
+<!-- #### Geometry type
 
 ``` r
 st_geometry_type(vzchu)
@@ -233,16 +233,16 @@ st_cast(vzchu, "POLYGON")
 ```
 
 !!! note
-    `st_cast` can be useful if you have mixed geometry types, typically multi-part features with single-part features., then you can convert all of them to multi-part features.
+    `st_cast` can be useful if you have mixed geometry types, typically multi-part features with single-part features., then you can convert all of them to multi-part features. -->
 
-#### bounding box
+#### Bounding box
 
 Bounding box is the rectangle that encloses all the geometries in the data.
 
 ``` r
 st_bbox(vzchu)
-class(st_bbox(vzchu))
 ```
+<!-- class(st_bbox(vzchu)) -->
 
 #### CRS - coordinate reference system
 
@@ -250,8 +250,8 @@ See the definition of the coordinate reference system (CRS)
 
 ``` r
 st_crs(vzchu)
-class(st_crs(vzchu))
 ```
+<!-- class(st_crs(vzchu)) -->
 
 You can transform `sf` data to other CRS with `st_transform` function. For example we can change the CRS to WGS84 (EPSG:4326)
 
@@ -337,7 +337,7 @@ plot(vzchu["Nadmořská.výška.min."])
 
 
 <!-- ## exercise
-plot only National Parks
+
  -->
 
 
@@ -348,5 +348,29 @@ plot only National Parks
 Finally we will write the data to the file. We will use `st_write` function, which is used for writing `sf` objects to the file. 
 
 ``` r
-st_write(vzchu, "outputs/vzchu_out.shp")
+st_write(vzchu, "output/vzchu_out.shp")
 ```
+
+
+## Summary
+
+### Main outcomes
+- 
+
+### Function overview
+#### General
+- `names()` - return the names of the columns in a data frame
+- `plot()`, `hist()`, `barplot()` - basic plots
+
+#### Spatial -`sf` package
+- `st_read()` - read a spatial file and create an `sf` object
+- `st_bbox()` - calculate the bounding box of the geometries
+- `st_crs()` - return the coordinate reference system of the data
+- `st_transform()` - transform the data to another coordinate reference system
+- `st_area()` - calculate the area of the geometries
+- `st_perimeter()` - calculate the perimeter of the geometries
+- `st_write()` - write an `sf` object to a spatial file
+
+
+## Practice exploration
+- Plot only National Parks
