@@ -298,8 +298,8 @@ Since this is similar data as last lesson, we can see similar problems. We resol
 df <- read.csv("data/export.csv", sep = ";", dec = ",")
 
 df <- df[!is.na(df$Rozloha..ha), ]
-# df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y")
 ```
+<!-- df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y") -->
 
 Before join, we have to check the column names 
 ``` r
