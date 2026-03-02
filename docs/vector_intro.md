@@ -24,7 +24,7 @@ Load `sf` package (if not installed, install it with `install.packages("sf")` in
 library(sf)
 ```
 
-Read the data
+To read the data we will use `st_read()` function, in same way as we read the `csv` table with `read.csv()`. 
 
 ``` r
 vzchu <- st_read("data/vzchu/vzchu.shp")
@@ -51,9 +51,9 @@ str(vzchu)
 summary(vzchu)
 ```
 
-``` r
+<!-- ``` r
 class(vzchu)
-```
+``` -->
 ``` r
 head(vzchu)
 ```
@@ -298,7 +298,7 @@ Since this is similar data as last lesson, we can see similar problems. We resol
 df <- read.csv("data/export.csv", sep = ";", dec = ",")
 
 df <- df[!is.na(df$Rozloha..ha), ]
-df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y")
+# df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y")
 ```
 
 Before join, we have to check the column names 
@@ -331,6 +331,47 @@ plot(vzchu["Nadmořská.výška.min."])
 ```
 
 
+### Dealing with Dates
+There are few columns with dates in the data, for example `Datum.prvního.vyhlášení`. This column is the `character` data type, but if we want to work with dates, we have to convert it for further analyssis like counting the number of protected areas with certain year of declaration, etc.
+
+We can convert the column to the `Date` class with the `as.Date()` function. Or just retrieve the desired information (year) with the `substr()` function.
+
+We need to know how the dates looks like, so we list first, or first few dates:
+
+```r
+vzchu$Datum.prvního.vyhlášení[1:10]
+class(vzchu$Datum.prvního.vyhlášení[1:10])
+```
+
+So this date is formatted as `dd.mm.yyyy` - `day.month.year`, so we can use the `as.Date()` function with the `format` argument with `"%d.%m.%Y"` to convert the column to the `Date` class (in `YYYY-MM-DD` format):
+
+``` r
+as.Date(vzchu$Datum.prvního.vyhlášení[1:10], format = "%d.%m.%Y")
+class(as.Date(vzchu$Datum.prvního.vyhlášení[1:10], format = "%d.%m.%Y"))
+```
+
+If we have task to find the newest protected area, we can use the `max()` function on the converted column:
+
+``` r
+max(vzchu$Datum.prvního.vyhlášení) # nonsense, its character - text
+max(as.Date(vzchu$Datum.prvního.vyhlášení, format = "%d.%m.%Y"))
+```
+
+Converting column to the `Date` class is just replacing the values with the new values in `Date` class:
+
+``` r
+vzchu$Datum.prvního.vyhlášení <- as.Date(vzchu$Datum.prvního.vyhlášení, format = "%d.%m.%Y")
+max(vzchu$Datum.prvního.vyhlášení)
+```
+Now we can filter the data with the date, for example to get the protected areas declared after 2020:
+
+``` r
+d <- as.Date("2020-01-01")
+vzchu[vzchu$Datum.prvního.vyhlášení > d,]
+```
+
+
+
 <!-- ## `data.frame` with coordinates to point `sf` -->
 
 
@@ -342,5 +383,9 @@ plot only National Parks
 
 
 ### Writing data
-<!-- 
-Finally we will write the data to the file. We will use `st_write` function, which is used for writing `sf` objects to the file.  -->
+
+Finally we will write the data to the file. We will use `st_write` function, which is used for writing `sf` objects to the file. 
+
+``` r
+st_write(vzchu, "outputs/vzchu_out.shp")
+```
