@@ -5,8 +5,8 @@
 
 As with vector data, raster data can be handled with various packages. The most common package is the `terra` package, successor of the deprecated `raster` package. `terra` package is also capable process vector data, but it is not as complex as `sf` package in this way. 
 
-!!! note 
-    `terra` objects are spcific objects (S4), data are stoed in matrix/array not in data.frame. It have hidden structure and its not stored in lists like `sf` objects. To access the metadata you have to use specific functions.
+!!! note "Technical note"
+    `terra` objects are spcific objects (S4), data are stored in matrix/array not in data.frame. It have hidden structure and its not stored in lists like `sf` objects. To access the metadata you have to use specific functions.
 
 <!-- 7. Raster Data - packages, reading and writing files, terrain analysis, reclassification  -->
 
