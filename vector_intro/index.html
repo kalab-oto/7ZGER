@@ -647,21 +647,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#geometry-type" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Geometry type
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#bounding-box" class="md-nav__link">
     <span class="md-ellipsis">
       
-        bounding box
+        Bounding box
       
     </span>
   </a>
@@ -719,6 +708,84 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main outcomes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Function overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Function overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial-sf-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spatial -sf package
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice exploration
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1178,21 +1245,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#geometry-type" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Geometry type
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#bounding-box" class="md-nav__link">
     <span class="md-ellipsis">
       
-        bounding box
+        Bounding box
       
     </span>
   </a>
@@ -1253,6 +1309,84 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main outcomes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Function overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Function overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial-sf-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spatial -sf package
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice exploration
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1297,12 +1431,11 @@
 <p>To read the data we will use <code>st_read()</code> function, in same way as we read the <code>csv</code> table with <code>read.csv()</code>. </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">vzchu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_read</span><span class="p">(</span><span class="s">&quot;data/vzchu/vzchu.shp&quot;</span><span class="p">)</span>
 </code></pre></div>
+<!-- !!! note "`read_sf`"
+    there is also function `read_sf` - which is only alias for `st_read` with different default arguments. For more info see `?st_read` or `?read_sf` (similar applies for `write_sf` and `st_write`). The main noticable difference is that `read_sf` reads data as `sf-tibble` and `st_read` as `sf-data.frame`.  -->
+
 <div class="admonition note">
-<p class="admonition-title"><code>read_sf</code></p>
-<p>there is also function <code>read_sf</code> - which is only alias for <code>st_read</code> with different default arguments. For more info see <code>?st_read</code> or <code>?read_sf</code> (similar applies for <code>write_sf</code> and <code>st_write</code>). The main noticable difference is that <code>read_sf</code> reads data as <code>sf-tibble</code> and <code>st_read</code> as <code>sf-data.frame</code>. </p>
-</div>
-<div class="admonition note">
-<p class="admonition-title"><code>st_layers</code></p>
+<p class="admonition-title">More layers in a file</p>
 <p>If you work with files that can store multiple layers (like <code>geopackage</code>), you have to specify which layer to read by adding <code>layer</code> argument. To see available layers in file use <code>st_layers</code> function.</p>
 </div>
 <p>Check the structure of the data</p>
@@ -1387,24 +1520,24 @@ class(vzchu)
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Do you remeber the difference of <code>[]</code> and <code>$</code> operators?</p>
-<p><code>[]</code> - keeping classes, with <code>list</code> this returns <code>list</code>, with <code>data.frame</code> returns the <code>data.frame</code>, and now with <code>sf</code> object - returns <code>sf</code> object</p>
+<p><code>[]</code> - keeping classes, with <code>data.frame</code> returns the <code>data.frame</code>, and now with <code>sf</code> object - returns <code>sf</code> object. <code>`$</code> - subset which always returns the vector of the column.</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;SHAPE_AREA&quot;</span><span class="p">]</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;SHAPE_AREA&quot;</span><span class="p">])</span>
 </code></pre></div>
+<!-- class(vzchu["SHAPE_AREA"]) -->
 thus plot use <code>sf</code> object</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;SHAPE_AREA&quot;</span><span class="p">])</span>
 </code></pre></div>
 <p><code>$</code> - subset which always returns the data as <code>numeric</code> vector</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;SHAPE_AREA&quot;</span><span class="p">])</span>
 </code></pre></div>
+<!-- class(vzchu$SHAPE_AREA) -->
 plot use <code>numeric</code> vector</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span><span class="p">)</span>
 </code></pre></div>
 <p>but! you can use <code>$</code> with <code>sf</code> object to get spatial data (<code>sfc</code> class) with the <code>geometry</code> column, since it is special <code>sfc</code> class column (see <code>str(vzchu)</code> above)</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span>
 </code></pre></div>
+<!-- class(vzchu$geometry) -->
 thus plotting:</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;geometry&quot;</span><span class="p">])</span>
 <a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span><span class="w"> </span><span class="c1"># same as `plot(st_geometry(vzchu))`</span>
@@ -1413,26 +1546,31 @@ looks the same, but the first one is <code>sf</code> object and the second one i
 </div>
 <h3 id="spatial-proeprties">Spatial proeprties</h3>
 <p>Now we will explore some spatial properties of the data.</p>
-<h4 id="geometry-type">Geometry type</h4>
+<!-- #### Geometry type
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nf">st_geometry_type</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div>
-<p>geometry type can be converted with <code>st_cast</code> function. For example whe have <code>MULTIPOLYGON</code> (multi-part features) and we want to convert it to <code>POLYGON</code> (single-part features).</p>
+
+geometry type can be converted with `st_cast` function. For example whe have `MULTIPOLYGON` (multi-part features) and we want to convert it to `POLYGON` (single-part features).
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nf">st_cast</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POLYGON&quot;</span><span class="p">)</span>
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code>st_cast</code> can be useful if you have mixed geometry types, typically multi-part features with single-part features., then you can convert all of them to multi-part features.</p>
-</div>
-<h4 id="bounding-box">bounding box</h4>
+
+!!! note
+    `st_cast` can be useful if you have mixed geometry types, typically multi-part features with single-part features., then you can convert all of them to multi-part features. -->
+
+<h4 id="bounding-box">Bounding box</h4>
 <p>Bounding box is the rectangle that encloses all the geometries in the data.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nf">st_bbox</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nf">class</span><span class="p">(</span><span class="nf">st_bbox</span><span class="p">(</span><span class="n">vzchu</span><span class="p">))</span>
 </code></pre></div>
+<!-- class(st_bbox(vzchu)) -->
+
 <h4 id="crs-coordinate-reference-system">CRS - coordinate reference system</h4>
 <p>See the definition of the coordinate reference system (CRS) </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="nf">class</span><span class="p">(</span><span class="nf">st_crs</span><span class="p">(</span><span class="n">vzchu</span><span class="p">))</span>
 </code></pre></div>
+<!-- class(st_crs(vzchu)) -->
+
 <p>You can transform <code>sf</code> data to other CRS with <code>st_transform</code> function. For example we can change the CRS to WGS84 (EPSG:4326)</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nf">st_transform</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="m">4326</span><span class="p">)</span>
 </code></pre></div>
@@ -1480,13 +1618,38 @@ notice the transformed geometry column</p>
 <!-- ## `data.frame` with coordinates to point `sf` -->
 
 <!-- ## exercise
-plot only National Parks
+
  -->
 
 <h3 id="writing-data">Writing data</h3>
 <p>Finally we will write the data to the file. We will use <code>st_write</code> function, which is used for writing <code>sf</code> objects to the file. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nf">st_write</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/vzchu_out.shp&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nf">st_write</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;output/vzchu_out.shp&quot;</span><span class="p">)</span>
 </code></pre></div>
+<h2 id="summary">Summary</h2>
+<h3 id="main-outcomes">Main outcomes</h3>
+<ul>
+<li></li>
+</ul>
+<h3 id="function-overview">Function overview</h3>
+<h4 id="general">General</h4>
+<ul>
+<li><code>names()</code> - return the names of the columns in a data frame</li>
+<li><code>plot()</code>, <code>hist()</code>, <code>barplot()</code> - basic plots</li>
+</ul>
+<h4 id="spatial-sf-package">Spatial -<code>sf</code> package</h4>
+<ul>
+<li><code>st_read()</code> - read a spatial file and create an <code>sf</code> object</li>
+<li><code>st_bbox()</code> - calculate the bounding box of the geometries</li>
+<li><code>st_crs()</code> - return the coordinate reference system of the data</li>
+<li><code>st_transform()</code> - transform the data to another coordinate reference system</li>
+<li><code>st_area()</code> - calculate the area of the geometries</li>
+<li><code>st_perimeter()</code> - calculate the perimeter of the geometries</li>
+<li><code>st_write()</code> - write an <code>sf</code> object to a spatial file</li>
+</ul>
+<h2 id="practice-exploration">Practice exploration</h2>
+<ul>
+<li>Plot only National Parks</li>
+</ul>
 
 
 
