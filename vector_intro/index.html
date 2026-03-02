@@ -707,17 +707,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dealing-with-dates" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dealing with Dates
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#writing-data" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1249,17 +1238,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dealing-with-dates" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dealing with Dates
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#writing-data" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1499,29 +1477,6 @@ notice the transformed geometry column</p>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;Nadmořská.výška.min.&quot;</span><span class="p">])</span>
 </code></pre></div>
-<h3 id="dealing-with-dates">Dealing with Dates</h3>
-<p>There are few columns with dates in the data, for example <code>Datum.prvního.vyhlášení</code>. This column is the <code>character</code> data type, but if we want to work with dates, we have to convert it for further analyssis like counting the number of protected areas with certain year of declaration, etc.</p>
-<p>We can convert the column to the <code>Date</code> class with the <code>as.Date()</code> function. Or just retrieve the desired information (year) with the <code>substr()</code> function.</p>
-<p>We need to know how the dates looks like, so we list first, or first few dates:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">]</span>
-<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">])</span>
-</code></pre></div>
-<p>So this date is formatted as <code>dd.mm.yyyy</code> - <code>day.month.year</code>, so we can use the <code>as.Date()</code> function with the <code>format</code> argument with <code>"%d.%m.%Y"</code> to convert the column to the <code>Date</code> class (in <code>YYYY-MM-DD</code> format):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nf">as.Date</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
-<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="nf">class</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">))</span>
-</code></pre></div>
-<p>If we have task to find the newest protected area, we can use the <code>max()</code> function on the converted column:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nf">max</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">)</span><span class="w"> </span><span class="c1"># nonsense, its character - text</span>
-<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="nf">max</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">))</span>
-</code></pre></div>
-<p>Converting column to the <code>Date</code> class is just replacing the values with the new values in <code>Date</code> class:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
-<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="nf">max</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">)</span>
-</code></pre></div>
-Now we can filter the data with the date, for example to get the protected areas declared after 2020:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-01-01&quot;</span><span class="p">)</span>
-<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="n">vzchu</span><span class="p">[</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,]</span>
-</code></pre></div>
 <!-- ## `data.frame` with coordinates to point `sf` -->
 
 <!-- ## exercise
@@ -1530,7 +1485,7 @@ plot only National Parks
 
 <h3 id="writing-data">Writing data</h3>
 <p>Finally we will write the data to the file. We will use <code>st_write</code> function, which is used for writing <code>sf</code> objects to the file. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="nf">st_write</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/vzchu_out.shp&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nf">st_write</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/vzchu_out.shp&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 

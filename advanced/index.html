@@ -81,6 +81,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#optional-and-advanced-topic" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -710,6 +715,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extended advanced topics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -727,6 +752,36 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dealing-with-dates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dealing with Dates
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -900,6 +955,27 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dealing-with-dates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dealing with Dates
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -919,9 +995,33 @@
   
 
 
-  <h1>Extended advanced topics</h1>
-
-<!-- 12. Optional advanced topic - basics of Git, leaflet, reports, data.table, tidyverse, ...  -->
+<h1 id="optional-and-advanced-topic">Optional and advanced topic</h1>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+</code></pre></div>
+<h2 id="dealing-with-dates">Dealing with Dates</h2>
+<p>There are few columns with dates in the data, for example <code>Datum.prvního.vyhlášení</code>. This column is the <code>character</code> data type, but if we want to work with dates, we have to convert it for further analyssis like counting the number of protected areas with certain year of declaration, etc.</p>
+<p>We can convert the column to the <code>Date</code> class with the <code>as.Date()</code> function. Or just retrieve the desired information (year) with the <code>substr()</code> function.</p>
+<p>We need to know how the dates looks like, so we list first, or first few dates:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">]</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">])</span>
+</code></pre></div>
+<p>So this date is formatted as <code>dd.mm.yyyy</code> - <code>day.month.year</code>, so we can use the <code>as.Date()</code> function with the <code>format</code> argument with <code>"%d.%m.%Y"</code> to convert the column to the <code>Date</code> class (in <code>YYYY-MM-DD</code> format):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nf">class</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>If we have task to find the newest protected area, we can use the <code>max()</code> function on the converted column:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">max</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">)</span><span class="w"> </span><span class="c1"># nonsense, its character - text</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nf">max</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>Converting column to the <code>Date</code> class is just replacing the values with the new values in <code>Date</code> class:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nf">max</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">)</span>
+</code></pre></div>
+Now we can filter the data with the date, for example to get the protected areas declared after 2020:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-01-01&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,]</span>
+</code></pre></div>
 
 
 
