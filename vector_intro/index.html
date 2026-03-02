@@ -1407,10 +1407,6 @@
   
 
 
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This page is in state from the spring semester 25, and will undergo changes for the actual semester.</p>
-</div>
 <h1 id="vector-data">Vector data</h1>
 <p>In R we can work with vector data using many packages, but the most popular and widely used is <code>sf</code> package, and we will use it in following lessons. Other packages used for spatial vector data processing are <code>stars</code> and <code>terra</code>, and discontinued <code>sp</code> and <code>raster</code> packages. Each from this packages has its own data classes, but they can be easily converted between each other, which can be useful, since some other packages may be dependent on data classes from specific package.</p>
 <h2 id="exercise">Exercise</h2>
@@ -1465,7 +1461,7 @@ class(vzchu)
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">vzchu</span><span class="p">[</span><span class="n">vzchu</span><span class="o">$</span><span class="n">KAT</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NP&quot;</span><span class="p">,]</span>
 </code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">Technical note</p>
 <p>You can drop the geometries and get plain <code>data.frame</code> without geometries and vice versa.</p>
 <p>drop geometries</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">vzchu_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
@@ -1482,8 +1478,8 @@ class(vzchu)
 <p>plot two numeric columns</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span><span class="p">,</span><span class="w"> </span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_LEN</span><span class="p">)</span>
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">advanced</p>
+<div class="admonition tip">
+<p class="admonition-title">Advanced</p>
 <p>regression line (linear model fit <code>lm</code>) can be easily added to the plot using <code>abline</code> function</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">area_len_lm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_LEN</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span><span class="p">)</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
@@ -1586,44 +1582,53 @@ notice the transformed geometry column</p>
 <p>add the area and perimeter to the data</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">area</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_area</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 <a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">perimeter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_perimeter</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
-<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">shape</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_perimeter</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span><span class="o">/</span><span class="nf">st_area</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+</code></pre></div>
+<p>also you can calculate some shape index (perimeter to area ratio) directly, for example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">shape</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_perimeter</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">st_area</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="joining-attribute-data-dataframe">Joining attribute data (<code>data.frame</code>)</h3>
-<p>Now we will join the additional informations from the table to the <code>sf</code> object. We will use <code>merge</code> function, which is used for merging data frames. In this example we will join the information about the date of the first declaration of the National Park or Protected Landscape Area, and minimum elevation.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">)</span>
+<p>Now we will join the additional informations from the table to the <code>sf</code> object. We will use <code>merge</code> function, which is used for merging data frames by matching column values. So you need some matching unique identifier in both datasets. In this example we will join the information about the date of the first declaration of the National Park or Protected Landscape Area, and minimum elevation.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Since this is similar data as last lesson, we can see similar problems. We resolve this using the part of the code from last lesson.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>
-<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 <!-- df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y") -->
 
-<p>Before join, we have to check the column names 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="nf">str</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<p>Before join, we have to check the column names, and also the values in the columns we want to join by, to see if they match.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="nf">str</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div></p>
-<p>filter out desired columns
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Kód&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Datum.prvního.vyhlášení&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Nadmořská.výška.min.&quot;</span><span class="p">)]</span>
-</code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">vzchu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">by.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;KOD&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">by.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Kód&quot;</span><span class="p">)</span>
+<p>Now we can see that the column with unique identifier in <code>df</code> is <code>Kód</code>, and in <code>vzchu</code> is <code>KOD</code>, so we can use these columns for joining.</p>
+<p>Also we can filter out desired columns in <code>df</code> data frame, to keep only the columns we want to join with <code>sf</code> object</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Kód&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;Nadmořská.výška.min.&quot;</span><span class="p">)]</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="n">vzchu</span>
+<p>While using the <code>merge()</code> function, we have to specify: 
+- the data frames to merge, 
+  - <code>x</code> - the first object (the <code>sf</code> object in this case) - the result will have the same class as this object
+  - <code>y</code> - the second object (the <code>data.frame</code> object in this case) 
+-   <code>by.x</code> - the column name in the first object (<code>x</code>) to join by
+-   <code>by.y</code> - the column name in the second object (<code>y</code>) to join by</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="n">vzchu_merged</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">by.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;KOD&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">by.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Kód&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>in case the column names are the same in both data frames, you can use <code>by</code> argument</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nf">names</span><span class="p">(</span><span class="n">df</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;KOD&quot;</span><span class="w"> </span><span class="c1"># rename the column in df to match the column in vzchu</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="n">vzchu_merged</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;KOD&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="n">vzchu_merged</span>
 </code></pre></div>
 <p>plot the results</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;Datum.prvního.vyhlášení&quot;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu_merged</span><span class="p">[</span><span class="s">&quot;Nadmořská.výška.min.&quot;</span><span class="p">])</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;Nadmořská.výška.min.&quot;</span><span class="p">])</span>
-</code></pre></div>
-<!-- ## `data.frame` with coordinates to point `sf` -->
-
-<!-- ## exercise
-
- -->
-
 <h3 id="writing-data">Writing data</h3>
 <p>Finally we will write the data to the file. We will use <code>st_write</code> function, which is used for writing <code>sf</code> objects to the file. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nf">st_write</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;output/vzchu_out.shp&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nf">st_write</span><span class="p">(</span><span class="n">vzchu_merged</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;output/vzchu_out.shp&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>If you want to owerwrite the existing fil you can control the behavior with <code>append</code> or <code>delete_dsn</code> arguments, see <code>?st_write</code> for more details.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nf">st_write</span><span class="p">(</span><span class="n">vzchu_merged</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;output/vzchu_out.shp&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">append</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="c1"># or </span>
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="nf">st_write</span><span class="p">(</span><span class="n">vzchu_merged</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;output/vzchu_out.shp&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">delete_dsn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="summary">Summary</h2>
 <h3 id="main-outcomes">Main outcomes</h3>
