@@ -1,5 +1,7 @@
 Summary of used functions in the course sorted by the order of appearance in the course. 
 
+## General functions
+
 - `round()` - round a number to a specified number of decimal places
 - `abs()` - absolute value of a number
 
@@ -17,3 +19,16 @@ Summary of used functions in the course sorted by the order of appearance in the
 
 - `install.packages()` - install packages from CRAN
 - `library()` - load package in session
+
+- `names()` - return the names of the columns in a data frame
+- `plot()`, `hist()`, `barplot()` - basic plots
+
+## Spatial functions - `sf` package
+
+- `st_read()` - read a spatial file and create an `sf` object
+- `st_bbox()` - calculate the bounding box of the geometries
+- `st_crs()` - return the coordinate reference system of the data
+- `st_transform()` - transform the data to another coordinate reference system
+- `st_area()` - calculate the area of the geometries
+- `st_perimeter()` - calculate the perimeter of the geometries
+- `st_write()` - write an `sf` object to a spatial file
