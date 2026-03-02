@@ -1,5 +1,10 @@
 # Packages
 
+## Class
+
+In R each object belong to some **Class**. The class of an object defines how the object behaves and how it looks like. So, what you can do with an object depends on objetcs class. Some operations are defined for some classes, but not for others. For example double and integers are both numeric classes, and thus you can do mathematical operations with them, but you cannot do mathematical operations with character class.
+
+## Packages
 Until this point, we relied in the in-built R functions (*Base R*), but in real world you will use functionality from R extensions called **packages**. 
 
 There are thousands of packages available on official default R repository called [CRAN](https://cran.r-project.org/). 
