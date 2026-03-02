@@ -1,7 +1,3 @@
-!!! warning
-    This page is in state from the spring semester 25, and will undergo changes for the actual semester.
-
-
 # Vector data
 
 In R we can work with vector data using many packages, but the most popular and widely used is `sf` package, and we will use it in following lessons. Other packages used for spatial vector data processing are `stars` and `terra`, and discontinued `sp` and `raster` packages. Each from this packages has its own data classes, but they can be easily converted between each other, which can be useful, since some other packages may be dependent on data classes from specific package.
@@ -85,7 +81,8 @@ subsetting the rows to get only National Parks
 vzchu[vzchu$KAT == "NP",]
 ```
 
-!!! note
+!!! note "Technical note"
+    
     You can drop the geometries and get plain `data.frame` without geometries and vice versa.
 
     drop geometries
@@ -114,7 +111,7 @@ plot two numeric columns
 plot(vzchu$SHAPE_AREA, vzchu$SHAPE_LEN)
 ```
 
-!!! note "advanced"
+!!! tip "Advanced"
     regression line (linear model fit `lm`) can be easily added to the plot using `abline` function
 
     ``` r
@@ -280,13 +277,18 @@ add the area and perimeter to the data
 ``` r
 vzchu$area <- st_area(vzchu)
 vzchu$perimeter <- st_perimeter(vzchu)
-vzchu$shape <- st_perimeter(vzchu)/st_area(vzchu)
-
 ```
+
+also you can calculate some shape index (perimeter to area ratio) directly, for example
+
+``` r
+vzchu$shape <- st_perimeter(vzchu) / st_area(vzchu)
+```
+
 
 ### Joining attribute data (`data.frame`)
 
-Now we will join the additional informations from the table to the `sf` object. We will use `merge` function, which is used for merging data frames. In this example we will join the information about the date of the first declaration of the National Park or Protected Landscape Area, and minimum elevation.
+Now we will join the additional informations from the table to the `sf` object. We will use `merge` function, which is used for merging data frames by matching column values. So you need some matching unique identifier in both datasets. In this example we will join the information about the date of the first declaration of the National Park or Protected Landscape Area, and minimum elevation.
 
 ``` r
 df <- read.csv("data/export.csv")
@@ -296,61 +298,68 @@ Since this is similar data as last lesson, we can see similar problems. We resol
 
 ``` r
 df <- read.csv("data/export.csv", sep = ";", dec = ",")
-
 df <- df[!is.na(df$Rozloha..ha), ]
 ```
 <!-- df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y") -->
 
-Before join, we have to check the column names 
+Before join, we have to check the column names, and also the values in the columns we want to join by, to see if they match.
 ``` r
 str(df)
 str(vzchu)
 ```
 
-filter out desired columns
+Now we can see that the column with unique identifier in `df` is `Kód`, and in `vzchu` is `KOD`, so we can use these columns for joining.
+
+
+Also we can filter out desired columns in `df` data frame, to keep only the columns we want to join with `sf` object
+
 ``` r
-df <- df[,c("Kód", "Datum.prvního.vyhlášení", "Nadmořská.výška.min.")]
+df <- df[,c("Kód",  "Nadmořská.výška.min.")]
+```
+
+While using the `merge()` function, we have to specify: 
+- the data frames to merge, 
+  - `x` - the first object (the `sf` object in this case) - the result will have the same class as this object
+  - `y` - the second object (the `data.frame` object in this case) 
+-   `by.x` - the column name in the first object (`x`) to join by
+-   `by.y` - the column name in the second object (`y`) to join by
+
+``` r
+vzchu_merged <- merge(vzchu, df, by.x = "KOD", by.y = "Kód")
+```
+
+in case the column names are the same in both data frames, you can use `by` argument
+
+```r
+names(df)[1] <- "KOD" # rename the column in df to match the column in vzchu
+vzchu_merged <- merge(vzchu, df, by = "KOD")
 ```
 
 ``` r
-vzchu <- merge(vzchu, df, by.x = "KOD", by.y = "Kód")
-```
-
-``` r
-vzchu
+vzchu_merged
 ```
 
 plot the results
 
 ``` r
-plot(vzchu["Datum.prvního.vyhlášení"])
+plot(vzchu_merged["Nadmořská.výška.min."])
 ```
-
-``` r
-plot(vzchu["Nadmořská.výška.min."])
-```
-
-
-
-
-<!-- ## `data.frame` with coordinates to point `sf` -->
-
-
-<!-- ## exercise
-
- -->
-
-
-
 
 ### Writing data
 
 Finally we will write the data to the file. We will use `st_write` function, which is used for writing `sf` objects to the file. 
 
 ``` r
-st_write(vzchu, "output/vzchu_out.shp")
+st_write(vzchu_merged, "output/vzchu_out.shp")
 ```
 
+If you want to owerwrite the existing fil you can control the behavior with `append` or `delete_dsn` arguments, see `?st_write` for more details.
+
+``` r
+st_write(vzchu_merged, "output/vzchu_out.shp", append = FALSE)
+# or 
+st_write(vzchu_merged, "output/vzchu_out.shp", delete_dsn = TRUE)
+``` 
 
 ## Summary
 
