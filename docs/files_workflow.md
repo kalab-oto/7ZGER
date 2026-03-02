@@ -1,6 +1,3 @@
-!!! warning
-    This page is in state from the spring semester 25, and will undergo changes for the actual semester.
-
 # Reading and writing files, project workflow
 In this section we learn how to work with simplistic project workflow, and how to read and write processed files.
 
@@ -189,29 +186,30 @@ So now we know that each protected area is represented by single row. -->
 
 #### Dealing with `NA` - What is the mean area of the protected areas?
 
-=== "code"
+Sometimes there are some missing values in the data, which are represented by `NA` value in R - *Not Available*. The `NA` values in data can prohibit some calculations, for example if we try to calculate the mean area of the protected areas with the `mean()` function:
 
-    ``` r
-    mean(df$Rozloha..ha)
-    ```
-    
-    returns `NA`, which indicates that there are some `NA` values in the data. 
-    
-  
-    !!! tip
-        This can be further explored by the `is.na()` function, which returns logical vector of `TRUE` and `FALSE` values. This can be simply checked be `unique()` function (show unique values of vector), or summarized with `table()` function (counts the unique values of vector).
+``` r
+mean(df$Rozloha..ha)
+```
 
-        ``` r
-        table(is.na(df$Rozloha..ha))
-        unique(is.na(df$Rozloha..ha))
-        ```
+this returns `NA`, which indicates that there are some `NA` values in the data.
 
-=== "solution"
-    We can use the `na.rm` argument to remove the `NA` values from the calculation:
 
-    ``` r
-    mean(df$Rozloha..ha, na.rm = TRUE)
-    ```
+
+This can be further explored by the `is.na()` function, which returns logical vector of `TRUE` and `FALSE` values. This can be simply checked be `unique()` function (show unique values of vector), or summarized with `table()` function (counts the unique values of vector).
+
+``` r
+is.na(df$Rozloha..ha)
+
+table(is.na(df$Rozloha..ha))
+unique(is.na(df$Rozloha..ha))
+```
+
+MAny function allow to skip the `NA` values in calculation, but is always good to know that is the case, and not ommit the `NA` values by default. We can use the `na.rm` argument to remove the `NA` values from the calculation:
+
+``` r
+mean(df$Rozloha..ha, na.rm = TRUE)
+```
 
 #### Explore the `NA` value of the `Rozloha..ha` column
 We know that we can perform some calculation ommiting the na with the `na.rm` argument, but its good to know what is the `NA` value in the data.
@@ -234,10 +232,11 @@ In this case there are many ways to remove the row. Here are some simple example
 ``` r
 df[-2681, ]
 ```
+- but this is not good practice, because if we add new row to the data, the index of the last row will change
 - with the subset of using `is.na()` function, but using `!` operator to negate (*reverse*) the logical vector, so it performs the opposite operation - get all rows where `Rozloha..ha` is not `NA`:
 
 ``` r
-df[!is.na(Rozloha..ha), ]
+df[!is.na(df$Rozloha..ha), ]
 ```
 
 - with the subset of string of some column
@@ -284,10 +283,6 @@ If the task was: Create export of the protected areas with area larger than 500 
 df <- read.csv("data/export.csv", sep = ";", dec = ",")
 
 df <- df[!is.na(df$Rozloha..ha), ]
-# df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y")
-
-# d <- as.Date("2020-01-01")
-# df <- df[df$Datum.prvního.vyhlášení > d,]
 
 df <- df[df$Rozloha..ha > 500,]
 df <- df[df$Kategorie == "NPR",]
@@ -300,8 +295,6 @@ or using the "and" operator `&`:
 ``` r
 df <- read.csv("data/export.csv", sep = ";", dec = ",")
 
-# df$Datum.prvního.vyhlášení <- as.Date(df$Datum.prvního.vyhlášení, format = "%d.%m.%Y")
-# d <- as.Date("2020-01-01")
 df <- df[!is.na(df$Rozloha..ha) & df$Rozloha..ha > 500 & df$Kategorie == "NPR" & df$Datum.prvního.vyhlášení > d, ]
 
 write.csv(df, "outputs/processed_data.csv", row.names = FALSE)
