@@ -707,6 +707,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dealing-with-dates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dealing with Dates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#writing-data" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1238,6 +1249,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dealing-with-dates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dealing with Dates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#writing-data" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1294,7 +1316,7 @@
 <p>Load <code>sf</code> package (if not installed, install it with <code>install.packages("sf")</code> in console). So this line should be in the beginning of your script.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
 </code></pre></div>
-<p>Read the data</p>
+<p>To read the data we will use <code>st_read()</code> function, in same way as we read the <code>csv</code> table with <code>read.csv()</code>. </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">vzchu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_read</span><span class="p">(</span><span class="s">&quot;data/vzchu/vzchu.shp&quot;</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition note">
@@ -1312,111 +1334,112 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">summary</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">class</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<!-- ``` r
+class(vzchu)
+``` -->
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">names</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">names</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div></p>
 <p>You can see that the data is stored as <code>sf</code> object, which is <code>data.frame</code> with additional attributes. The <code>geometry</code> column contains the geometries of the features. </p>
 <p>So we can hadnle the data as <code>data.frame</code> and use many functionality we know from working with <code>data.frame</code>.</p>
 <p>for xample:</p>
 <p>get vector of unique values in column <code>KAT</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nf">unique</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">KAT</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">unique</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">KAT</span><span class="p">)</span>
 </code></pre></div>
 <p>subsetting the columns to get only <code>KAT</code> and <code>NAZEV</code> columns</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">vzchu</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;KAT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;NAZEV&quot;</span><span class="p">)]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">vzchu</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;KAT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;NAZEV&quot;</span><span class="p">)]</span>
 </code></pre></div>
 <p>subsetting the rows to get only National Parks</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">vzchu</span><span class="p">[</span><span class="n">vzchu</span><span class="o">$</span><span class="n">KAT</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NP&quot;</span><span class="p">,]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">vzchu</span><span class="p">[</span><span class="n">vzchu</span><span class="o">$</span><span class="n">KAT</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NP&quot;</span><span class="p">,]</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can drop the geometries and get plain <code>data.frame</code> without geometries and vice versa.</p>
 <p>drop geometries</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">vzchu_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># or</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">vzchu_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_drop_geometry</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">vzchu_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># or</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">vzchu_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_drop_geometry</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div>
 <p>drop data.frame</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">vzchu_sfc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">vzchu_sfc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span>
 </code></pre></div>
 </div>
 <h3 id="plotting">Plotting</h3>
 <p>In this point we learn how to show simple plots of the data (spatial and non-spatial). We will use built-in <code>plot</code> function, which is able to plot <code>sf</code> objects, and try other  types of plots for data <code>barplot</code> and <code>hist</code> (histogram).</p>
 <p>Basic built-in plot functions are good for quick visualization or for simple plots, but later in the course we dedicate a whole lesson to more advanced plotting with <code>ggplot2</code> package and other packages for visualizations spatial data.</p>
 <p>plot two numeric columns</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span><span class="p">,</span><span class="w"> </span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_LEN</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span><span class="p">,</span><span class="w"> </span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_LEN</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">advanced</p>
 <p>regression line (linear model fit <code>lm</code>) can be easily added to the plot using <code>abline</code> function</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">area_len_lm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_LEN</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span><span class="p">)</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span><span class="p">,</span><span class="w"> </span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_LEN</span><span class="p">)</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nf">abline</span><span class="p">(</span><span class="n">area_len_lm</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">area_len_lm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_LEN</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span><span class="p">,</span><span class="w"> </span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_LEN</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nf">abline</span><span class="p">(</span><span class="n">area_len_lm</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <p>histogram of <code>SHAPE_AREA</code> column</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nf">hist</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nf">hist</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span><span class="p">)</span>
 </code></pre></div>
 <p>simple barplot of categories in <code>KAT</code> column. There is need to count the values first with <code>table</code> function.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nf">barplot</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">KAT</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nf">barplot</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">KAT</span><span class="p">))</span>
 </code></pre></div>
 <h4 id="plotting-sf-objects">Plotting <code>sf</code> objects</h4>
 <p>You can use just <code>plot</code> with <code>sf</code> object, but this will plot all columns in the data (see <code>?plot.sf</code>).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div>
 <p>If you want to plot only specific column, you can use <code>plot</code> with subset using <code>[]</code> and name of single column. If you want to plot only geometries, you can use <code>plot</code> with <code>geometry</code> column.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;KAT&quot;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;KAT&quot;</span><span class="p">])</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;geometry&quot;</span><span class="p">])</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1">#or</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1">#or</span>
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nf">plot</span><span class="p">(</span><span class="nf">st_geometry</span><span class="p">(</span><span class="n">vzchu</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;geometry&quot;</span><span class="p">])</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="c1">#or</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1">#or</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nf">plot</span><span class="p">(</span><span class="nf">st_geometry</span><span class="p">(</span><span class="n">vzchu</span><span class="p">))</span>
 </code></pre></div>
 <p>Some examples of use of subsetting for plotting data (same as with <code>data.frame</code>)</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">vzchu</span><span class="p">[</span><span class="n">vzchu</span><span class="o">$</span><span class="n">NAZEV</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Šumava&quot;</span><span class="p">,</span><span class="s">&quot;KAT&quot;</span><span class="p">]</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="n">vzchu</span><span class="o">$</span><span class="n">NAZEV</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Šumava&quot;</span><span class="p">,</span><span class="s">&quot;KAT&quot;</span><span class="p">])</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">vzchu</span><span class="p">[</span><span class="n">vzchu</span><span class="o">$</span><span class="n">NAZEV</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Šumava&quot;</span><span class="p">,</span><span class="s">&quot;KAT&quot;</span><span class="p">]</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="n">vzchu</span><span class="o">$</span><span class="n">NAZEV</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Šumava&quot;</span><span class="p">,</span><span class="s">&quot;KAT&quot;</span><span class="p">])</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="n">vzchu</span><span class="o">$</span><span class="n">NAZEV</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Beskydy&quot;</span><span class="p">,</span><span class="s">&quot;geometry&quot;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="n">vzchu</span><span class="o">$</span><span class="n">NAZEV</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Beskydy&quot;</span><span class="p">,</span><span class="s">&quot;geometry&quot;</span><span class="p">])</span>
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="n">vzchu</span><span class="o">$</span><span class="n">NAZEV</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Labské pískovce&quot;</span><span class="p">,</span><span class="s">&quot;geometry&quot;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="n">vzchu</span><span class="o">$</span><span class="n">NAZEV</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Labské pískovce&quot;</span><span class="p">,</span><span class="s">&quot;geometry&quot;</span><span class="p">])</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Do you remeber the difference of <code>[]</code> and <code>$</code> operators?</p>
 <p><code>[]</code> - keeping classes, with <code>list</code> this returns <code>list</code>, with <code>data.frame</code> returns the <code>data.frame</code>, and now with <code>sf</code> object - returns <code>sf</code> object</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;SHAPE_AREA&quot;</span><span class="p">]</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;SHAPE_AREA&quot;</span><span class="p">])</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;SHAPE_AREA&quot;</span><span class="p">]</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;SHAPE_AREA&quot;</span><span class="p">])</span>
 </code></pre></div>
 thus plot use <code>sf</code> object</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;SHAPE_AREA&quot;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;SHAPE_AREA&quot;</span><span class="p">])</span>
 </code></pre></div>
 <p><code>$</code> - subset which always returns the data as <code>numeric</code> vector</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;SHAPE_AREA&quot;</span><span class="p">])</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;SHAPE_AREA&quot;</span><span class="p">])</span>
 </code></pre></div>
 plot use <code>numeric</code> vector</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">SHAPE_AREA</span><span class="p">)</span>
 </code></pre></div>
 <p>but! you can use <code>$</code> with <code>sf</code> object to get spatial data (<code>sfc</code> class) with the <code>geometry</code> column, since it is special <code>sfc</code> class column (see <code>str(vzchu)</code> above)</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span>
 </code></pre></div>
 thus plotting:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;geometry&quot;</span><span class="p">])</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span><span class="w"> </span><span class="c1"># same as `plot(st_geometry(vzchu))`</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;geometry&quot;</span><span class="p">])</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span><span class="w"> </span><span class="c1"># same as `plot(st_geometry(vzchu))`</span>
 </code></pre></div>
 looks the same, but the first one is <code>sf</code> object and the second one is <code>sfc</code> object</p>
 </div>
 <h3 id="spatial-proeprties">Spatial proeprties</h3>
 <p>Now we will explore some spatial properties of the data.</p>
 <h4 id="geometry-type">Geometry type</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nf">st_geometry_type</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nf">st_geometry_type</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div>
 <p>geometry type can be converted with <code>st_cast</code> function. For example whe have <code>MULTIPOLYGON</code> (multi-part features) and we want to convert it to <code>POLYGON</code> (single-part features).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nf">st_cast</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POLYGON&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nf">st_cast</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POLYGON&quot;</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1424,56 +1447,79 @@ looks the same, but the first one is <code>sf</code> object and the second one i
 </div>
 <h4 id="bounding-box">bounding box</h4>
 <p>Bounding box is the rectangle that encloses all the geometries in the data.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nf">st_bbox</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="nf">class</span><span class="p">(</span><span class="nf">st_bbox</span><span class="p">(</span><span class="n">vzchu</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nf">st_bbox</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nf">class</span><span class="p">(</span><span class="nf">st_bbox</span><span class="p">(</span><span class="n">vzchu</span><span class="p">))</span>
 </code></pre></div>
 <h4 id="crs-coordinate-reference-system">CRS - coordinate reference system</h4>
 <p>See the definition of the coordinate reference system (CRS) </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nf">class</span><span class="p">(</span><span class="nf">st_crs</span><span class="p">(</span><span class="n">vzchu</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="nf">class</span><span class="p">(</span><span class="nf">st_crs</span><span class="p">(</span><span class="n">vzchu</span><span class="p">))</span>
 </code></pre></div>
 <p>You can transform <code>sf</code> data to other CRS with <code>st_transform</code> function. For example we can change the CRS to WGS84 (EPSG:4326)</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nf">st_transform</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="m">4326</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nf">st_transform</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="m">4326</span><span class="p">)</span>
 </code></pre></div>
 notice the transformed geometry column</p>
 <h3 id="basic-spatial-calculations">Basic spatial calculations</h3>
 <p>Here we will calculate the area and the perimeter of the features.</p>
 <p><code>st_area</code> - calculate the area</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nf">st_area</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nf">st_area</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div>
 <p><code>st_periemeter</code> - calculate the perimeter</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nf">st_perimeter</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nf">st_perimeter</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div>
 <p>add the area and perimeter to the data</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">area</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_area</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">perimeter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_perimeter</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
-<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">shape</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_perimeter</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span><span class="o">/</span><span class="nf">st_area</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">area</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_area</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">perimeter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_perimeter</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">shape</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_perimeter</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span><span class="o">/</span><span class="nf">st_area</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="joining-attribute-data-dataframe">Joining attribute data (<code>data.frame</code>)</h3>
 <p>Now we will join the additional informations from the table to the <code>sf</code> object. We will use <code>merge</code> function, which is used for merging data frames. In this example we will join the information about the date of the first declaration of the National Park or Protected Landscape Area, and minimum elevation.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Since this is similar data as last lesson, we can see similar problems. We resolve this using the part of the code from last lesson.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
-<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>
-<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
-<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="c1"># df$Datum.prvního.vyhlášení &lt;- as.Date(df$Datum.prvního.vyhlášení, format = &quot;%d.%m.%Y&quot;)</span>
 </code></pre></div>
 <p>Before join, we have to check the column names 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="nf">str</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="nf">str</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div></p>
 <p>filter out desired columns
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Kód&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Datum.prvního.vyhlášení&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Nadmořská.výška.min.&quot;</span><span class="p">)]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Kód&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Datum.prvního.vyhlášení&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Nadmořská.výška.min.&quot;</span><span class="p">)]</span>
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="n">vzchu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">by.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;KOD&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">by.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Kód&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">vzchu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">by.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;KOD&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">by.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Kód&quot;</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="n">vzchu</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="n">vzchu</span>
 </code></pre></div>
 <p>plot the results</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;Datum.prvního.vyhlášení&quot;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;Datum.prvního.vyhlášení&quot;</span><span class="p">])</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;Nadmořská.výška.min.&quot;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;Nadmořská.výška.min.&quot;</span><span class="p">])</span>
+</code></pre></div>
+<h3 id="dealing-with-dates">Dealing with Dates</h3>
+<p>There are few columns with dates in the data, for example <code>Datum.prvního.vyhlášení</code>. This column is the <code>character</code> data type, but if we want to work with dates, we have to convert it for further analyssis like counting the number of protected areas with certain year of declaration, etc.</p>
+<p>We can convert the column to the <code>Date</code> class with the <code>as.Date()</code> function. Or just retrieve the desired information (year) with the <code>substr()</code> function.</p>
+<p>We need to know how the dates looks like, so we list first, or first few dates:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">]</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">])</span>
+</code></pre></div>
+<p>So this date is formatted as <code>dd.mm.yyyy</code> - <code>day.month.year</code>, so we can use the <code>as.Date()</code> function with the <code>format</code> argument with <code>"%d.%m.%Y"</code> to convert the column to the <code>Date</code> class (in <code>YYYY-MM-DD</code> format):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nf">as.Date</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="nf">class</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>If we have task to find the newest protected area, we can use the <code>max()</code> function on the converted column:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nf">max</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">)</span><span class="w"> </span><span class="c1"># nonsense, its character - text</span>
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="nf">max</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>Converting column to the <code>Date</code> class is just replacing the values with the new values in <code>Date</code> class:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="nf">max</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="p">)</span>
+</code></pre></div>
+Now we can filter the data with the date, for example to get the protected areas declared after 2020:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-01-01&quot;</span><span class="p">)</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="n">vzchu</span><span class="p">[</span><span class="n">vzchu</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,]</span>
 </code></pre></div>
 <!-- ## `data.frame` with coordinates to point `sf` -->
 
@@ -1482,8 +1528,9 @@ plot only National Parks
  -->
 
 <h3 id="writing-data">Writing data</h3>
-<!-- 
-Finally we will write the data to the file. We will use `st_write` function, which is used for writing `sf` objects to the file.  -->
+<p>Finally we will write the data to the file. We will use <code>st_write</code> function, which is used for writing <code>sf</code> objects to the file. </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="nf">st_write</span><span class="p">(</span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/vzchu_out.shp&quot;</span><span class="p">)</span>
+</code></pre></div>
 
 
 
