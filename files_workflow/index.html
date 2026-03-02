@@ -1529,10 +1529,6 @@
   
 
 
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This page is in state from the spring semester 25, and will undergo changes for the actual semester.</p>
-</div>
 <h1 id="reading-and-writing-files-project-workflow">Reading and writing files, project workflow</h1>
 <p>In this section we learn how to work with simplistic project workflow, and how to read and write processed files.</p>
 <h2 id="reading-files-and-csv-files">Reading files and <code>CSV</code> files</h2>
@@ -1677,27 +1673,19 @@ We can check this by many ways. We know that every monument has its unique code 
 So now we know that each protected area is represented by single row. -->
 
 <h4 id="dealing-with-na-what-is-the-mean-area-of-the-protected-areas">Dealing with <code>NA</code> - What is the mean area of the protected areas?</h4>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">code</label><label for="__tabbed_1_2">solution</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
+<p>Sometimes there are some missing values in the data, which are represented by <code>NA</code> value in R - <em>Not Available</em>. The <code>NA</code> values in data can prohibit some calculations, for example if we try to calculate the mean area of the protected areas with the <code>mean()</code> function:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">)</span>
 </code></pre></div>
-<p>returns <code>NA</code>, which indicates that there are some <code>NA</code> values in the data. </p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
+<p>this returns <code>NA</code>, which indicates that there are some <code>NA</code> values in the data.</p>
 <p>This can be further explored by the <code>is.na()</code> function, which returns logical vector of <code>TRUE</code> and <code>FALSE</code> values. This can be simply checked be <code>unique()</code> function (show unique values of vector), or summarized with <code>table()</code> function (counts the unique values of vector).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nf">table</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">))</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nf">unique</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nf">table</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">))</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nf">unique</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">))</span>
 </code></pre></div>
-</div>
-</div>
-<div class="tabbed-block">
-<p>We can use the <code>na.rm</code> argument to remove the <code>NA</code> values from the calculation:</p>
+<p>MAny function allow to skip the <code>NA</code> values in calculation, but is always good to know that is the case, and not ommit the <code>NA</code> values by default. We can use the <code>na.rm</code> argument to remove the <code>NA</code> values from the calculation:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 </code></pre></div>
-</div>
-</div>
-</div>
 <h4 id="explore-the-na-value-of-the-rozlohaha-column">Explore the <code>NA</code> value of the <code>Rozloha..ha</code> column</h4>
 <p>We know that we can perform some calculation ommiting the na with the <code>na.rm</code> argument, but its good to know what is the <code>NA</code> value in the data.</p>
 <p>We know that we can return logical vector of <code>TRUE</code> and <code>FALSE</code> values with the <code>is.na()</code> function, and further use this vector to subset the data frame, returning only the row with <code>NA</code> value in the <code>Rozloha..ha</code> column: </p>
@@ -1712,8 +1700,9 @@ Which returns line <code>2681</code>, and as we know the <code>df</code> have <c
 </ul>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">df</span><span class="p">[</span><span class="m">-2681</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
+- but this is not good practice, because if we add new row to the data, the index of the last row will change
 - with the subset of using <code>is.na()</code> function, but using <code>!</code> operator to negate (<em>reverse</em>) the logical vector, so it performs the opposite operation - get all rows where <code>Rozloha..ha</code> is not <code>NA</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 <ul>
 <li>with the subset of string of some column</li>
@@ -1743,24 +1732,18 @@ Which returns line <code>2681</code>, and as we know the <code>df</code> have <c
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
 <a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># df$Datum.prvního.vyhlášení &lt;- as.Date(df$Datum.prvního.vyhlášení, format = &quot;%d.%m.%Y&quot;)</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="c1"># d &lt;- as.Date(&quot;2020-01-01&quot;)</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="c1"># df &lt;- df[df$Datum.prvního.vyhlášení &gt; d,]</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="p">,]</span>
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Kategorie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NPR&quot;</span><span class="p">,]</span>
-<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
-<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="nf">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/processed_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="p">,]</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Kategorie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NPR&quot;</span><span class="p">,]</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="nf">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/processed_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 </code></pre></div>
 <p>or using the "and" operator <code>&amp;</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/export.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">)</span>
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="c1"># df$Datum.prvního.vyhlášení &lt;- as.Date(df$Datum.prvního.vyhlášení, format = &quot;%d.%m.%Y&quot;)</span>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># d &lt;- as.Date(&quot;2020-01-01&quot;)</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Kategorie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NPR&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
-<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
-<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="nf">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/processed_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Rozloha..ha</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Kategorie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NPR&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Datum.prvního.vyhlášení</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="nf">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/processed_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="summary">Summary</h2>
 <h3 id="main-outcomes">Main outcomes</h3>
@@ -1784,7 +1767,7 @@ Which returns line <code>2681</code>, and as we know the <code>df</code> have <c
 <h2 id="practice-exploration">Practice exploration</h2>
 <p>Practice some exploration on the Zoraptera Occurrence Dataset (https://zenodo.org/records/14652555). The dataset contains information about the occurrence of the order Zoraptera. The link directly to dataset is "https://raw.githubusercontent.com/kalab-oto/zoraptera-occurrence-dataset/refs/tags/1.1.0/zoraptera_occs.csv"</p>
 <hr />
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">task 1</label><label for="__tabbed_2_2">solution 1</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">task 1</label><label for="__tabbed_1_2">solution 1</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Read the data, and assign them to the <code>zoraptera</code> object</p>
@@ -1796,7 +1779,7 @@ Which returns line <code>2681</code>, and as we know the <code>df</code> have <c
 </div>
 </div>
 <hr />
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">task 2</label><label for="__tabbed_3_2">solution 2</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">task 2</label><label for="__tabbed_2_2">solution 2</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>How many observations and variables are in the data?</p>
@@ -1807,7 +1790,7 @@ Which returns line <code>2681</code>, and as we know the <code>df</code> have <c
 </div>
 </div>
 <hr />
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">task 3</label><label for="__tabbed_4_2">solution 3</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">task 3</label><label for="__tabbed_3_2">solution 3</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Is there <code>species</code> column in the data?</p>
@@ -1818,7 +1801,7 @@ Which returns line <code>2681</code>, and as we know the <code>df</code> have <c
 </div>
 </div>
 <hr />
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">task 4</label><label for="__tabbed_5_2">solution 4</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">task 4</label><label for="__tabbed_4_2">solution 4</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>How many records are not identified to the species level?</p>
@@ -1829,7 +1812,7 @@ Which returns line <code>2681</code>, and as we know the <code>df</code> have <c
 </div>
 </div>
 <hr />
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">task 5</label><label for="__tabbed_6_2">solution 5</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">task 5</label><label for="__tabbed_5_2">solution 5</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>What is the most common species in the data?</p>
@@ -1840,7 +1823,7 @@ Which returns line <code>2681</code>, and as we know the <code>df</code> have <c
 </div>
 </div>
 <hr />
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">task 6</label><label for="__tabbed_7_2">solution 6</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">task 6</label><label for="__tabbed_6_2">solution 6</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>What is the most common <code>country</code> in the data?</p>
@@ -1851,7 +1834,7 @@ Which returns line <code>2681</code>, and as we know the <code>df</code> have <c
 </div>
 </div>
 <hr />
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">task 7</label><label for="__tabbed_8_2">solution 8</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">task 7</label><label for="__tabbed_7_2">solution 8</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>How many records are from the <code>Fiji</code>?</p>
