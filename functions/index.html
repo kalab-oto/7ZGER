@@ -79,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#general-functions" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -852,6 +857,24 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -868,6 +891,45 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spatial-functions-sf-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spatial functions - sf package
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -899,6 +961,36 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spatial-functions-sf-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spatial functions - sf package
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -920,6 +1012,7 @@
   <h1>Functions</h1>
 
 <p>Summary of used functions in the course sorted by the order of appearance in the course. </p>
+<h2 id="general-functions">General functions</h2>
 <ul>
 <li><code>round()</code> - round a number to a specified number of decimal places</li>
 <li>
@@ -946,7 +1039,23 @@
 <li>
 <p><code>install.packages()</code> - install packages from CRAN</p>
 </li>
-<li><code>library()</code> - load package in session</li>
+<li>
+<p><code>library()</code> - load package in session</p>
+</li>
+<li>
+<p><code>names()</code> - return the names of the columns in a data frame</p>
+</li>
+<li><code>plot()</code>, <code>hist()</code>, <code>barplot()</code> - basic plots</li>
+</ul>
+<h2 id="spatial-functions-sf-package">Spatial functions - <code>sf</code> package</h2>
+<ul>
+<li><code>st_read()</code> - read a spatial file and create an <code>sf</code> object</li>
+<li><code>st_bbox()</code> - calculate the bounding box of the geometries</li>
+<li><code>st_crs()</code> - return the coordinate reference system of the data</li>
+<li><code>st_transform()</code> - transform the data to another coordinate reference system</li>
+<li><code>st_area()</code> - calculate the area of the geometries</li>
+<li><code>st_perimeter()</code> - calculate the perimeter of the geometries</li>
+<li><code>st_write()</code> - write an <code>sf</code> object to a spatial file</li>
 </ul>
 
 
