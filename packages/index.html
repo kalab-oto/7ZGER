@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -1017,43 +1017,41 @@
   
 
 
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This page is in state from the spring semester 25, and will undergo changes for the actual semester.</p>
-</div>
 <h1 id="packages">Packages</h1>
-<p>Until this point, we relied in the in-built R functions (<em>Base R</em>), but in real world you will use function and classes from R extensions called <strong>packages</strong>. </p>
-<p>There are thousands of packages available on official repository called <a href="https://cran.r-project.org/">CRAN</a>, but also on other repositories like <a href="https://www.bioconductor.org/">Bioconductor</a>, or git repositories (i.e. on <a href="https://www.github.com">GitHub</a>, <a href="https://gitlab.com">GitLab</a>, <a href="https://codeberg.org">Codeberg</a>, ...), or you can install packages directly from files.</p>
+<p>Until this point, we relied in the in-built R functions (<em>Base R</em>), but in real world you will use functionality from R extensions called <strong>packages</strong>. </p>
+<p>There are thousands of packages available on official default R repository called <a href="https://cran.r-project.org/">CRAN</a>. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Packages can be also installed from other repositories like <a href="https://www.bioconductor.org/">Bioconductor</a>, or git repositories (i.e. on <a href="https://www.github.com">GitHub</a>, <a href="https://gitlab.com">GitLab</a>, <a href="https://codeberg.org">Codeberg</a>, ...), or you can install packages directly from files.</p>
+</div>
 <p>In the course we will use mainly these two packages:</p>
 <ul>
 <li><code>sf</code> - for vector spatial data manipulation</li>
 <li><code>terra</code> - mainly for raster spatial data manipulation, but can handle also for vector data</li>
 </ul>
-<p>In some lesson we will also use these packages:</p>
-<ul>
-<li><code>ggplot2</code> - for plotting</li>
-<li><code>geodata</code> - for downloading spatial data</li>
-<li><code>Rczechia</code> of <code>CzechData</code>- for Czech Republic spatial data</li>
-</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We will also mention <code>sp</code>,<code>raster</code> packages. They are predecessors of <code>sf</code> and <code>terra</code> packages respectively, now <strong>deprecated</strong>, but you can still encounter them in some projects </p>
+<p>We will also mention <code>sp</code>, <code>raster</code> packages. They are predecessors of <code>sf</code> and <code>terra</code> packages respectively, now <strong>deprecated</strong>, but you can still encounter them in some projects </p>
 </div>
 <p>You can find more packages used in spatial analysis in <a href="https://cran.r-project.org/web/views/Spatial.html">Spatial Task View</a> on CRAN.</p>
 <h2 id="installing-packages">Installing packages</h2>
 <p>Installation of packages is easy, and can be don from R console with function <code>install.packages()</code> or with dedicated button in  GUI which runs this function fro you. </p>
-<p>Installation of <code>sf</code> package:</p>
+<p>Installation of <code>sf</code> and <code>terra</code> packages:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;sf&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;terra&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;sf&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;terra&quot;</span><span class="p">))</span>
 </code></pre></div>
 <h2 id="using-packages">Using packages</h2>
 <p>Once installed, package can be loaded in any session using <code>library()</code> function. </p>
 <p>Loading <code>sf</code> package:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
 </code></pre></div>
 <p>When writing scripts, it is good practice to load all packages at the beginning of the script.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Sometimes you can also see use of <code>require()</code> function, which is similar to <code>library()</code>, but it returns <code>TRUE</code> or <code>FALSE</code> if the package is loaded or not. And also use of <code>::</code> operator, which is used to call functions from package without loading it, like <code>sf::st_read()</code> for using <code>st_read()</code> function from <code>sf</code> package without loading it.</p>
+<div class="admonition note">
+<p class="admonition-title">Technical note</p>
+<p>Sometimes you can also see use of <code>require()</code> function, which is similar to <code>library()</code>, but it returns <code>TRUE</code> or <code>FALSE</code> if the package is loaded or not. And also use of <code>::</code> operator, which is used to call functions from package without loading it, like <code>sf::st_read()</code> for using <code>st_read()</code> function from <code>sf</code> package without loading it. Also the <code>::</code> operator is used to declare from which package the function is, when there are functions with the same name in the environment (R base or from different packages).</p>
 </div>
 
 
