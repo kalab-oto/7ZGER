@@ -4,6 +4,8 @@
 
 In R each object belong to some **Class**. The class of an object defines how the object behaves and how it looks like. So, what you can do with an object depends on objetcs class. Some operations are defined for some classes, but not for others. For example double and integers are both numeric classes, and thus you can do mathematical operations with them, but you cannot do mathematical operations with character class.
 
+We will not go into details of classes, but it is important to know that there are different classes for spatial data. For example, when working with vector spatial data, the `sf` package defines `sf` class, and `terra` package defines `SpatVaster` class, each of them have different approach to handle the same data.
+
 ## Packages
 Until this point, we relied in the in-built R functions (*Base R*), but in real world you will use functionality from R extensions called **packages**. 
 
