@@ -376,7 +376,7 @@ st_write(vzchu_merged, "output/vzchu_out.shp", delete_dsn = TRUE)
 - `plot()`, `hist()`, `barplot()` - basic plots
 - `merge()` - merge two data frames by matching column values
 
-#### Spatial -`sf` package
+#### Spatial - `sf` package
 - `st_read()` - read a spatial file and create an `sf` object
 - `st_bbox()` - calculate the bounding box of the geometries
 - `st_crs()` - return the coordinate reference system of the data
