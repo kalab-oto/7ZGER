@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
@@ -761,7 +761,7 @@
   <a href="#spatial-sf-package" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Spatial -sf package
+        Spatial - sf package
       
     </span>
   </a>
@@ -1359,7 +1359,7 @@
   <a href="#spatial-sf-package" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Spatial -sf package
+        Spatial - sf package
       
     </span>
   </a>
@@ -1633,15 +1633,20 @@ notice the transformed geometry column</p>
 <h2 id="summary">Summary</h2>
 <h3 id="main-outcomes">Main outcomes</h3>
 <ul>
-<li></li>
+<li>read and write spatial vector data with <code>st_read</code> and <code>st_write</code></li>
+<li>treat <code>sf</code> objects as <code>data.frame</code> and use the same functionality for data manipulation</li>
+<li>plot spatial and non-spatial data with basic plot functions</li>
+<li>perform basic exploration of the spatial data - calculate bounding box, check and transform the CRS, calculate area and perimeter</li>
+<li>joining tables with <code>merge</code> function</li>
 </ul>
 <h3 id="function-overview">Function overview</h3>
 <h4 id="general">General</h4>
 <ul>
 <li><code>names()</code> - return the names of the columns in a data frame</li>
 <li><code>plot()</code>, <code>hist()</code>, <code>barplot()</code> - basic plots</li>
+<li><code>merge()</code> - merge two data frames by matching column values</li>
 </ul>
-<h4 id="spatial-sf-package">Spatial -<code>sf</code> package</h4>
+<h4 id="spatial-sf-package">Spatial - <code>sf</code> package</h4>
 <ul>
 <li><code>st_read()</code> - read a spatial file and create an <code>sf</code> object</li>
 <li><code>st_bbox()</code> - calculate the bounding box of the geometries</li>
