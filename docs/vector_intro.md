@@ -364,12 +364,17 @@ st_write(vzchu_merged, "output/vzchu_out.shp", delete_dsn = TRUE)
 ## Summary
 
 ### Main outcomes
-- 
+- read and write spatial vector data with `st_read` and `st_write`
+- treat `sf` objects as `data.frame` and use the same functionality for data manipulation
+- plot spatial and non-spatial data with basic plot functions
+- perform basic exploration of the spatial data - calculate bounding box, check and transform the CRS, calculate area and perimeter
+- joining tables with `merge` function
 
 ### Function overview
 #### General
 - `names()` - return the names of the columns in a data frame
 - `plot()`, `hist()`, `barplot()` - basic plots
+- `merge()` - merge two data frames by matching column values
 
 #### Spatial -`sf` package
 - `st_read()` - read a spatial file and create an `sf` object
