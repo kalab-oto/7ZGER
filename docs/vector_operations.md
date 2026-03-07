@@ -85,59 +85,115 @@ plot(mantis_sf[vzchu,"geometry"])
 
 ## Spatial join
 
-How many mantis observations are in NP and PLA?
+As we used `merge()` for joining non-spatial data, based on common "key" columns, we can use `st_join()` for joining data based on their spatial relationship (intersection by default). `st_join()`  perfrom a left join, but can be changed to inner join with `left = FALSE` argument.
+
+Add the information about whether the mantis observations are in protected areas joining the `vzchu` data to the `mantis_sf` data based on intersection of their geometries.
 
 ``` r
-st_join(mantis_sf, vzchu)
-#or
-st_intersection(mantis_sf, vzchu)
+mantis_sf <- st_join(mantis_sf, vzchu)
+```
+In which protected area are the mantis observations most often?
+
+``` r
+table(mantis_sf$NAZEV)
+sort(table(mantis_sf$NAZEV), decreasing = TRUE)
 ```
 
-In which land cover class are the mantis observations most often?
+Do the same for land cover `clc` data.
 
 ``` r
 st_join(mantis_sf, clc)
 ```
+This is common case when the two datasets have different CRS, so we need to set the same CRS for both datasets before joining them.
+
+In our example we are sure that data are in the same CRS, but the `clc` have slightly different CRS definition (with vertical CRS). So we can simply replace the CRS of `clc` with the CRS of `mantis_sf` before joining them. But the safe way is to transform the dataset with `st_transform()`.
 
 ``` r
-st_crs(clc) <- st_crs(mantis_sf) #or st_transform(clc, st_crs(vzchu))
+st_crs(clc) <- st_crs(mantis_sf)
+# or
+# clc <- st_transform(clc, st_crs(mantis_sf))
 mantis_clc <- st_join(mantis_sf, clc)
+mantis_clc
 ```
 
+
+What is the most common land cover class in locations of mantis observations?
+
 ``` r
-mantis_clc$CODE_18
-table(mantis_clc$CODE_18) 
+table(mantis_clc$CODE_18) s
 sort(table(mantis_clc$CODE_18),decreasing = T)
 ```
 
-
+## Aggregation
+To aggregate data by groups in a `data.frame` we can use `aggregate()` function. The aggregation can be done with various functions, for example `sum`, `mean`, `length`, etc. The grouping can be done by one or more columns.
 
 ``` r
-mantis_beskydy <- st_intersection(mantis_sf, beskydy)
-plot(beskydy$geometry)
-plot(mantis_beskydy$geometry, add = TRUE)
+clc_df <- as.data.frame(clc)
+aggregate(x = clc_df$Area_Ha, by = list(clc_df$CODE_18), FUN = sum)
+aggregate(x = clc_df$Area_Ha, by = list(clc_df$CODE_18), FUN = min)
+
+aggregate(vzchu["ROZL"],list(vzchu$KAT),sum) -> x
+
 ```
 
-subsetting polygons
+!!! note "`list()`"
+    Note the list function in the `by` argument. Lists are one of the fundamental structures in R. It is basically a collection of any objects, which can be of different types and lengths. We will learn more about lists in the future.
+
+    <!-- Some list basics
+    You can create a list with the `list()` function, similar to creating a vector with `c()` function.
+    ``` r
+    my_list <- list("some text", "another text", c(123,456,789))
+    str(my_list)
+    ```
+ -->
+
+
+!!! tip
+
+    Another possible way to use `aggregate()` is using the formula operators `~` for grouping, etc. while defining the data source and function.
+    ``` r
+    aggregate(Area_Ha ~ CODE_18, data = clc_df, FUN = sum)
+    ```
+
+
+If we used `sf` object instead of `data.frame`,  it performs the aggregation based on the geometry.
+``` r
+mantis_agg <- aggregate(x = mantis_sf, by = vzchu, FUN = length)
+plot(mantis_agg["id"])
+```
+
+This will also aggregate the geometry (*dissolve*). Aggregating the `ROZL` (area) column of `vzchu` by the `KAT` (category) column will give us the total area of each category, but also dissolve all polygons to multi-polygons based on `KAT` values.
 
 ``` r
-clc_beskydy <- clc[beskydy,]
-plot(clc_beskydy$geometry)
-plot(beskydy$geometry, border = "red", add = T, lwd = 2)
+vzchu_agg <- aggregate(vzchu["ROZL"],list(vzchu$KAT),sum)
+vzchu_agg
+plot(vzchu_agg["ROZL"])
 ```
 
 ## Geometry operations
-### clip
+### Intersection - `st_intersection()`
 
-What is the most common land cover class in Beskydy?
+Intersection of two `sf` objects will return the geometries and attributes only for the overlapping parts. 
+
+Calculate the proportion of each land cover class in the Beskydy PLA.
 
 ``` r
 clc_beskydy <- st_intersection(beskydy, clc)
 plot(clc_beskydy$geometry)
-plot(beskydy$geometry, border = "red", add = T, lwd = 2)
+
 table(clc_beskydy$CODE_18)
-sort(table(clc_beskydy$CODE_18), decreasing = T)
+
 ```
+Figure out how to calculate the proportion.
+
+
+
+!!! note
+    This may look similar to spatial subsetting, but in this case we are not subsetting but creating new geometries for the overlapping parts. In our example the `clc` polygons are cut by the `beskydy` while in spatial subsetting we are just selecting the `clc` polygons that intersect with the `beskydy` without changing their geometries.
+
+
+
+
 
 What is the area of each land cover class in Beskydy?
 
@@ -151,16 +207,21 @@ aggregate(x = clc_beskydy$Area_Ha, by = list(clc_beskydy$CODE_18), FUN = sum)
 
 ``` r
 
-clc_beskydy_ag <- aggregate(clc_beskydy, list(clc_beskydy$CODE_18), sum)
+clc_beskydy_ag <- aggregate(st_area(clc_beskydy), list(clc_beskydy$CODE_18), sum)
 
 ```
 
+### Difference - `st_difference()`
+
+### Union - `st_union()`
+
 ## Other spatial operations
-### buffer
+### Buffer
 
 What is the area of each land cover class in 1km buffer around the mantis observations?
 
 ``` r
+mantis_beskydy <- st_intersection(beskydy, mantis_sf)
 buffer_mantis <- st_buffer(mantis_beskydy, 1000)
 plot(buffer_mantis$geometry)
 ```
@@ -182,7 +243,19 @@ clc_buffer_mantis <- st_intersection(clc,buffer_mantis)
 ```
 
 ``` r
-aggregate(x = st_area(clc_buffer_mantis), by = list(clc_buffer_mantis$CODE_18), FUN = sum)
+aggregate(x = st_area(clc_buffer_mantis), by = list(clc_buffer_mantis$CODE_18), FUN = mean)
+```
+
+
+buffer distance with vector of values
+
+``` r
+mantis_sf
+mantis_posit <- mantis_sf[!is.na(mantis_sf$public_positional_accuracy),]
+mantis_posit <- mantis_posit[mantis_posit$public_positional_accuracy <10000,]
+
+buffer_mantis_unc <- st_buffer(mantis_posit, mantis_posit$public_positional_accuracy)
+plot(buffer_mantis_unc$geometry)
 ```
 
 ### centroid
@@ -241,7 +314,7 @@ hist(mantis_sf$min_distance, breaks = 20, main = "Distance to Nearest Protected 
 ``` -->
 
 
-### Exercise: Append Land Cover Areas to Mantis Data
+<!-- ### Exercise: Append Land Cover Areas to Mantis Data
 
 ``` r
 mantis_beskydy <- mantis_sf[beskydy,]
@@ -265,7 +338,7 @@ mantis_clc_wide <- reshape(mantis_clc_areas, idvar = "mantis_id", timevar = "COD
 
 mantis_sf <- merge(mantis_sf, mantis_clc_wide, by.x = "id", by.y = "mantis_id", all.x = TRUE)
 
-```
+``` -->
 
 ## Summary
 ### New functions
@@ -279,3 +352,5 @@ mantis_sf <- merge(mantis_sf, mantis_clc_wide, by.x = "id", by.y = "mantis_id", 
 - `st_centroid()`
 - `st_convex_hull()`
 - `st_distance()`
+
+
