@@ -634,6 +634,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aggregation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#geometry-operations" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -646,10 +657,32 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#clip" class="md-nav__link">
+  <a href="#intersection-st_intersection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        clip
+        Intersection - st_intersection()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#difference-st_difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Difference - st_difference()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#union-st_union" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Union - st_union()
       
     </span>
   </a>
@@ -677,7 +710,7 @@
   <a href="#buffer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        buffer
+        Buffer
       
     </span>
   </a>
@@ -703,45 +736,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#distance-matrix" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        distance matrix
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="distance matrix">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#compute-the-most-distant-mantis-observation-to-any-protected-area" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Compute the most distant mantis observation to any protected area
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#distance-compute-the-nearest-distance-from-each-mantis-observation-to-the-nearest-protected-area" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        distance: Compute the nearest distance from each mantis observation to the nearest protected area
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1193,6 +1187,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aggregation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#geometry-operations" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1205,10 +1210,32 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#clip" class="md-nav__link">
+  <a href="#intersection-st_intersection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        clip
+        Intersection - st_intersection()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#difference-st_difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Difference - st_difference()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#union-st_union" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Union - st_union()
       
     </span>
   </a>
@@ -1236,7 +1263,7 @@
   <a href="#buffer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        buffer
+        Buffer
       
     </span>
   </a>
@@ -1262,45 +1289,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#distance-matrix" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        distance matrix
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="distance matrix">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#compute-the-most-distant-mantis-observation-to-any-protected-area" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Compute the most distant mantis observation to any protected area
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#distance-compute-the-nearest-distance-from-each-mantis-observation-to-the-nearest-protected-area" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        distance: Compute the nearest distance from each mantis observation to the nearest protected area
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1436,134 +1424,189 @@
 </code></pre></div>
 </div>
 <h2 id="spatial-join">Spatial join</h2>
-<p>How many mantis observations are in NP and PLA?</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nf">st_join</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">vzchu</span><span class="p">)</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1">#or</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nf">st_intersection</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">vzchu</span><span class="p">)</span>
+<p>As we used <code>merge()</code> for joining non-spatial data, based on common "key" columns, we can use <code>st_join()</code> for joining data based on their spatial relationship (intersection by default). <code>st_join()</code>  perfrom a left join, but can be changed to inner join with <code>left = FALSE</code> argument.</p>
+<p>Add the information about whether the mantis observations are in protected areas joining the <code>vzchu</code> data to the <code>mantis_sf</code> data based on intersection of their geometries.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">mantis_sf</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_join</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">vzchu</span><span class="p">)</span>
 </code></pre></div>
-<p>In which land cover class are the mantis observations most often?</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">st_join</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">clc</span><span class="p">)</span>
+In which protected area are the mantis observations most often?</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">table</span><span class="p">(</span><span class="n">mantis_sf</span><span class="o">$</span><span class="n">NAZEV</span><span class="p">)</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">sort</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">mantis_sf</span><span class="o">$</span><span class="n">NAZEV</span><span class="p">),</span><span class="w"> </span><span class="n">decreasing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">clc</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_crs</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">)</span><span class="w"> </span><span class="c1">#or st_transform(clc, st_crs(vzchu))</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">mantis_clc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_join</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">clc</span><span class="p">)</span>
+<p>Do the same for land cover <code>clc</code> data.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nf">st_join</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">clc</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">mantis_clc</span><span class="o">$</span><span class="n">CODE_18</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nf">table</span><span class="p">(</span><span class="n">mantis_clc</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">)</span><span class="w"> </span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nf">sort</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">mantis_clc</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">),</span><span class="n">decreasing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
+This is common case when the two datasets have different CRS, so we need to set the same CRS for both datasets before joining them.</p>
+<p>In our example we are sure that data are in the same CRS, but the <code>clc</code> have slightly different CRS definition (with vertical CRS). So we can simply replace the CRS of <code>clc</code> with the CRS of <code>mantis_sf</code> before joining them. But the safe way is to transform the dataset with <code>st_transform()</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">clc</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_crs</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># or</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1"># clc &lt;- st_transform(clc, st_crs(mantis_sf))</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">mantis_clc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_join</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">clc</span><span class="p">)</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">mantis_clc</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">mantis_beskydy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_intersection</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">beskydy</span><span class="p">)</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">beskydy</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">mantis_beskydy</span><span class="o">$</span><span class="n">geometry</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<p>What is the most common land cover class in locations of mantis observations?</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nf">table</span><span class="p">(</span><span class="n">mantis_clc</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">)</span><span class="w"> </span><span class="n">s</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nf">sort</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">mantis_clc</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">),</span><span class="n">decreasing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
 </code></pre></div>
-<p>subsetting polygons</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">clc_beskydy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">clc</span><span class="p">[</span><span class="n">beskydy</span><span class="p">,]</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">clc_beskydy</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">beskydy</span><span class="o">$</span><span class="n">geometry</span><span class="p">,</span><span class="w"> </span><span class="n">border</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<h2 id="aggregation">Aggregation</h2>
+<p>To aggregate data by groups in a <code>data.frame</code> we can use <code>aggregate()</code> function. The aggregation can be done with various functions, for example <code>sum</code>, <code>mean</code>, <code>length</code>, etc. The grouping can be done by one or more columns.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">clc_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">clc</span><span class="p">)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nf">aggregate</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clc_df</span><span class="o">$</span><span class="n">Area_Ha</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">clc_df</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">),</span><span class="w"> </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nf">aggregate</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clc_df</span><span class="o">$</span><span class="n">Area_Ha</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">clc_df</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">),</span><span class="w"> </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min</span><span class="p">)</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nf">aggregate</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;ROZL&quot;</span><span class="p">],</span><span class="nf">list</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">KAT</span><span class="p">),</span><span class="n">sum</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><code>list()</code></p>
+<p>Note the list function in the <code>by</code> argument. Lists are one of the fundamental structures in R. It is basically a collection of any objects, which can be of different types and lengths. We will learn more about lists in the future.</p>
+<p>&lt;!-- Some list basics
+You can create a list with the <code>list()</code> function, similar to creating a vector with <code>c()</code> function.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">my_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s">&quot;some text&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;another text&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">123</span><span class="p">,</span><span class="m">456</span><span class="p">,</span><span class="m">789</span><span class="p">))</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nf">str</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</code></pre></div></p>
+</div>
+<p>--&gt;</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Another possible way to use <code>aggregate()</code> is using the formula operators <code>~</code> for grouping, etc. while defining the data source and function.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nf">aggregate</span><span class="p">(</span><span class="n">Area_Ha</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">CODE_18</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clc_df</span><span class="p">,</span><span class="w"> </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
+</code></pre></div></p>
+</div>
+<p>If we used <code>sf</code> object instead of <code>data.frame</code>,  it performs the aggregation based on the geometry.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">mantis_agg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">aggregate</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vzchu</span><span class="p">,</span><span class="w"> </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">)</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">mantis_agg</span><span class="p">[</span><span class="s">&quot;id&quot;</span><span class="p">])</span>
+</code></pre></div></p>
+<p>This will also aggregate the geometry (<em>dissolve</em>). Aggregating the <code>ROZL</code> (area) column of <code>vzchu</code> by the <code>KAT</code> (category) column will give us the total area of each category, but also dissolve all polygons to multi-polygons based on <code>KAT</code> values.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">vzchu_agg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">aggregate</span><span class="p">(</span><span class="n">vzchu</span><span class="p">[</span><span class="s">&quot;ROZL&quot;</span><span class="p">],</span><span class="nf">list</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">KAT</span><span class="p">),</span><span class="n">sum</span><span class="p">)</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">vzchu_agg</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu_agg</span><span class="p">[</span><span class="s">&quot;ROZL&quot;</span><span class="p">])</span>
 </code></pre></div>
 <h2 id="geometry-operations">Geometry operations</h2>
-<h3 id="clip">clip</h3>
-<p>What is the most common land cover class in Beskydy?</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">clc_beskydy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_intersection</span><span class="p">(</span><span class="n">beskydy</span><span class="p">,</span><span class="w"> </span><span class="n">clc</span><span class="p">)</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">clc_beskydy</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">beskydy</span><span class="o">$</span><span class="n">geometry</span><span class="p">,</span><span class="w"> </span><span class="n">border</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="nf">table</span><span class="p">(</span><span class="n">clc_beskydy</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">)</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="nf">sort</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">clc_beskydy</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">),</span><span class="w"> </span><span class="n">decreasing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
+<h3 id="intersection-st_intersection">Intersection - <code>st_intersection()</code></h3>
+<p>Intersection of two <code>sf</code> objects will return the geometries and attributes only for the overlapping parts. </p>
+<p>Calculate the proportion of each land cover class in the Beskydy PLA.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">clc_beskydy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_intersection</span><span class="p">(</span><span class="n">beskydy</span><span class="p">,</span><span class="w"> </span><span class="n">clc</span><span class="p">)</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">clc_beskydy</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="nf">table</span><span class="p">(</span><span class="n">clc_beskydy</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">)</span>
 </code></pre></div>
+Figure out how to calculate the proportion.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This may look similar to spatial subsetting, but in this case we are not subsetting but creating new geometries for the overlapping parts. In our example the <code>clc</code> polygons are cut by the <code>beskydy</code> while in spatial subsetting we are just selecting the <code>clc</code> polygons that intersect with the <code>beskydy</code> without changing their geometries.</p>
+</div>
 <p>What is the area of each land cover class in Beskydy?</p>
 <ol>
 <li>sum the <code>data.frame</code> area column with <code>aggregate</code> function</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nf">aggregate</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clc_beskydy</span><span class="o">$</span><span class="n">Area_Ha</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">clc_beskydy</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">),</span><span class="w"> </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nf">aggregate</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clc_beskydy</span><span class="o">$</span><span class="n">Area_Ha</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">clc_beskydy</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">),</span><span class="w"> </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
 </code></pre></div>
 <ol>
 <li>aggregate the <code>sf</code> object area column with <code>aggregate</code> function</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">clc_beskydy_ag</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">aggregate</span><span class="p">(</span><span class="n">clc_beskydy</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">clc_beskydy</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">),</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">clc_beskydy_ag</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">aggregate</span><span class="p">(</span><span class="nf">st_area</span><span class="p">(</span><span class="n">clc_beskydy</span><span class="p">),</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">clc_beskydy</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">),</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
 </code></pre></div>
+<h3 id="difference-st_difference">Difference - <code>st_difference()</code></h3>
+<h3 id="union-st_union">Union - <code>st_union()</code></h3>
 <h2 id="other-spatial-operations">Other spatial operations</h2>
-<h3 id="buffer">buffer</h3>
+<h3 id="buffer">Buffer</h3>
 <p>What is the area of each land cover class in 1km buffer around the mantis observations?</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">buffer_mantis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_buffer</span><span class="p">(</span><span class="n">mantis_beskydy</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">)</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">buffer_mantis</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">mantis_beskydy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_intersection</span><span class="p">(</span><span class="n">beskydy</span><span class="p">,</span><span class="w"> </span><span class="n">mantis_sf</span><span class="p">)</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">buffer_mantis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_buffer</span><span class="p">(</span><span class="n">mantis_beskydy</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">)</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">buffer_mantis</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span>
 </code></pre></div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">clc_buffer_mantis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_intersection</span><span class="p">(</span><span class="n">clc</span><span class="p">,</span><span class="n">buffer_mantis</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">clc_buffer_mantis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_intersection</span><span class="p">(</span><span class="n">clc</span><span class="p">,</span><span class="n">buffer_mantis</span><span class="p">)</span>
 </code></pre></div>
 overlapping polygons
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">overlapping_polygons</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_overlaps</span><span class="p">(</span><span class="n">clc_buffer_mantis</span><span class="p">)</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">overlapping_polygons</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">clc_buffer_mantis</span><span class="p">[</span><span class="nf">unlist</span><span class="p">(</span><span class="n">overlapping_polygons</span><span class="p">),]</span>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">overlapping_polygons</span><span class="p">[</span><span class="s">&quot;CODE_18&quot;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">overlapping_polygons</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_overlaps</span><span class="p">(</span><span class="n">clc_buffer_mantis</span><span class="p">)</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">overlapping_polygons</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">clc_buffer_mantis</span><span class="p">[</span><span class="nf">unlist</span><span class="p">(</span><span class="n">overlapping_polygons</span><span class="p">),]</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">overlapping_polygons</span><span class="p">[</span><span class="s">&quot;CODE_18&quot;</span><span class="p">])</span>
 </code></pre></div>
 use <code>st_union</code> to merge overlapping buffer polygons (similar to <code>dissolve</code> in desktop GIS)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">clc_buffer_mantis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_union</span><span class="p">(</span><span class="n">clc_buffer_mantis</span><span class="p">)</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">clc_buffer_mantis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_intersection</span><span class="p">(</span><span class="n">clc</span><span class="p">,</span><span class="n">buffer_mantis</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">clc_buffer_mantis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_union</span><span class="p">(</span><span class="n">clc_buffer_mantis</span><span class="p">)</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">clc_buffer_mantis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_intersection</span><span class="p">(</span><span class="n">clc</span><span class="p">,</span><span class="n">buffer_mantis</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nf">aggregate</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_area</span><span class="p">(</span><span class="n">clc_buffer_mantis</span><span class="p">),</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">clc_buffer_mantis</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">),</span><span class="w"> </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nf">aggregate</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_area</span><span class="p">(</span><span class="n">clc_buffer_mantis</span><span class="p">),</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">clc_buffer_mantis</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">),</span><span class="w"> </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span>
+</code></pre></div>
+<p>buffer distance with vector of values</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">mantis_sf</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">mantis_posit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mantis_sf</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">mantis_sf</span><span class="o">$</span><span class="n">public_positional_accuracy</span><span class="p">),]</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="n">mantis_posit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mantis_posit</span><span class="p">[</span><span class="n">mantis_posit</span><span class="o">$</span><span class="n">public_positional_accuracy</span><span class="w"> </span><span class="o">&lt;</span><span class="m">10000</span><span class="p">,]</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="n">buffer_mantis_unc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_buffer</span><span class="p">(</span><span class="n">mantis_posit</span><span class="p">,</span><span class="w"> </span><span class="n">mantis_posit</span><span class="o">$</span><span class="n">public_positional_accuracy</span><span class="p">)</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="nf">plot</span><span class="p">(</span><span class="n">buffer_mantis_unc</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="centroid">centroid</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">centroid_vzchu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_centroid</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;grey&quot;</span><span class="p">)</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">centroid_vzchu</span><span class="o">$</span><span class="n">geometry</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">centroid_vzchu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_centroid</span><span class="p">(</span><span class="n">vzchu</span><span class="p">)</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">vzchu</span><span class="o">$</span><span class="n">geometry</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;grey&quot;</span><span class="p">)</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">centroid_vzchu</span><span class="o">$</span><span class="n">geometry</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="convex-hull-mcp-home-range">convex hull (mcp home range)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">hull_mantis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_convex_hull</span><span class="p">(</span><span class="nf">st_union</span><span class="p">(</span><span class="n">mantis_beskydy</span><span class="p">))</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">hull_mantis</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;grey&quot;</span><span class="p">)</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">mantis_beskydy</span><span class="o">$</span><span class="n">geometry</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">hull_mantis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_convex_hull</span><span class="p">(</span><span class="nf">st_union</span><span class="p">(</span><span class="n">mantis_beskydy</span><span class="p">))</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">hull_mantis</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;grey&quot;</span><span class="p">)</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">mantis_beskydy</span><span class="o">$</span><span class="n">geometry</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 </code></pre></div>
-<p>&lt;!-- </p>
-<h3 id="distance-matrix">distance matrix</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">mantis_distances</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_distance</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">vzchu</span><span class="p">)</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nf">head</span><span class="p">(</span><span class="n">mantis_distances</span><span class="p">)</span>
+<!-- 
+### distance matrix
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">mantis_distances</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_distance</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">vzchu</span><span class="p">)</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nf">head</span><span class="p">(</span><span class="n">mantis_distances</span><span class="p">)</span>
 </code></pre></div>
-<h4 id="compute-the-most-distant-mantis-observation-to-any-protected-area">Compute the most distant mantis observation to any protected area</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">mantis_distances</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_distance</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">vzchu</span><span class="p">)</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nf">max</span><span class="p">(</span><span class="n">mantis_distances</span><span class="p">)</span>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="nf">hist</span><span class="p">(</span><span class="n">mantis_sf</span><span class="o">$</span><span class="n">max_distance</span><span class="p">)</span>
+#### Compute the most distant mantis observation to any protected area
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">mantis_distances</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_distance</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">vzchu</span><span class="p">)</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="nf">max</span><span class="p">(</span><span class="n">mantis_distances</span><span class="p">)</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="nf">hist</span><span class="p">(</span><span class="n">mantis_sf</span><span class="o">$</span><span class="n">max_distance</span><span class="p">)</span>
 </code></pre></div>
-<h4 id="distance-compute-the-nearest-distance-from-each-mantis-observation-to-the-nearest-protected-area">distance: Compute the nearest distance from each mantis observation to the nearest protected area</h4>
-<p>apply family of functions (apply, lapply)</p>
-<ul>
-<li><code>apply</code> function applies a function to the rows or columns of a matrix or array. </li>
-<li><code>lapply</code> function applies a function to each element of a list or vector.</li>
-</ul>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">m</span>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="nf">apply</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="nf">apply</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
+
+#### distance: Compute the nearest distance from each mantis observation to the nearest protected area
+
+apply family of functions (apply, lapply)
+
+- `apply` function applies a function to the rows or columns of a matrix or array. 
+- `lapply` function applies a function to each element of a list or vector.
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="n">m</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="nf">apply</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="nf">apply</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">l</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">10</span><span class="o">:</span><span class="m">50</span><span class="p">,</span><span class="m">6</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="m">45</span><span class="o">:</span><span class="m">100</span><span class="p">)</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">l</span>
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="nf">lapply</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span>
-</code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">mantis_distances</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_distance</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">vzchu</span><span class="p">)</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="n">mantis_sf</span><span class="o">$</span><span class="n">min_distance</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="n">mantis_distances</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">)</span>
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="nf">hist</span><span class="p">(</span><span class="n">mantis_sf</span><span class="o">$</span><span class="n">min_distance</span><span class="p">,</span><span class="w"> </span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Distance to Nearest Protected Area&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Distance (m)&quot;</span><span class="p">)</span>
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="n">``` --&gt;</span>
-<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>
-<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>
-<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="n">### Exercise: Append Land Cover Areas to Mantis Data</span>
-<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>
-<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="n">```</span><span class="w"> </span><span class="n">r</span>
-<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="n">mantis_beskydy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mantis_sf</span><span class="p">[</span><span class="n">beskydy</span><span class="p">,]</span>
-<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="n">clc_beskydy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">clc</span><span class="p">[</span><span class="n">beskydy</span><span class="p">,]</span>
-<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>
-<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="n">buffer_mantis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_buffer</span><span class="p">(</span><span class="n">mantis_beskydy</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">)</span>
-<a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a>
-<a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="n">clc_buffer_mantis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_intersection</span><span class="p">(</span><span class="n">clc</span><span class="p">,</span><span class="n">buffer_mantis</span><span class="p">)</span>
-<a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a>
-<a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a>
-<a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="n">clc_buffer_mantis</span><span class="o">$</span><span class="n">area</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">st_area</span><span class="p">(</span><span class="n">clc_buffer_mantis</span><span class="p">)</span>
-<a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a>
-<a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a><span class="c1"># Aggregate areas by mantis observation and land cover class</span>
-<a id="__codelineno-31-21" name="__codelineno-31-21" href="#__codelineno-31-21"></a><span class="n">mantis_clc_areas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">aggregate</span><span class="p">(</span><span class="n">clc_buffer_mantis</span><span class="o">$</span><span class="n">area</span><span class="p">,</span>
-<a id="__codelineno-31-22" name="__codelineno-31-22" href="#__codelineno-31-22"></a><span class="w">                              </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">mantis_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clc_buffer_mantis</span><span class="o">$</span><span class="n">id</span><span class="p">,</span>
-<a id="__codelineno-31-23" name="__codelineno-31-23" href="#__codelineno-31-23"></a><span class="w">                                        </span><span class="n">CODE_18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clc_buffer_mantis</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">),</span>
-<a id="__codelineno-31-24" name="__codelineno-31-24" href="#__codelineno-31-24"></a><span class="w">                              </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
-<a id="__codelineno-31-25" name="__codelineno-31-25" href="#__codelineno-31-25"></a>
-<a id="__codelineno-31-26" name="__codelineno-31-26" href="#__codelineno-31-26"></a><span class="c1"># Reshape to wide format and merge with mantis dataset</span>
-<a id="__codelineno-31-27" name="__codelineno-31-27" href="#__codelineno-31-27"></a><span class="n">mantis_clc_wide</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">reshape</span><span class="p">(</span><span class="n">mantis_clc_areas</span><span class="p">,</span><span class="w"> </span><span class="n">idvar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mantis_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">timevar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CODE_18&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;wide&quot;</span><span class="p">)</span>
-<a id="__codelineno-31-28" name="__codelineno-31-28" href="#__codelineno-31-28"></a>
-<a id="__codelineno-31-29" name="__codelineno-31-29" href="#__codelineno-31-29"></a><span class="n">mantis_sf</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">mantis_sf</span><span class="p">,</span><span class="w"> </span><span class="n">mantis_clc_wide</span><span class="p">,</span><span class="w"> </span><span class="n">by.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">by.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mantis_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">all.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">l</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">10</span><span class="o">:</span><span class="m">50</span><span class="p">,</span><span class="m">6</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="m">45</span><span class="o">:</span><span class="m">100</span><span class="p">)</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="n">l</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="nf">lapply</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span>
 </code></pre></div>
+
+
+``` r
+mantis_distances <- st_distance(mantis_sf, vzchu)
+mantis_sf$min_distance <- apply(mantis_distances, 1, min)
+hist(mantis_sf$min_distance, breaks = 20, main = "Distance to Nearest Protected Area", xlab = "Distance (m)")
+``` -->
+
+<!-- ### Exercise: Append Land Cover Areas to Mantis Data
+
+``` r
+mantis_beskydy <- mantis_sf[beskydy,]
+clc_beskydy <- clc[beskydy,]
+
+buffer_mantis <- st_buffer(mantis_beskydy, 1000)
+
+clc_buffer_mantis <- st_intersection(clc,buffer_mantis)
+
+
+clc_buffer_mantis$area <- st_area(clc_buffer_mantis)
+
+# Aggregate areas by mantis observation and land cover class
+mantis_clc_areas <- aggregate(clc_buffer_mantis$area,
+                              by = list(mantis_id = clc_buffer_mantis$id,
+                                        CODE_18 = clc_buffer_mantis$CODE_18),
+                              FUN = sum)
+
+# Reshape to wide format and merge with mantis dataset
+mantis_clc_wide <- reshape(mantis_clc_areas, idvar = "mantis_id", timevar = "CODE_18", direction = "wide")
+
+mantis_sf <- merge(mantis_sf, mantis_clc_wide, by.x = "id", by.y = "mantis_id", all.x = TRUE)
+
+``` -->
+
 <h2 id="summary">Summary</h2>
 <h3 id="new-functions">New functions</h3>
 <h4 id="base-r">Base R</h4>
