@@ -5,8 +5,8 @@
 
 As with vector data, raster data can be handled with various packages. The most common package is the `terra` package, successor of the deprecated `raster` package. `terra` package is also capable process vector data, but it is not as complex as `sf` package in this way. 
 
-!!! note "Technical note"
-    `terra` objects are spcific objects (S4), data are stored in matrix/array not in data.frame. It have hidden structure and its not stored in lists like `sf` objects. To access the metadata you have to use specific functions.
+<!-- !!! note "Technical note"
+    `terra` objects are spcific objects (S4), data are stored in matrix/array not in data.frame. It have hidden structure and its not stored in lists like `sf` objects. To access the metadata you have to use specific functions. -->
 
 <!-- 7. Raster Data - packages, reading and writing files, terrain analysis, reclassification  -->
 
@@ -19,10 +19,9 @@ library(terra)
 ``` r
 dem <- rast("data/eudem.tif")
 dem
-
-crs(dem)
-ext(dem)
 ``` 
+<!-- crs(dem)
+ext(dem) -->
 plot the raster data
 ``` r
 plot(dem)
@@ -36,50 +35,7 @@ get more bins
 ``` r
 hist(dem, breaks = 100)
 ```
-Class `SpatRaster` can handle multiple layers (bands) of raster data. These can be accessed by `[[` operator as in lists. Layers can be stacked together simply with `c()` function, but layers have to have the same extent, resolution and crs. 
 
-``` r
-dem2 <- c(dem, dem)
-dem2
-dem2[[1]]
-```
-Layers can be named, and accessed by name. 
-
-``` r
-names(dem2) <- c("dem1", "dem2")
-dem2[["dem1"]]
-```
-Filtering layers can be done by `[[` operator with index including negative idenxing.
-
-drop the first layer:
-``` r
-dem3 <- dem2[[-1]]
-```
-get the first layer:
-``` r
-dem3 <- dem2[[1]]
-```
-
-## Summary statistics
-How to get mean, min, max, sum, etc. of the raster data?
-
-``` r
-mean(dem)
-max(dem)
-```
-
-This seems not works as expected. That is because theese functions calculates tha statistics across all layers, eg. maximum value of all layers at each certain pixel position.
-
-To get quick statistics for each layer, you can use `summary` function.
-``` r
-summary(dem)
-```
-
-or work with the raw values of the raster data, but take care of the `NA` values.
-
-``` r
-mean(values(dem), na.rm = TRUE)
-```
 ## Terrain analysis
 function `terrain` can be used to calculate various terrain attributes from the DEM. See `?terrain` for more details.
 
@@ -87,6 +43,12 @@ function `terrain` can be used to calculate various terrain attributes from the 
 slope <- terrain(dem, "slope")
 aspect <- terrain(dem, "aspect")
 ```
+
+## Working with multiple layers
+
+Class `SpatRaster` can handle multiple layers (bands) of raster data. These can be accessed by `[[` operator as in lists. Layers can be stacked together simply with `c()` function, but layers have to have the same extent, resolution and crs. 
+
+
 
 stack the layers together
 ``` r
@@ -100,6 +62,26 @@ plot(dem)
 or all histograms of the slope layer
 ``` r
 hist(dem)
+```
+
+
+Layers can be named, and accessed by name. 
+
+``` r
+names(dem)
+names(dem) <- c("dem", "slope", "aspect")
+dem[["dem"]]
+```
+
+Filtering layers can be done by `[[` operator with index including negative idenxing.
+
+drop the first layer:
+``` r
+dem2 <- dem[[-1]]
+```
+get the first layer:
+``` r
+dem3 <- dem2[[1]]
 ```
 
 ---
@@ -116,6 +98,30 @@ hist(dem)
     ```
 ---
 
+
+## Summary statistics
+How to get mean, min, max, sum, etc. of the raster data?
+
+``` r
+mean(dem)
+max(dem)
+```
+
+This seems not works as expected. That is because theese functions calculates statistics across all layers, eg. maximum value of all layers at each certain pixel position.
+
+To get quick statistics for each layer, you can use `summary` function.
+
+``` r
+summary(dem)
+```
+
+or work with the raw values of the raster data via function `values()`, but take care of the `NA` values.
+
+``` r
+mean(values(dem), na.rm = TRUE)
+```
+
+!!! note `matrix`
 
 ## Reclassification
 
@@ -150,7 +156,7 @@ plot(reclassified_dem)
 
 
 ### value reclassification
-Standard way to reclassify is use of `classify` function, which reclassify the raster data with reclassification matrix. The matrix has to have 3 columns, first two are the range of values and the third is the value to replace the values in the range.  
+Standard way to reclassify a raster is use of `classify` function, which reclassify the raster data with reclassification matrix. The matrix has to have 3 columns, first two are the range of values and the third is the value to replace the values in the range.  
 
 ``` r
 reclass_matrix <- matrix(c(0, 500, 1,    
