@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -640,10 +640,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#summary-statistics" class="md-nav__link">
+  <a href="#terrain-analysis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Summary statistics
+        Terrain analysis
       
     </span>
   </a>
@@ -651,10 +651,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#terrain-analysis" class="md-nav__link">
+  <a href="#working-with-multiple-layers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Terrain analysis
+        Working with multiple layers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary statistics
       
     </span>
   </a>
@@ -1087,10 +1098,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#summary-statistics" class="md-nav__link">
+  <a href="#terrain-analysis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Summary statistics
+        Terrain analysis
       
     </span>
   </a>
@@ -1098,10 +1109,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#terrain-analysis" class="md-nav__link">
+  <a href="#working-with-multiple-layers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Terrain analysis
+        Working with multiple layers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary statistics
       
     </span>
   </a>
@@ -1223,72 +1245,56 @@
 </div>
 <h1 id="raster-data">Raster data</h1>
 <p>As with vector data, raster data can be handled with various packages. The most common package is the <code>terra</code> package, successor of the deprecated <code>raster</code> package. <code>terra</code> package is also capable process vector data, but it is not as complex as <code>sf</code> package in this way. </p>
-<div class="admonition note">
-<p class="admonition-title">Technical note</p>
-<p><code>terra</code> objects are spcific objects (S4), data are stored in matrix/array not in data.frame. It have hidden structure and its not stored in lists like <code>sf</code> objects. To access the metadata you have to use specific functions.</p>
-</div>
+<!-- !!! note "Technical note"
+    `terra` objects are spcific objects (S4), data are stored in matrix/array not in data.frame. It have hidden structure and its not stored in lists like `sf` objects. To access the metadata you have to use specific functions. -->
+
 <!-- 7. Raster Data - packages, reading and writing files, terrain analysis, reclassification  -->
 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># install.packages(&quot;terra&quot;)</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">terra</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="reading-raster-data-spatraster">Reading raster data - <code>SpatRaster</code></h3>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rast</span><span class="p">(</span><span class="s">&quot;data/eudem.tif&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rast</span><span class="p">(</span><span class="s">&quot;data/eudem.tif&quot;</span><span class="p">)</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">dem</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nf">crs</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nf">ext</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
 </code></pre></div>
-plot the raster data
+<!-- crs(dem)
+ext(dem) -->
+<p>plot the raster data
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
 </code></pre></div>
 plot the histogram of the raster data
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">hist</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
 </code></pre></div>
 get more bins</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">hist</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">)</span>
-</code></pre></div>
-Class <code>SpatRaster</code> can handle multiple layers (bands) of raster data. These can be accessed by <code>[[</code> operator as in lists. Layers can be stacked together simply with <code>c()</code> function, but layers have to have the same extent, resolution and crs. </p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">dem2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="n">dem</span><span class="p">)</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">dem2</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">dem2</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
-</code></pre></div>
-Layers can be named, and accessed by name. </p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">names</span><span class="p">(</span><span class="n">dem2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;dem1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;dem2&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">dem2</span><span class="p">[[</span><span class="s">&quot;dem1&quot;</span><span class="p">]]</span>
-</code></pre></div>
-Filtering layers can be done by <code>[[</code> operator with index including negative idenxing.</p>
-<p>drop the first layer:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">dem3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem2</span><span class="p">[[</span><span class="m">-1</span><span class="p">]]</span>
-</code></pre></div>
-get the first layer:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">dem3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem2</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
-</code></pre></div></p>
-<h2 id="summary-statistics">Summary statistics</h2>
-<p>How to get mean, min, max, sum, etc. of the raster data?</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">max</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
-</code></pre></div>
-<p>This seems not works as expected. That is because theese functions calculates tha statistics across all layers, eg. maximum value of all layers at each certain pixel position.</p>
-<p>To get quick statistics for each layer, you can use <code>summary</code> function.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">summary</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
-</code></pre></div></p>
-<p>or work with the raw values of the raster data, but take care of the <code>NA</code> values.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nf">mean</span><span class="p">(</span><span class="nf">values</span><span class="p">(</span><span class="n">dem</span><span class="p">),</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">hist</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="terrain-analysis">Terrain analysis</h2>
 <p>function <code>terrain</code> can be used to calculate various terrain attributes from the DEM. See <code>?terrain</code> for more details.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">slope</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">terrain</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slope&quot;</span><span class="p">)</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">aspect</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">terrain</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aspect&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">slope</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">terrain</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slope&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">aspect</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">terrain</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aspect&quot;</span><span class="p">)</span>
 </code></pre></div>
+<h2 id="working-with-multiple-layers">Working with multiple layers</h2>
+<p>Class <code>SpatRaster</code> can handle multiple layers (bands) of raster data. These can be accessed by <code>[[</code> operator as in lists. Layers can be stacked together simply with <code>c()</code> function, but layers have to have the same extent, resolution and crs. </p>
 <p>stack the layers together
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="n">slope</span><span class="p">,</span><span class="w"> </span><span class="n">aspect</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="n">slope</span><span class="p">,</span><span class="w"> </span><span class="n">aspect</span><span class="p">)</span>
 </code></pre></div>
 plot entire object
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
 </code></pre></div></p>
 <p>or all histograms of the slope layer
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nf">hist</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nf">hist</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Layers can be named, and accessed by name. </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">names</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">names</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;dem&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slope&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aspect&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">dem</span><span class="p">[[</span><span class="s">&quot;dem&quot;</span><span class="p">]]</span>
+</code></pre></div>
+<p>Filtering layers can be done by <code>[[</code> operator with index including negative idenxing.</p>
+<p>drop the first layer:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">dem2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem</span><span class="p">[[</span><span class="m">-1</span><span class="p">]]</span>
+</code></pre></div>
+get the first layer:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">dem3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem2</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
 </code></pre></div></p>
 <hr />
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">try</label><label for="__tabbed_1_2">solution</label></div>
@@ -1297,56 +1303,69 @@ plot entire object
 <p>plot only the slope layer from <code>dem</code> object</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">dem</span><span class="p">[[</span><span class="m">2</span><span class="p">]])</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1"># or</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">dem</span><span class="p">[[</span><span class="s">&quot;slope&quot;</span><span class="p">]])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">dem</span><span class="p">[[</span><span class="m">2</span><span class="p">]])</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># or</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">dem</span><span class="p">[[</span><span class="s">&quot;slope&quot;</span><span class="p">]])</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 <hr />
+<h2 id="summary-statistics">Summary statistics</h2>
+<p>How to get mean, min, max, sum, etc. of the raster data?</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nf">mean</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nf">max</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
+</code></pre></div>
+<p>This seems not works as expected. That is because theese functions calculates statistics across all layers, eg. maximum value of all layers at each certain pixel position.</p>
+<p>To get quick statistics for each layer, you can use <code>summary</code> function.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nf">summary</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
+</code></pre></div>
+<p>or work with the raw values of the raster data via function <code>values()</code>, but take care of the <code>NA</code> values.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nf">mean</span><span class="p">(</span><span class="nf">values</span><span class="p">(</span><span class="n">dem</span><span class="p">),</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</code></pre></div>
+<p>!!! note <code>matrix</code></p>
 <h2 id="reclassification">Reclassification</h2>
 <h3 id="logical-reclassification">logical reclassification</h3>
 <p>simply use logical operators to create new raster object with values <code>TRUE</code> and <code>FALSE</code> (1 and 0)</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">reclassified_dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="m">1000</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">reclassified_dem</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">reclassified_dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="m">1000</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">reclassified_dem</span><span class="p">)</span>
 </code></pre></div>
 multiple conditions can be combined with logical operators
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">reclassified_dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">550</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">reclassified_dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">550</span>
 </code></pre></div></p>
 <h3 id="replacing-values">replacing values</h3>
 <p>use of subsetting and logical operators can be used to replace values in the raster data. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">reclassified_dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">reclassified_dem</span><span class="p">[</span><span class="n">reclassified_dem</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">reclassified_dem</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">reclassified_dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">reclassified_dem</span><span class="p">[</span><span class="n">reclassified_dem</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">500</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">reclassified_dem</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>functions <code>replace</code> or <code>ifelse</code> works similar way, but can be used also for more complex operations</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">reclassified_dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]],</span><span class="w"> </span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">reclassified_dem</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">reclassified_dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]],</span><span class="w"> </span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">reclassified_dem</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <h3 id="value-reclassification">value reclassification</h3>
-<p>Standard way to reclassify is use of <code>classify</code> function, which reclassify the raster data with reclassification matrix. The matrix has to have 3 columns, first two are the range of values and the third is the value to replace the values in the range.  </p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">reclass_matrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w">    </span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">                           </span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w">  </span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">                           </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="kc">Inf</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">),</span><span class="w">  </span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">                         </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="n">reclass_matrix</span>
+<p>Standard way to reclassify a raster is use of <code>classify</code> function, which reclassify the raster data with reclassification matrix. The matrix has to have 3 columns, first two are the range of values and the third is the value to replace the values in the range.  </p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">reclass_matrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w">    </span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">                           </span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w">  </span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">                           </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="kc">Inf</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">),</span><span class="w">  </span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">                         </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="n">reclass_matrix</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">reclassified_dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">classify</span><span class="p">(</span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]],</span><span class="w"> </span><span class="n">reclass_matrix</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">reclassified_dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">classify</span><span class="p">(</span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]],</span><span class="w"> </span><span class="n">reclass_matrix</span><span class="p">)</span>
 </code></pre></div>
 plot the reclassified raster
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">reclassified_dem</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">reclassified_dem</span><span class="p">)</span>
 </code></pre></div></p>
 <h2 id="map-algebra">Map algebra</h2>
 <p>Map algebra is a way to perform operations on raster data. It is similar to vector data, but the operations are performed on the pixel values. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">dem2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">2</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">dem2</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">dem2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">2</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">dem2</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nf">sum</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nf">sum</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1354,30 +1373,30 @@ plot the reclassified raster
 </div>
 <h3 id="exercise">exercise</h3>
 <p>Find the suitable areas for vineyards, these areas are on southern slopes (aspect between 135 and 225 degrees) with slope between 5 and 15 degrees, and elevation between 200 and 500 meters.  </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rast</span><span class="p">(</span><span class="s">&quot;/home/ok/git/orthoptera-atlas/processed_data/eudem.tif&quot;</span><span class="p">)</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">slope</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">terrain</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slope&quot;</span><span class="p">)</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">aspect</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">terrain</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aspect&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rast</span><span class="p">(</span><span class="s">&quot;/home/ok/git/orthoptera-atlas/processed_data/eudem.tif&quot;</span><span class="p">)</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">slope</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">terrain</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slope&quot;</span><span class="p">)</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">aspect</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">terrain</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aspect&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># Sklon mezi 5-30% (3–16 stupňů)</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">suitable_aspect</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">aspect</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">135</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">aspect</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">225</span><span class="p">)</span>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="n">suitable_slope</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">slope</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">slope</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">16</span><span class="p">)</span>
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="n">suitable_elevation</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">dem</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">200</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">dem</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">500</span><span class="p">)</span>
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
-<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">suitable_area</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">suitable_aspect</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">suitable_slope</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="n">suitable_elevation</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Sklon mezi 5-30% (3–16 stupňů)</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">suitable_aspect</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">aspect</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">135</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">aspect</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">225</span><span class="p">)</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">suitable_slope</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">slope</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">slope</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">16</span><span class="p">)</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">suitable_elevation</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">dem</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">200</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">dem</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">500</span><span class="p">)</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="n">suitable_area</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">suitable_aspect</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">suitable_slope</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="n">suitable_elevation</span>
 </code></pre></div>
 If you want to keep all layers in the object, you can stack them together. </p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">suitable_area</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">suitable_aspect</span><span class="p">,</span><span class="w"> </span><span class="n">suitable_slope</span><span class="p">,</span><span class="n">suitable_elevation</span><span class="p">)</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">suitable_area</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">suitable_area</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">suitable_aspect</span><span class="p">,</span><span class="w"> </span><span class="n">suitable_slope</span><span class="p">,</span><span class="n">suitable_elevation</span><span class="p">)</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">suitable_area</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nf">min</span><span class="p">(</span><span class="n">suitable_area</span><span class="p">)</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="nf">plot</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">suitable_area</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nf">min</span><span class="p">(</span><span class="n">suitable_area</span><span class="p">)</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nf">plot</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">suitable_area</span><span class="p">))</span>
 </code></pre></div>
 get the area of the suitable areas</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nf">sum</span><span class="p">(</span><span class="n">suitable_area</span><span class="p">)</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nf">plot</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">suitable_area</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nf">sum</span><span class="p">(</span><span class="n">suitable_area</span><span class="p">)</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="nf">plot</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">suitable_area</span><span class="p">))</span>
 </code></pre></div>
 <h2 id="writing-raster-data">writing raster data</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nf">writeRaster</span><span class="p">(</span><span class="n">suitable_area</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/suitable_area.tif&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">overwrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nf">writeRaster</span><span class="p">(</span><span class="n">suitable_area</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/suitable_area.tif&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">overwrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 </code></pre></div>
 
 
