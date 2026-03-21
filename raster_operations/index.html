@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -1217,17 +1217,12 @@
   
 
 
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This page is in state from the spring semester 25, and will undergo changes for the actual semester.</p>
-</div>
 <h1 id="raster-data">Raster data</h1>
 <h2 id="general-r-functions">General R functions</h2>
 <h3 id="download-data">Download data</h3>
-<p>You can download data directliy in R using <code>download.file()</code> function. In this example we will download the CHELSA climate - BIO1 1981-2010, and predicted BIO1 2071-2100 for GFDL-ESM4 model and SSP126 scenario. Check <code>?download.file</code> for arguments and options.  </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">download.file</span><span class="p">(</span><span class="s">&quot;https://os.zhdk.cloud.switch.ch/chelsav2/GLOBAL/climatologies/1981-2010/bio/CHELSA_bio1_1981-2010_V.2.1.tif&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;data/CHELSA_bio1_1981-2010_V.2.1.tif&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nf">download.file</span><span class="p">(</span><span class="s">&quot;https://os.zhdk.cloud.switch.ch/chelsav2/GLOBAL/climatologies/2071-2100/GFDL-ESM4/ssp126/bio/CHELSA_bio1_2071-2100_gfdl-esm4_ssp126_V.2.1.tif&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;data/CHELSA_bio1_2071-2100_gfdl-esm4_ssp126_V.2.1.tif&quot;</span><span class="p">)</span>
+<p>You can download data directliy in R using <code>download.file()</code> function. In this example we will download the CHELSA climate - BIO1 and  BIO12 for 1981-2010. Check <code>?download.file</code> for arguments and options.  </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">download.file</span><span class="p">(</span><span class="s">&quot;https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio01/1981-2010/CHELSA_bio01_1981-2010_V.2.1.tif&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;data/CHELSA_bio1_1981-2010_V.2.1.tif&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">download.file</span><span class="p">(</span><span class="s">&quot;https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio12/1981-2010/CHELSA_bio12_1981-2010_V.2.1.tif&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;data/CHELSA_bio12_1981-2010_V.2.1.tif&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="listing-files">Listing files</h3>
 <p>You can list files in any directory using <code>list.files()</code> function. With argument <code>pattern</code> you can filter the files by matching string - <em>regular expression</em> <em>(regex)</em>, for example part of the name or file extension.</p>
@@ -1266,45 +1261,49 @@ list all files in the current directory recursively</p>
 <p class="admonition-title">Info</p>
 <p>Function <code>rast()</code> can read also files directly from url string.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">urls</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="s">&quot;https://os.zhdk.cloud.switch.ch/chelsav2/GLOBAL/climatologies/1981-2010/bio/CHELSA_bio1_1981-2010_V.2.1.tif&quot;</span><span class="p">,</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="s">&quot;https://os.zhdk.cloud.switch.ch/chelsav2/GLOBAL/climatologies/2071-2100/GFDL-ESM4/ssp126/bio/CHELSA_bio1_2071-2100_gfdl-esm4_ssp126_V.2.1.tif&quot;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="s">&quot;https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio01/1981-2010/CHELSA_bio01_1981-2010_V.2.1.tif&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="s">&quot;https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio12/1981-2010/CHELSA_bio12_1981-2010_V.2.1.tif&quot;</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="p">)</span>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">r</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rast</span><span class="p">(</span><span class="n">urls</span><span class="p">)</span>
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">r</span>
 </code></pre></div>
 </div>
 <p>If we want to read all raster in stack, all rasters have to have the same extent, resolution and projection. We have to preprocess the data before.</p>
-<p>try to read only bio1 files and dem separately</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">r_bio</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rast</span><span class="p">(</span><span class="nf">list.files</span><span class="p">(</span><span class="s">&quot;data&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;bio&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">full.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span>
+<p>try to read only CHELSA bioclimatic files and dem separately</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">bio</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rast</span><span class="p">(</span><span class="nf">list.files</span><span class="p">(</span><span class="s">&quot;data&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;bio&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">full.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">r_dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rast</span><span class="p">(</span><span class="s">&quot;data/eu_dem.tif&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">dem</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rast</span><span class="p">(</span><span class="s">&quot;data/eu_dem.tif&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="get-the-same-extent">get the same extent</h3>
 <p>For clipping raster object to specific extent use <code>crop()</code> function. It can crop the raster with extent object, or other raster object (retrieve the extent from the other raster).</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">r_bio_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">crop</span><span class="p">(</span><span class="n">r_bio</span><span class="p">,</span><span class="w"> </span><span class="n">r_dem</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">bio_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">crop</span><span class="p">(</span><span class="n">bio</span><span class="p">,</span><span class="w"> </span><span class="n">dem</span><span class="p">)</span>
 </code></pre></div>
 Extntes do not overlap, we need to reproject the raster to the same projection.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">r_dem_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">project</span><span class="p">(</span><span class="n">r_dem</span><span class="p">,</span><span class="w"> </span><span class="nf">crs</span><span class="p">(</span><span class="n">r_bio</span><span class="p">))</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">r_bio_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">crop</span><span class="p">(</span><span class="n">r_bio</span><span class="p">,</span><span class="w"> </span><span class="n">r_dem_cz</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">dem_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">project</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="nf">crs</span><span class="p">(</span><span class="n">bio</span><span class="p">))</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">bio_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">crop</span><span class="p">(</span><span class="n">bio</span><span class="p">,</span><span class="w"> </span><span class="n">dem_cz</span><span class="p">)</span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Technical note</p>
+<p>Notice that <code>project()</code> function can also reproject the raster to the same projection, resolution and extent as the other raster with argument <code>to</code>.</p>
+</div>
 <h3 id="resample-to-the-same-resolution">resample to the same resolution</h3>
 <p>see <code>?resample</code> for more options, particularly <code>method</code> argument. In our case we will use some sumary method</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">r_dem_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">resample</span><span class="p">(</span><span class="n">r_dem_cz</span><span class="p">,</span><span class="n">r_bio_cz</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;average&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">dem_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">resample</span><span class="p">(</span><span class="n">dem_cz</span><span class="p">,</span><span class="n">bio_cz</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;average&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="stack-the-rasters">stack the rasters</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">r_stack</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">r_bio_cz</span><span class="p">,</span><span class="w"> </span><span class="n">r_dem_cz</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">cz_stack</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">bio_cz</span><span class="p">,</span><span class="w"> </span><span class="n">dem_cz</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="masking">masking</h3>
 <p>mask the raster stack with the DEM</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">masked_z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">r_stack</span><span class="p">,</span><span class="w"> </span><span class="n">r_dem_cz</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">masked_z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">cz_stack</span><span class="p">,</span><span class="w"> </span><span class="n">dem_cz</span><span class="p">)</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">masked_z</span><span class="p">)</span>
 </code></pre></div>
 or mask all raster in stack with any NA in any raster</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">masked_z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">r_stack</span><span class="p">,</span><span class="w"> </span><span class="nf">anyNA</span><span class="p">(</span><span class="n">r_stack</span><span class="p">))</span><span class="w">   </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">masked_z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">cz_stack</span><span class="p">,</span><span class="w"> </span><span class="nf">anyNA</span><span class="p">(</span><span class="n">cz_stack</span><span class="p">))</span><span class="w">   </span>
 </code></pre></div>
 <h3 id="distance-to-the-nearest-1000m-elevation">distance to the nearest 1000m elevation</h3>
 <p><code>distance()</code> function calculates the distance to the nearest non-NA cell in the raster. So we need to rewrite all values less then 1000 to NA. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">dem_1000</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r_dem_cz</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">dem_1000</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem_cz</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">dem_1000</span><span class="p">[</span><span class="n">dem_1000</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">1000</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA</span>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">dem_1000</span><span class="p">)</span>
 </code></pre></div>
@@ -1312,34 +1311,12 @@ or mask all raster in stack with any NA in any raster</p>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">dist_1000</span><span class="p">)</span>
 </code></pre></div>
 mask the distance raster with the DEM and add it to the stack</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">dist_1000</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">dist_1000</span><span class="p">,</span><span class="w"> </span><span class="n">r_dem_cz</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">dist_1000</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">dist_1000</span><span class="p">,</span><span class="w"> </span><span class="n">dem_cz</span><span class="p">)</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">masked_z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">masked_z</span><span class="p">,</span><span class="w"> </span><span class="n">dist_1000</span><span class="p">)</span>
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">masked_z</span><span class="p">)</span>
 </code></pre></div>
-<!-- Todo: writeRaster(b, file.path("D:/...filepath/", names(b)),
-             format="GTiff", bylayer=T, overwrite=T) -->
-
 <h2 id="other-exercises">Other exercises</h2>
-<ul>
-<li>compare between 1981-2010 and 2071-2100, where the mean temperature is greater than 9  in the Czech Republic</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">r9</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">r_bio_cz</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="n">r_bio_cz</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">9</span><span class="p">)</span>
-</code></pre></div>
-<div class="admonition example">
-<p class="admonition-title">Advanced</p>
-<p>write a function that will plot the difference of these rasters with given temperature threshold.</p>
-</div>
-<ul>
-<li>check how the mean temperature changes between 1981-2010 and 2071-2100 in the Czech Republic</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r_bio_cz</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">r_bio_cz</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">d</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-</code></pre></div>
-<p>check how mean temperature changes between 1981-2010 and 2071-2100 globally</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r_bio</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">r_bio</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-</code></pre></div>
+<p><img alt="Whittaker's biomes classification (Ricklefs 2008)" src="../img/biome.png" /></p>
 
 
 
