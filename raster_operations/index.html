@@ -751,11 +751,39 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#distance-to-the-nearest-1000m-elevation" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#categorical-data-and-raster-attribute-table-rat" class="md-nav__link">
     <span class="md-ellipsis">
       
-        distance to the nearest 1000m elevation
+        Categorical data and raster attribute table (RAT)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Categorical data and raster attribute table (RAT)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distance-to-the-forests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance to the forests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explore-the-elevations-between-areas-of-broad-leaved-forest-and-coniferous-forest-in-czechia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explore the elevations between areas of Broad-leaved forest and Coniferous forest in Czechia.
       
     </span>
   </a>
@@ -1170,11 +1198,39 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#distance-to-the-nearest-1000m-elevation" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#categorical-data-and-raster-attribute-table-rat" class="md-nav__link">
     <span class="md-ellipsis">
       
-        distance to the nearest 1000m elevation
+        Categorical data and raster attribute table (RAT)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Categorical data and raster attribute table (RAT)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distance-to-the-forests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance to the forests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explore-the-elevations-between-areas-of-broad-leaved-forest-and-coniferous-forest-in-czechia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explore the elevations between areas of Broad-leaved forest and Coniferous forest in Czechia.
       
     </span>
   </a>
@@ -1220,7 +1276,7 @@
 <h1 id="raster-data">Raster data</h1>
 <h2 id="general-r-functions">General R functions</h2>
 <h3 id="download-data">Download data</h3>
-<p>You can download data directliy in R using <code>download.file()</code> function. In this example we will download the CHELSA climate - BIO1 and  BIO12 for 1981-2010. Check <code>?download.file</code> for arguments and options.  </p>
+<p>You can download data directliy in R using <code>download.file()</code> function. In this example we will download the CHELSA climate - BIO1 (Mean annual temperature - °C) and  BIO12 (Annual Precipitation - mm) for 1981-2010. Check <code>?download.file</code> for arguments and options.  </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">download.file</span><span class="p">(</span><span class="s">&quot;https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio01/1981-2010/CHELSA_bio01_1981-2010_V.2.1.tif&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;data/CHELSA_bio1_1981-2010_V.2.1.tif&quot;</span><span class="p">)</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">download.file</span><span class="p">(</span><span class="s">&quot;https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio12/1981-2010/CHELSA_bio12_1981-2010_V.2.1.tif&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;data/CHELSA_bio12_1981-2010_V.2.1.tif&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -1242,10 +1298,9 @@ list all files in the current directory recursively</p>
 </code></pre></div></p>
 <h2 id="raster-manipulation">Raster manipulation</h2>
 <p>Task: 
-1. Prepare raster stack of bioclimatic CHELSA data and elevation data. The resolution of the raster stack will be 30seconds (~1km) - resolution of the CHELSA data.
+1. Prepare raster stack of bioclimatic CHELSA data and elevation data for the Czechia. The resolution of the raster stack will be 30seconds (~1km) - resolution of the CHELSA data.
 2. Mask the raster stack with the DEM data.
-3. Create raster of distances to the nearest 1000m elevation.
-4. Save the raster stack to separate files.</p>
+3. Save the raster stack to separate files.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">terra</span><span class="p">)</span>
 </code></pre></div>
 <p>read all raster files in the directory <code>data</code>:</p>
@@ -1279,8 +1334,11 @@ list all files in the current directory recursively</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">bio_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">crop</span><span class="p">(</span><span class="n">bio</span><span class="p">,</span><span class="w"> </span><span class="n">dem</span><span class="p">)</span>
 </code></pre></div>
 Extntes do not overlap, we need to reproject the raster to the same projection.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">dem_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">project</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="nf">crs</span><span class="p">(</span><span class="n">bio</span><span class="p">))</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">bio_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">crop</span><span class="p">(</span><span class="n">bio</span><span class="p">,</span><span class="w"> </span><span class="n">dem_cz</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">dem_4326</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">project</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="nf">crs</span><span class="p">(</span><span class="n">bio</span><span class="p">))</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">bio_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">crop</span><span class="p">(</span><span class="n">bio</span><span class="p">,</span><span class="w"> </span><span class="n">dem_4326</span><span class="p">)</span>
+</code></pre></div>
+<p>Reprojecting can be also done with EPSG code directly with string <code>EPSG:****</code> </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">dem_4326</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">project</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EPSG:4326&quot;</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Technical note</p>
@@ -1288,33 +1346,110 @@ Extntes do not overlap, we need to reproject the raster to the same projection.<
 </div>
 <h3 id="resample-to-the-same-resolution">resample to the same resolution</h3>
 <p>see <code>?resample</code> for more options, particularly <code>method</code> argument. In our case we will use some sumary method</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">dem_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">resample</span><span class="p">(</span><span class="n">dem_cz</span><span class="p">,</span><span class="n">bio_cz</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;average&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">dem_4326</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">resample</span><span class="p">(</span><span class="n">dem_4326</span><span class="p">,</span><span class="n">bio_cz</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;average&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="stack-the-rasters">stack the rasters</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">cz_stack</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">bio_cz</span><span class="p">,</span><span class="w"> </span><span class="n">dem_cz</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">cz_stack</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">bio_cz</span><span class="p">,</span><span class="w"> </span><span class="n">dem_4326</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="masking">masking</h3>
 <p>mask the raster stack with the DEM</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">masked_z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">cz_stack</span><span class="p">,</span><span class="w"> </span><span class="n">dem_cz</span><span class="p">)</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">masked_z</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">masked_z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">cz_stack</span><span class="p">,</span><span class="w"> </span><span class="n">dem_4326</span><span class="p">)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">masked_z</span><span class="p">)</span>
 </code></pre></div>
 or mask all raster in stack with any NA in any raster</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">masked_z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">cz_stack</span><span class="p">,</span><span class="w"> </span><span class="nf">anyNA</span><span class="p">(</span><span class="n">cz_stack</span><span class="p">))</span><span class="w">   </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">masked_z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">cz_stack</span><span class="p">,</span><span class="w"> </span><span class="nf">anyNA</span><span class="p">(</span><span class="n">cz_stack</span><span class="p">))</span><span class="w">   </span>
 </code></pre></div>
-<h3 id="distance-to-the-nearest-1000m-elevation">distance to the nearest 1000m elevation</h3>
-<p><code>distance()</code> function calculates the distance to the nearest non-NA cell in the raster. So we need to rewrite all values less then 1000 to NA. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">dem_1000</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dem_cz</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">dem_1000</span><span class="p">[</span><span class="n">dem_1000</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">1000</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">dem_1000</span><span class="p">)</span>
+<h2 id="categorical-data-and-raster-attribute-table-rat">Categorical data and raster attribute table (RAT)</h2>
+<p>Tasks: 
+1. Create raster of distances to the nearest forest in Czechia.
+2. Compare the elevation ranges between areas of Broad-leaved forest and Coniferous forest in Czechia.</p>
+<p>In this example we will use Corine Land Cover (CLC) data, which is a categorical raster data, that come with raster attribute table (RAT). The RAT contains the information about the categories names and their CLC codes while the raster values are categories numbers from 1 to 45. We will use this information to create a raster of distances to the nearest forest.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">clc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rast</span><span class="p">(</span><span class="s">&quot;data/U2018_CLC2018_V2020_20u1.tif&quot;</span><span class="p">)</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">clc</span>
 </code></pre></div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">dist_1000</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="n">dem_1000</span><span class="p">)</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">dist_1000</span><span class="p">)</span>
+<p>Note the <code>categories</code> in the metadata of SpatRaster object, it shows the column names in RAT. We can access the categories with <code>cats()</code> function.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nf">cats</span><span class="p">(</span><span class="n">clc</span><span class="p">)</span>
 </code></pre></div>
-mask the distance raster with the DEM and add it to the stack</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">dist_1000</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">dist_1000</span><span class="p">,</span><span class="w"> </span><span class="n">dem_cz</span><span class="p">)</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">masked_z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">masked_z</span><span class="p">,</span><span class="w"> </span><span class="n">dist_1000</span><span class="p">)</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">masked_z</span><span class="p">)</span>
+<p>The first column is <code>Value</code> and its actaully the value stored in the raster. But in prints the first category is showed as label of the value. Thats why we see in the metadata <code>name</code> the <code>LABEL3</code> category, and also <code>min value</code> and <code>max value</code> are shown from this category. If we plot the raster, it will also use the <code>LABEL3</code> category as labels in the legend.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nf">plot</span><span class="p">(</span><span class="n">clc</span><span class="p">)</span>
 </code></pre></div>
+<p>The label can be changed with <code>$</code> operator, but keep in mind that the values in the raster will not change, only the labels. </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">clc</span><span class="o">$</span><span class="n">CODE_18</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">clc</span><span class="o">$</span><span class="n">CODE_18</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Crop and mask the CLC raster</strong></p>
+<p>We used the <code>dem</code> raster to crop the <code>clc</code> but same as in previous example, we need to reproject the <code>dem</code> raster to the same projection as <code>clc</code> before cropping.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">dem_3035</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">project</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span><span class="w"> </span><span class="nf">crs</span><span class="p">(</span><span class="n">clc</span><span class="p">))</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">clc_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">crop</span><span class="p">(</span><span class="n">clc</span><span class="p">,</span><span class="w"> </span><span class="n">dem_3035</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="distance-to-the-forests">Distance to the forests</h3>
+<p>For this tasks we will use the <code>distance()</code> function, which calculates the distance to the nearest non-NA cell in the raster. So at first we need to get a raster with NA value for all pixels that are not forests.</p>
+<p>If we look at the RAT table we will see that the values for forests are <code>23</code>,<code>24</code> and <code>25</code> for <code>Broad-leaved forest</code>, <code>Coniferous forest</code> and <code>Mixed forest</code> respectively.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nf">cats</span><span class="p">(</span><span class="n">clc_cz</span><span class="p">)</span>
+</code></pre></div>
+<p>Prepare the raster with NA for non-forest pixels:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">clc_forests</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">clc_cz</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">clc_forests</span><span class="p">[</span><span class="n">clc_forests</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">clc_forests</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">clc_forests</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">25</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">clc_forests</span><span class="p">)</span>
+</code></pre></div>
+Calculate the distance to the nearest forest pixel:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">forests_d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="n">clc_forests</span><span class="p">)</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">forests_d</span><span class="p">)</span>
+</code></pre></div>
+<p>Write the distance raster to file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nf">writeRaster</span><span class="p">(</span><span class="n">forests_d</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;outputs/forests_distance.tif&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="explore-the-elevations-between-areas-of-broad-leaved-forest-and-coniferous-forest-in-czechia">Explore the elevations between areas of Broad-leaved forest and Coniferous forest in Czechia.</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">dem_3035</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">resample</span><span class="p">(</span><span class="n">dem_3035</span><span class="p">,</span><span class="w"> </span><span class="n">clc_cz</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;average&quot;</span><span class="p">)</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">clc_cz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">clc_cz</span><span class="p">,</span><span class="w"> </span><span class="n">dem_3035</span><span class="p">)</span>
+</code></pre></div>
+<p>We can now work in single SpatRaster object, or with separate rasters, but we need to make sure that they have the same resolution and extent.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">broad_leaved</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">clc_cz</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">23</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="n">coniferous</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">clc_cz</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">24</span>
+</code></pre></div>
+<p>Mask the elevation raster with the forest rasters to get the elevation values for each forest type. Now we have binary rasters with <code>TRUE</code> (<code>1</code>) and <code>FALSE</code> (<code>0</code>) values. The value of amsk can be set with <code>maskvalues</code> argument in <code>mask()</code>  (default is <code>NA</code>).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">broad_leaved_elev</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">dem_3035</span><span class="p">,</span><span class="w"> </span><span class="n">broad_leaved</span><span class="p">,</span><span class="w"> </span><span class="n">maskvalues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">coniferous_elev</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">dem_3035</span><span class="p">,</span><span class="w"> </span><span class="n">coniferous</span><span class="p">,</span><span class="w"> </span><span class="n">maskvalues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+</code></pre></div>
+<p>Now we can get the summary statistics for each forest type.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nf">summary</span><span class="p">(</span><span class="n">broad_leaved_elev</span><span class="p">)</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nf">summary</span><span class="p">(</span><span class="n">coniferous_elev</span><span class="p">)</span>
+</code></pre></div>
+<p>Or extract the values as vectors and work with them directly.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">val_broad</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.vector</span><span class="p">(</span><span class="nf">values</span><span class="p">(</span><span class="n">broad_leaved_elev</span><span class="p">))</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="n">val_conif</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.vector</span><span class="p">(</span><span class="nf">values</span><span class="p">(</span><span class="n">coniferous_elev</span><span class="p">))</span>
+</code></pre></div>
+<p>Plot the elevation values for each forest type.</p>
+<p>Boxplot
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nf">boxplot</span><span class="p">(</span><span class="n">val_broad</span><span class="p">,</span><span class="w"> </span><span class="n">val_conif</span><span class="p">)</span>
+</code></pre></div>
+or with additional graphics
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nf">boxplot</span><span class="p">(</span><span class="n">val_broad</span><span class="p">,</span><span class="w"> </span><span class="n">val_conif</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">        </span><span class="n">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Broad-leaved&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Coniferous&quot;</span><span class="p">),</span><span class="w"> </span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">        </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;lightgreen&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;darkgreen&quot;</span><span class="p">)</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="w">        </span><span class="p">)</span>
+</code></pre></div>
+Histograms
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nf">hist</span><span class="p">(</span><span class="n">val_conif</span><span class="p">)</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="nf">hist</span><span class="p">(</span><span class="n">val_broad</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</code></pre></div></p>
+<p>or with additional graphics
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nf">hist</span><span class="p">(</span><span class="n">val_conif</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkgreen&quot;</span><span class="p">)</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="nf">hist</span><span class="p">(</span><span class="n">val_broad</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lightgreen&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="nf">legend</span><span class="p">(</span><span class="s">&quot;topright&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Broad-leaved&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Coniferous&quot;</span><span class="p">),</span><span class="w"> </span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="w">       </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;lightgreen&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;darkgreen&quot;</span><span class="p">))</span>
+</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If we neeed to work directly with the values, we can also do it with <code>values()</code> function. The workflow than should be something like this::</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">broad_leaved</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">clc_cz</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">23</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="n">broad_leaved_elev</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="n">dem_3035</span><span class="p">)[</span><span class="nf">values</span><span class="p">(</span><span class="n">broad_leaved</span><span class="p">)]</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="n">coniferous</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">clc_cz</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">24</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="n">coniferous_elev</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="n">dem_3035</span><span class="p">)[</span><span class="nf">values</span><span class="p">(</span><span class="n">coniferous</span><span class="p">)]</span>
+</code></pre></div>
+</div>
 <h2 id="other-exercises">Other exercises</h2>
 <p><img alt="Whittaker's biomes classification (Ricklefs 2008)" src="../img/biome.png" /></p>
 
