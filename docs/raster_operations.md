@@ -3,7 +3,7 @@
 ## General R functions
 
 ### Download data
-You can download data directliy in R using `download.file()` function. In this example we will download the CHELSA climate - BIO1 and  BIO12 for 1981-2010. Check `?download.file` for arguments and options.  
+You can download data directliy in R using `download.file()` function. In this example we will download the CHELSA climate - BIO1 (Mean annual temperature - °C) and  BIO12 (Annual Precipitation - mm) for 1981-2010. Check `?download.file` for arguments and options.  
 
 ``` r
 download.file("https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio01/1981-2010/CHELSA_bio01_1981-2010_V.2.1.tif", "data/CHELSA_bio1_1981-2010_V.2.1.tif")
@@ -41,10 +41,9 @@ list.files(recursive = TRUE, pattern = "bio")
 
 ## Raster manipulation
 Task: 
-1. Prepare raster stack of bioclimatic CHELSA data and elevation data. The resolution of the raster stack will be 30seconds (~1km) - resolution of the CHELSA data.
+1. Prepare raster stack of bioclimatic CHELSA data and elevation data for the Czechia. The resolution of the raster stack will be 30seconds (~1km) - resolution of the CHELSA data.
 2. Mask the raster stack with the DEM data.
-3. Create raster of distances to the nearest 1000m elevation.
-4. Save the raster stack to separate files.
+3. Save the raster stack to separate files.
 
 
 ```r
@@ -94,8 +93,14 @@ bio_cz <- crop(bio, dem)
 Extntes do not overlap, we need to reproject the raster to the same projection.
 
 ```r
-dem_cz <- project(dem, crs(bio))
-bio_cz <- crop(bio, dem_cz)
+dem_4326 <- project(dem, crs(bio))
+bio_cz <- crop(bio, dem_4326)
+```
+
+Reprojecting can be also done with EPSG code directly with string `EPSG:****` 
+
+```r
+dem_4326 <- project(dem, "EPSG:4326")
 ```
 
 
@@ -109,19 +114,19 @@ bio_cz <- crop(bio, dem_cz)
 see `?resample` for more options, particularly `method` argument. In our case we will use some sumary method
 
 ```r
-dem_cz <- resample(dem_cz,bio_cz, method = "average")
+dem_4326 <- resample(dem_4326,bio_cz, method = "average")
 ```
 
 ### stack the rasters
 
 ```r
-cz_stack <- c(bio_cz, dem_cz)
+cz_stack <- c(bio_cz, dem_4326)
 ```
 ### masking
 mask the raster stack with the DEM
 
 ```r
-masked_z <- mask(cz_stack, dem_cz)
+masked_z <- mask(cz_stack, dem_4326)
 plot(masked_z)
 ```
 or mask all raster in stack with any NA in any raster
@@ -129,27 +134,162 @@ or mask all raster in stack with any NA in any raster
 ```r
 masked_z <- mask(cz_stack, anyNA(cz_stack))   
 ```
-### distance to the nearest 1000m elevation
 
-`distance()` function calculates the distance to the nearest non-NA cell in the raster. So we need to rewrite all values less then 1000 to NA. 
+
+
+
+## Categorical data and raster attribute table (RAT)
+Tasks: 
+1. Create raster of distances to the nearest forest in Czechia.
+2. Compare the elevation ranges between areas of Broad-leaved forest and Coniferous forest in Czechia.
+
+In this example we will use Corine Land Cover (CLC) data, which is a categorical raster data, that come with raster attribute table (RAT). The RAT contains the information about the categories names and their CLC codes while the raster values are categories numbers from 1 to 45. We will use this information to create a raster of distances to the nearest forest.
 
 ```r
-dem_1000 <- dem_cz
-dem_1000[dem_1000 < 1000] <- NA
-plot(dem_1000)
+clc <- rast("data/U2018_CLC2018_V2020_20u1.tif")
+clc
+```
+
+Note the `categories` in the metadata of SpatRaster object, it shows the column names in RAT. We can access the categories with `cats()` function.
+
+```r
+cats(clc)
+```
+
+The first column is `Value` and its actaully the value stored in the raster. But in prints the first category is showed as label of the value. Thats why we see in the metadata `name` the `LABEL3` category, and also `min value` and `max value` are shown from this category. If we plot the raster, it will also use the `LABEL3` category as labels in the legend.
+
+```r
+plot(clc)
+```
+
+The label can be changed with `$` operator, but keep in mind that the values in the raster will not change, only the labels. 
+
+```r
+clc$CODE_18
+plot(clc$CODE_18)
+```
+
+**Crop and mask the CLC raster**
+
+We used the `dem` raster to crop the `clc` but same as in previous example, we need to reproject the `dem` raster to the same projection as `clc` before cropping.
+
+```r
+dem_3035 <- project(dem, crs(clc))
+clc_cz <- crop(clc, dem_3035)
+```
+
+### Distance to the forests
+
+For this tasks we will use the `distance()` function, which calculates the distance to the nearest non-NA cell in the raster. So at first we need to get a raster with NA value for all pixels that are not forests.
+
+If we look at the RAT table we will see that the values for forests are `23`,`24` and `25` for `Broad-leaved forest`, `Coniferous forest` and `Mixed forest` respectively.
+
+``` r
+cats(clc_cz)
+```
+
+Prepare the raster with NA for non-forest pixels:
+
+```r
+clc_forests <- clc_cz
+clc_forests[clc_forests != 23 & clc_forests != 24 & clc_forests != 25] <- NA
+plot(clc_forests)
 ``` 
+Calculate the distance to the nearest forest pixel:
 
 ```r
-dist_1000 <- distance(dem_1000)
-plot(dist_1000)
+forests_d <- distance(clc_forests)
+plot(forests_d)
 ```
-mask the distance raster with the DEM and add it to the stack
+
+Write the distance raster to file:
 
 ```r
-dist_1000 <- mask(dist_1000, dem_cz)
-masked_z <- c(masked_z, dist_1000)
-plot(masked_z)
+writeRaster(forests_d, "outputs/forests_distance.tif")
 ```
+
+
+### Explore the elevations between areas of Broad-leaved forest and Coniferous forest in Czechia.
+
+```r
+dem_3035 <- resample(dem_3035, clc_cz, method = "average")
+clc_cz <- mask(clc_cz, dem_3035)
+```
+
+We can now work in single SpatRaster object, or with separate rasters, but we need to make sure that they have the same resolution and extent.
+
+```r
+broad_leaved <- clc_cz == 23
+coniferous <- clc_cz == 24
+```
+
+Mask the elevation raster with the forest rasters to get the elevation values for each forest type. Now we have binary rasters with `TRUE` (`1`) and `FALSE` (`0`) values. The value of amsk can be set with `maskvalues` argument in `mask()`  (default is `NA`).
+
+```r
+broad_leaved_elev <- mask(dem_3035, broad_leaved, maskvalues = FALSE)
+coniferous_elev <- mask(dem_3035, coniferous, maskvalues = FALSE)
+```
+
+Now we can get the summary statistics for each forest type.
+
+```r
+summary(broad_leaved_elev)
+summary(coniferous_elev)
+```
+
+Or extract the values as vectors and work with them directly.
+
+```r
+val_broad <- as.vector(values(broad_leaved_elev))
+val_conif <- as.vector(values(coniferous_elev))
+```
+
+Plot the elevation values for each forest type.
+
+
+Boxplot
+``` r
+boxplot(val_broad, val_conif)
+```
+or with additional graphics
+```r
+boxplot(val_broad, val_conif, 
+        names = c("Broad-leaved", "Coniferous"), 
+        col = c("lightgreen", "darkgreen")
+        )
+```
+Histograms
+```r
+hist(val_conif)
+hist(val_broad, add = TRUE)
+```
+
+
+
+or with additional graphics
+```r
+hist(val_conif, col = "darkgreen")
+hist(val_broad, col = "lightgreen", add = TRUE)
+
+legend("topright", c("Broad-leaved", "Coniferous"), 
+       fill = c("lightgreen", "darkgreen"))
+
+```
+
+
+
+
+
+!!! tip
+    If we neeed to work directly with the values, we can also do it with `values()` function. The workflow than should be something like this::
+
+    ```r
+    broad_leaved <- clc_cz == 23
+    broad_leaved_elev <- values(dem_3035)[values(broad_leaved)]
+
+    coniferous <- clc_cz == 24
+    coniferous_elev <- values(dem_3035)[values(coniferous)]
+    ```
 
 
 
