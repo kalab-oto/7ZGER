@@ -41,6 +41,7 @@ list.files(recursive = TRUE, pattern = "bio")
 
 ## Raster manipulation
 Task: 
+
 1. Prepare raster stack of bioclimatic CHELSA data and elevation data for the Czechia. The resolution of the raster stack will be 30seconds (~1km) - resolution of the CHELSA data.
 2. Mask the raster stack with the DEM data.
 3. Save the raster stack to separate files.
@@ -135,11 +136,62 @@ or mask all raster in stack with any NA in any raster
 masked_z <- mask(cz_stack, anyNA(cz_stack))   
 ```
 
+### write the raster stack to separate files
+The raster stack can be written to single file with multiple layers as bands, or to separate files.
 
+Write to single file with multiple bands:
+
+```r
+writeRaster(masked_z, "output/cz_stack.tif")
+```
+
+To write the SpatRaster to separate files you have to provide the file names for each layer.
+
+```r
+writeRaster(masked_z, c("output/cz_bio1.tif", "output/cz_bio12.tif", "output/cz_dem.tif"))
+```
+Or more usually you can use `names()` function to get the names of the layers, and use a `paste0()` function to construct the file names with the layer names.
+
+!!! note "`paste0()` "
+    `paste0()` function is used to concatenate strings without any separator.
+    ```r
+    paste0("Hello ", "World")
+    ```
+    If you provide a vector with multiple values, it will concatenate each value with the previous string. 
+    ```r
+    paste0("Hello ", "World - ", c(1, 2, 3))
+    ```
+
+    So in our case we can use `names(masked_z)` to get the names of the layers and construct the file names with `paste0()` function.
+
+    ```r
+    paste0("output/", names(masked_z), ".tif")
+    ```
+
+Befor we write the files, we can set reasonable names for the layers in the SpatRaster object with `names()` function.
+
+```r
+names(masked_z) <- c("bio1", "bio12", "dem")
+writeRaster(masked_z, paste0("output/cz_", names(masked_z), ".tif"))
+```
+
+
+
+!!! note
+    Still you can pick out single layer from the SpatRaster object and write it to file separately.
+
+    ```r
+    writeRaster(masked_z$CHELSA_bio01_1981.2010_V.2.1, "output/cz_bio1.tif")
+    ```
+    or
+    ```r
+    writeRaster(masked_z[[1]], "output/cz_bio1.tif")
+    ```
 
 
 ## Categorical data and raster attribute table (RAT)
 Tasks: 
+
 1. Create raster of distances to the nearest forest in Czechia.
 2. Compare the elevation ranges between areas of Broad-leaved forest and Coniferous forest in Czechia.
 
@@ -205,7 +257,7 @@ plot(forests_d)
 Write the distance raster to file:
 
 ```r
-writeRaster(forests_d, "outputs/forests_distance.tif")
+writeRaster(forests_d, "output/forests_distance.tif")
 ```
 
 
