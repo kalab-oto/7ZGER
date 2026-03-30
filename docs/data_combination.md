@@ -65,7 +65,7 @@ my_date
     print(year)
     ```
 
-### Basic automatisation
+## Basic automatisation -  `for` loops
 
 <!-- #### `do.call`
 
@@ -92,7 +92,6 @@ apply(df, 2, sum)
 ``` -->
 
 
-## `for` loops
 Basic `for` loops are used to iterate over a sequence of numbers or elements. The code use executed repeatedly for each element in the sequence. If you want to see what is happening on certain place in the loop, you can use `print()` function, which behaves similarly to runinng variable in the console.  
 
 !!! note
