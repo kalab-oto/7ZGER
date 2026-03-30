@@ -1511,7 +1511,39 @@ Histograms
 </code></pre></div>
 </div>
 <h2 id="other-exercises">Other exercises</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nf">download.file</span><span class="p">(</span><span class="s">&quot;https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="s">    10m_bio.zip&quot;</span><span class="p">,</span><span class="s">&quot;wc2.1_10m_bio.zip&quot;</span><span class="p">)</span>
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>
+<a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="nf">unzip</span><span class="p">(</span><span class="s">&quot;wc2.1_10m_bio.zip&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">exdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;data/&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Read the data with <code>terra</code> package.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">terra</span><span class="p">)</span>
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="n">bio_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list.files</span><span class="p">(</span><span class="s">&quot;data&quot;</span><span class="p">,</span><span class="n">full.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)[</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">4</span><span class="p">)]</span>
+<a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a><span class="n">r</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rast</span><span class="p">(</span><span class="n">bio_list</span><span class="p">)</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="nf">names</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;temp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;prec&quot;</span><span class="p">)</span>
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Biomes classification</label><label for="__tabbed_1_2">Tropical rain forest</label><label for="__tabbed_1_3">Subtropical desert</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Classify the biomes based on the temperature and precipitation values of the WorldClim data. Use the following classification based on Whittaker's biomes classification:</p>
 <p><img alt="Whittaker's biomes classification (Ricklefs 2008)" src="../img/biome.png" /></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="n">trop_for</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">r</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">2500</span><span class="p">)</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">trop_for</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="n">sub_des</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">r</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;</span><span class="m">1000</span><span class="p">)</span>
+<a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">sub_des</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 
 
 
