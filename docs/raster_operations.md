@@ -347,4 +347,47 @@ legend("topright", c("Broad-leaved", "Coniferous"),
 
 ## Other exercises
 
-![Whittaker's biomes classification (Ricklefs 2008)](img/biome.png)
+
+
+
+
+```r
+download.file("https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_
+    10m_bio.zip","wc2.1_10m_bio.zip")
+
+unzip("wc2.1_10m_bio.zip", exdir = "data/")
+```
+
+Read the data with `terra` package.
+```r
+library(terra)
+
+bio_list <- list.files("data",full.names = T)[c(1,4)]
+r <- rast(bio_list)
+```
+
+```r
+names(r) <- c("temp", "prec")
+plot(r)
+```
+
+
+---
+=== "Biomes classification"
+    
+    Classify the biomes based on the temperature and precipitation values of the WorldClim data. Use the following classification based on Whittaker's biomes classification:
+        
+    ![Whittaker's biomes classification (Ricklefs 2008)](img/biome.png)
+  
+=== "Tropical rain forest"
+ 
+    ``` r
+    trop_for <- (r[[1]] < 20 & r[[2]] < 2500)
+    plot(trop_for)
+    ```
+=== "Subtropical desert"
+ 
+    ``` r
+    sub_des <- (r[[1]] > 15 & r[[2]] <1000)
+    plot(sub_des)
+    ```

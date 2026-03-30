@@ -53,7 +53,7 @@ my_date
 
 
 !!! note
-    Notice that good practices to work with dates is use dedicated functions. In base R you can use `as.Date()` or `as.POSIXct()`. 
+    Notice that good practices to work with dates is use dedicated functions. In base R you can use `as.Date()` or `as.POSIXct()`. We will cover the date manipulation in more details in the future.
 
     ```r
     my_date <- "20250409"
@@ -67,11 +67,11 @@ my_date
 
 ### Basic automatisation
 
-#### `do.call`
+<!-- #### `do.call`
 
-!!! todo
+!!! todo -->
 
-
+<!-- 
 #### `apply` family of functions
 
 The `apply` family of functions is used to **apply** a function to each element of an object (like a list or a matrix). The most common functions are `apply` for arrays, matrices and data frames, and `lapply` for lists (or simplified `lapply` - `sapply`, which returns vector).
@@ -89,14 +89,14 @@ df <- data.frame(a = 1:5, b = 6:10)
 df
 apply(df, 1, sum) 
 apply(df, 2, sum) 
-```
+``` -->
 
 
 #### `for` loops
 Basic `for` loops are used to iterate over a sequence of numbers or elements. The code use executed repeatedly for each element in the sequence. If you want to see what is happening on certain place in the loop, you can use `print()` function, which behaves similarly to runinng variable in the console.  
 
 !!! note
-    In many cases, you can use `lapply` or `sapply` instead of `for` loops. They can be more efficient and sometimes easier to read. 
+    In many cases, you can use `lapply` or `sapply` instead of `for` loops. They can be more efficient and sometimes easier to read. We will cover them in more details in the future. 
 
 ```r
 for (i in 1:10) {
@@ -121,12 +121,12 @@ for (i in 1:10) {
 }
 ```
 
-```r
+<!-- ```r
 list_of_results <- list()
 for (i in 1:10) {
     list_of_results[[i]] <- paste("This is iteration number", i)
 }
-```
+``` -->
 
 !!! note
     If you know number of elements in desired list, than more efficient way to preallocate the vector is to use `vector()` function. This avoids the resizing the list in each iteration, which can be slower in large loops.
@@ -206,6 +206,20 @@ shp_paths <- list.files("data", pattern = ".shp$", full.names = TRUE)
 lpis <- vect(shp_paths[1])
 ```
 
+!!! tip
+    ```
+    library(sf)
+    lpis_sf <- st_read(shp_paths[1])
+    ```
+
+    conversion between `sf` and `terra` vector objects is easy with `vect()` (`terra` package) and `st_as_sf()` (`sf` package) functions. 
+
+    ```r
+    lpis_terra <- vect(lpis_sf)
+    lpis_sf <- st_as_sf(lpis_terra)
+    ```
+
+
 ## crop raster data with vector data
 Same as in previous example, we can crop the raster data with the vector data, as the function takes the extent object from the raster or vector data. 
 
@@ -213,6 +227,24 @@ Same as in previous example, we can crop the raster data with the vector data, a
 r_cropped <- crop(r, lpis)
 plot(r_cropped)
 plot(lpis, add = TRUE)
+```
+
+Tha data can be also masked with the vector data, which means that the values outside the vector data will be set to NA. 
+
+```r
+r_masked <- mask(r, lpis)
+plot(r_masked)
+```
+Than you can summarize the raster data only for the area of interest defined by the vector data. 
+
+```r
+summary(r_masked)
+```
+
+Or do other calculations
+
+```r
+mean(values(r_masked), na.rm = T)
 ```
 
 ## zonal statistics
@@ -231,6 +263,7 @@ zonal_r
 zonal_r$elev
 plot(zonal_r)
 ```
+
 task: whats the difference between original elevation in `VYSKA` and recalculated elevation in `elev`? 
 
 ```r
@@ -246,13 +279,13 @@ Get raster vales for lpis centroids
 lpis_pts <- centroids(lpis)
 extract(r, lpis_pts)
 #or
-elev_pts <- extract(r, lpis_points, bind = TRUE)
+elev_pts <- extract(r, lpis_pts, bind = TRUE)
 plot(r_cropped)
 plot(lpis, add = TRUE)
 plot(elev_pts, add = TRUE, col = "red")
 ```
 
-## bodnus
+## bonus
 ```r
 plot(r_cropped)
 for (i in seq(elev_pts)) {
