@@ -73,6 +73,7 @@ nav:
     - Raster data - introduction: raster_intro.md
     - Raster data: raster_operations.md
     - Data combination: data_combination.md
+    - 20.4.: lesson20_4.md
     - Data visualization: visualization.md
     - Recapitulation/excercise: hands_on.md
     - Extended advanced topics: advanced.md
