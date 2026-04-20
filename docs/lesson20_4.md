@@ -109,6 +109,17 @@ sum(x)
 lapply(x, sum)
 ```
 
+in this case, `lapply(x, sum)` applies the `sum` function to each element of the list `x`, while returning a list:
+
+```r
+list(
+  sum(x[[1]]),
+  sum(x[[2]]),
+  sum(x[[3]])
+)
+```
+
+
 when using `apply` function, you need to specify the `MARGIN` argument, which defines if you want to apply the function to rows or columns. `MARGIN = 1` for rows, `MARGIN = 2` for columns.
 
 ```r
@@ -119,12 +130,50 @@ apply(df, 2, sum)
 ```
 
 
+
 ## `do.call`
 
-!!! todo
+Function `do.call` is used to apply a function to a list of arguments.
+
+```r
+x <- list(1:10, 11:20, 21:30)
+do.call(sum, x)
+```
+does the same as:
+
+```r
+sum(x[[1]], x[[2]], x[[3]])
+```
 
 
 
 
 
-## which(), match(), %in% , `do.call`
+## user functions `function()`
+
+
+## data filtering
+`which()`, `match()`, `grepl()`, `%in%` 
+
+
+## Exercises
+
+```r
+library(sf)
+library(terra)
+
+files <- list.files("8/data", full.names = TRUE, pattern = ".tif")
+r <- lapply(files, rast)
+crs(r[[1]]) <- "EPSG:5514"
+
+occ <- read.csv("8/data/observations-537954.csv")
+o <- vect(occ, geom = c("longitude", "latitude"),crs = "EPSG:4326")
+
+
+lr <- lapply(r,project, y = "EPSG:4326")
+lo <- lapply(lr, extract, o)
+lo2 <- lapply(lo, `[`, 2)
+b <- do.call(cbind, lo2)
+
+cbind(occ, b)
+```
