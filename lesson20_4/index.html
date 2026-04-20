@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://kalab-oto.github.io/7ZGER/lesson20_4/">
       
       
+        <link rel="prev" href="../data_combination/">
+      
+      
+        <link rel="next" href="../visualization/">
       
       
         
@@ -25,7 +29,7 @@
     
     
       
-        <title>Lesson20 4 - KFG/7ZGER - Introduction to geospatial data processing in R</title>
+        <title>20.4. - KFG/7ZGER - Introduction to geospatial data processing in R</title>
       
     
     
@@ -114,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lesson20 4
+              20.4.
             
           </span>
         </div>
@@ -284,8 +288,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -296,11 +302,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -321,7 +327,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -635,6 +641,149 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20.4.
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20.4.
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lists
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subsetting-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subsetting lists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#named-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Named lists
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apply-family-of-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        apply family of functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        do.call
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-match-in-docall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        which(), match(), %in% , do.call
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -990,7 +1139,7 @@
   
 
 
-  <h1>Lesson20 4</h1>
+  <h1>20.4.</h1>
 
 <h2 id="lists">Lists</h2>
 <p>Lists are objects that are used as collection of objects, which can be different types. They are also vectors but <em>non-atomic</em>. Can be created with <code>list()</code> function. </p>
